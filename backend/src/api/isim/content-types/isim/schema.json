@@ -1,0 +1,40 @@
+{
+  "kind": "collectionType",
+  "collectionName": "isims",
+  "info": {
+    "singularName": "isim",
+    "pluralName": "isims",
+    "displayName": "isim"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "isim": {
+      "type": "string"
+    },
+    "aciklama": {
+      "type": "blocks"
+    },
+    "fiyat": {
+      "type": "decimal"
+    },
+    "kategori": {
+      "type": "enumeration",
+      "enum": [
+        "salatalar, içecekler, tatlılar, ana yemek, atıştırmalık"
+      ]
+    },
+    "resim": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  }
+}

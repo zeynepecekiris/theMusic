@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Menü</title>
+</head>
+<body>
+    <h1>Restoran Menüsü</h1>
+
+    {% if menuler %}
+        {% for urun in menuler %}
+            <div style="margin-bottom: 20px;">
+                <h2>{{ urun.isim }}</h2>
+
+                {% if urun.aciklama %}
+                    <p>{{ urun.aciklama[0].children[0].text }}</p>
+                {% endif %}
+
+                <p><strong>Fiyat:</strong> {{ urun.fiyat }} TL</p>
+                <p><strong>Kategori:</strong> {{ urun.kategori }}</p>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>Menüde ürün bulunamadı.</p>
+    {% endif %}
+</body>
+</html>
