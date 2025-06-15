@@ -252,6 +252,41 @@
       background: var(--background-color);
     }
 
+    .menu-header {
+      position: relative;
+      width: 100%;
+      height: 60vh;
+      margin-bottom: 4rem;
+    }
+
+    .menu-header img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .menu-header h2 {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-size: 4rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+      z-index: 2;
+    }
+
+    .menu-header::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0,0,0,0.4);
+      z-index: 1;
+    }
+
     .menu-container {
       max-width: 1200px;
       margin: 0 auto;
@@ -361,6 +396,64 @@
       position: relative;
       z-index: 1;
     }
+
+    /* Story Section Styles */
+    .story-content {
+      max-width: 100%;
+      margin: 0;
+      padding: 0;
+      background: white;
+    }
+
+    .hikayemiz-kismi {
+      text-align: center;
+      margin-bottom: 3rem;
+      position: relative;
+    }
+
+    .hikayemiz-kismi h2 {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 3rem;
+      color: var(--primary-color);
+      margin-bottom: 2rem;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+      color: white;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    }
+
+    .hikayemiz-kismi img {
+      width: 100%;
+      height: 80vh;
+      object-fit: cover;
+      margin-bottom: 2rem;
+      display: block;
+      background-color: #f0f0f0; /* Fallback background color */
+    }
+
+    .story-text {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    .story-content p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #444;
+      white-space: pre-line;
+      text-align: justify;
+    }
+
+    .story-content p:first-of-type {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1.3rem;
+      color: var(--primary-color);
+      margin-bottom: 2rem;
+    }
   </style>
 </head>
 <body>
@@ -396,7 +489,12 @@
 
   <!-- Menu Section -->
   <section id="menu" class="menu-section">
-    <h2 class="section-title">Our Menu</h2>
+    <div class="menu-header">
+      <img src="{{ url_for('static', filename='hikayemiz.jpg') }}" 
+           alt="Menu Header Image"
+           onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1579871494447-9811cf80d66c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80';">
+      <h2>Our Menu</h2>
+    </div>
     <div class="menu-container">
       {% for urun in menuler %}
         <div class="dish-card">
@@ -437,9 +535,15 @@
   <section id="story" class="section">
     <h2 class="section-title">Hikayemiz</h2>
     <div class="story-content">
-      <p>
-      
-      「UMI NO HIKAYESİ」– DENİZİN HİKAYESİ
+      <div class="hikayemiz-kismi">
+        <h2>「UMI NO HIKAYESİ」</h2>
+        <img src="{{ url_for('static', filename='hikayemiz.jpg') }}" 
+             alt="Hikayemiz Görseli"
+             onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1579871494447-9811cf80d66c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80';">
+      </div>
+      <div class="story-text">
+        <p>
+        「UMI NO HIKAYESİ」– DENİZİN HİKAYESİ
 Bir suşi tanesi…
 Bir ömrün özeti gibidir.
 Binlerce yıldır Japon denizlerinden esen tuzlu rüzgârın, yosun kokusunun, sabahın ilk ışığında uyanan balıkçıların, bambu tezgâhlarda çalışan ustaların, her biri ayrı bir hafızaya kazınan ellerinin mirasıdır bu sofrada duran her parça.
@@ -450,7 +554,7 @@ Restoranımda size sunduğum her suşi, sadece bir yemek değil.
 Bir duyu yolculuğudur:
 – Tat: Yosunların hafif tuzlu ısırığıyla, torik balığının derin umami aroması
 – Doku: Dilinizin ucunda eriyen yağlı otoro, pirincin hafif yapışkan dokusu
-– Koku: Taze rendelenmiş wasabi’nin sinüsleri açan ferahlığı
+– Koku: Taze rendelenmiş wasabi'nin sinüsleri açan ferahlığı
 – Ses: Bıçağın noriye attığı keskin çizgi, suşi ustasının nefesini tuttuğu an
 
 Umi No Hikayesi, yani "Denizin Hikayesi", sadece bir restoran değil.
@@ -460,8 +564,8 @@ Hoş geldiniz.
 Artık siz de bu hikâyenin bir parçasısınız.
 
 – Usta Hiroshi Ece
-
-</p>
+        </p>
+      </div>
     </div>
   </section>
 
