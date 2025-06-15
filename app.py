@@ -11,14 +11,22 @@ def home():
 
 @app.route("/menu")
 def menu():
-    url = "http://localhost:1337/api/isims"
-    response = requests.get(url)
-    data = response.json()
-    
-    print(">> Gelen veri:", data)  # debug için
-    menuler = [item for item in data.get("data", [])]
+    # Strapi Cloud URL'sini buraya ekleyin
+    url = "https://your-project-name.strapi.cloud/api/isims"
+    headers = {
+        'Authorization': 'Bearer your-strapi-cloud-token'
+    }
+    try:
+        response = requests.get(url, headers=headers)
+        data = response.json()
+        
+        print(">> Gelen veri:", data)  
+        menuler = [item for item in data.get("data", [])]
 
-    return render_template("menu.html", menuler=menuler)
+        return render_template("menu.html", menuler=menuler)
+    except requests.exceptions.RequestException as e:
+        print(f"Hata oluştu: {e}")
+        return render_template("menu.html", menuler=[])
 
 if __name__ == "__main__":
-    app.run(debug=True, port=5002)
+    app.run(debug=True, port=5006)

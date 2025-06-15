@@ -1,59 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Omakase Menu | Chef Haruki Nakamoto</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto&display=swap" rel="stylesheet">
+  <title>Restoran Menüsü</title>
   <style>
     body {
-      font-family: 'Roboto', sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #fffaf3;
+      font-family: Arial, sans-serif;
+      background: #f8f8f8;
       color: #333;
-      line-height: 1.6;
+      padding: 2rem;
     }
-    header {
-      background-color: #1e1e1e;
-      color: white;
-      padding: 2rem 1rem;
+    h1 {
       text-align: center;
-    }
-    header h1 {
-      font-family: 'Playfair Display', serif;
-      margin: 0;
-      font-size: 2.5rem;
+      color: #b22222;
     }
     .menu {
       max-width: 800px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-    }
-    .menu-section {
-      margin-bottom: 2rem;
-    }
-    .menu-section h2 {
-      border-bottom: 1px solid #aaa;
-      padding-bottom: 0.5rem;
-      font-family: 'Playfair Display', serif;
-      color: #b22222;
+      margin: auto;
     }
     .dish {
-      margin: 1rem 0;
+      background: white;
+      border-radius: 10px;
       padding: 1rem;
-      background-color: white;
-      border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      margin: 1rem 0;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
     .dish-name {
+      font-size: 1.2rem;
       font-weight: bold;
-      font-size: 1.1rem;
-      color: #333;
     }
     .description {
       font-style: italic;
-      color: #555;
       margin: 0.5rem 0;
     }
     .price {
@@ -65,43 +42,29 @@
       font-size: 0.9rem;
       margin-top: 0.5rem;
     }
-    footer {
-      text-align: center;
-      padding: 2rem 1rem;
-      background-color: #f1f1f1;
-      font-size: 0.9rem;
-      color: #666;
-    }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Restoran Menü</h1>
-  </header>
-
-  <main class="menu">
-    {% for menu_item in menuler %}
-    <div class="dish">
-      <div class="dish-name">{{ menu_item.isim }}</div>
-      {% if menu_item.aciklama %}
-      <div class="description">
-        {% for block in menu_item.aciklama %}
-          {% if block.type == 'paragraph' %}
-            {% for child in block.children %}
-              {{ child.text }}
+  <h1>selamlar</h1>
+  <div class="menu">
+    {% for urun in menuler %}
+      <div class="dish">
+        <div class="dish-name">{{ urun.isim }}</div>
+        {% if urun.aciklama %}
+          <div class="description">
+            {% for block in urun.aciklama %}
+              {% if block.type == 'paragraph' %}
+                {% for child in block.children %}
+                  {{ child.text }}
+                {% endfor %}
+              {% endif %}
             {% endfor %}
-          {% endif %}
-        {% endfor %}
+          </div>
+        {% endif %}
+        <div class="price">{{ urun.fiyat }} TL</div>
+        <div class="category">{{ urun.kategori }}</div>
       </div>
-      {% endif %}
-      <div class="price">{{ menu_item.fiyat }} TL</div>
-      <div class="category">{{ menu_item.kategori }}</div>
-    </div>
     {% endfor %}
-  </main>
-
-  <footer>
-    Beverage Pairing Available | Chef-selected Junmai Daiginjo Series
-  </footer>
+  </div>
 </body>
 </html>
