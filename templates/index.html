@@ -77,16 +77,93 @@
     /* Existing styles... */
     .hero {
       height: 100vh;
-      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-                  url('https://images.unsplash.com/photo-1579871494447-9811cf80d66c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
-      background-size: cover;
-      background-position: center;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
+      position: relative;
+      overflow: hidden;
+      padding-top: 60px;
+    }
+
+    .hero-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 0;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      padding: 2rem;
+      background: rgba(0, 0, 0, 0.4);
+      border-radius: 15px;
+      backdrop-filter: blur(5px);
+    }
+
+    .hero-content h1 {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      letter-spacing: 0.05em;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
       color: white;
-      padding-top: 60px; /* Add space for fixed navbar */
+      font-weight: 400;
+    }
+
+    .hero-content p {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+      color: white;
+      font-weight: 300;
+      line-height: 1.6;
+    }
+
+    .reservation-button {
+      display: inline-block;
+      padding: 0.8rem 1.8rem;
+      background-color: var(--accent-color);
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      font-size: 1rem;
+      font-weight: 400;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border: 1px solid var(--accent-color);
+    }
+
+    .reservation-button:hover {
+      background-color: transparent;
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    }
+
+    @media (max-width: 768px) {
+      .hero-content h1 {
+        font-size: 2.2rem;
+      }
+      .hero-content p {
+        font-size: 1rem;
+      }
+      .reservation-button {
+        padding: 0.7rem 1.5rem;
+        font-size: 0.9rem;
+      }
     }
 
     /* Section Styles */
@@ -457,6 +534,21 @@
       color: var(--primary-color);
       margin-bottom: 2rem;
     }
+
+    /* Michael Plate Section Styles */
+    .michael-plate-section {
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .michael-plate-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
   </style>
 </head>
 <body>
@@ -481,11 +573,21 @@
 
   <!-- Hero Section -->
   <div class="hero">
+    <video class="hero-video" autoplay muted loop playsinline>
+      <source src="{{ url_for('static', filename='giris-sayfası.mp4') }}" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="hero-overlay"></div>
     <div class="hero-content">
       <h1>Authentic Sushi Experience</h1>
       <p>Experience the art of traditional Japanese cuisine</p>
       <a href="#menu" class="reservation-button">View Menu</a>
     </div>
+  </div>
+
+  <!-- Michael Plate Image Section -->
+  <div class="michael-plate-section">
+    <img src="{{ url_for('static', filename='micheal-plate.png') }}" alt="Michael Plate" class="michael-plate-image">
   </div>
 
   <div class="page-divider"></div>
@@ -539,14 +641,14 @@
     <h2 class="section-title">Hikayemiz</h2>
     <div class="story-content">
       <div class="hikayemiz-kismi">
-        <h2>「UMI NO HIKAYESİ」</h2>
-        <img src="{{ url_for('static', filename='hikayemiz.jpg') }}" 
+        <h2></h2>
+        <img src="{{ url_for('static', filename='sushi-tabagi.png') }}" 
              alt="Hikayemiz Görseli"
              onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1579871494447-9811cf80d66c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80';">
       </div>
       <div class="story-text">
         <p>
-        「UMI NO HIKAYESİ」– DENİZİN HİKAYESİ
+     DENİZİN HİKAYESİ
 Bir suşi tanesi…
 Bir ömrün özeti gibidir.
 Binlerce yıldır Japon denizlerinden esen tuzlu rüzgârın, yosun kokusunun, sabahın ilk ışığında uyanan balıkçıların, bambu tezgâhlarda çalışan ustaların, her biri ayrı bir hafızaya kazınan ellerinin mirasıdır bu sofrada duran her parça.
@@ -580,8 +682,8 @@ Artık siz de bu hikâyenin bir parçasısınız.
         <!-- Google Maps iframe will go here -->
       </div>
       <div class="address-info">
-        <h3>Adres</h3>
-        <p>Restoran adresi buraya gelecek</p>
+        <h3>Adres: Japonya, 〒160-0021 Tokyo, Shinjuku City, Kabukicho, 1 Chome−16−3 セレサ陽栄新宿ビル 6階</h3>
+        <p>Dünyanın bir numaralı chef</p>
         <h3>Çalışma Saatleri</h3>
         <p>Pazartesi - Cuma: 11:00 - 22:00</p>
         <p>Cumartesi - Pazar: 10:00 - 23:00</p>
@@ -607,11 +709,7 @@ Artık siz de bu hikâyenin bir parçasısınız.
     <h2 class="section-title">Galeri</h2>
     <div class="gallery-grid">
       <div class="gallery-item">
-        <video controls autoplay muted loop>
-          <source src="{{ url_for('static', filename='sushi-yap.mp4') }}" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-        <i class="fas fa-play-circle play-icon"></i>
+        <img src="{{ url_for('static', filename='hikayemiz.jpg') }}" alt="Gallery Image">
       </div>
     </div>
   </section>
