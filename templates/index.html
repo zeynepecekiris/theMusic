@@ -3,124 +3,220 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Restoran Menüsü</title>
+  <title>Sushi Restaurant</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f8f8f8;
-      color: #333;
-      padding: 2rem;
-      margin: 0;
+    :root {
+      --primary-color: #1a1a1a;
+      --accent-color: #c41e3a;
+      --text-color: #333;
+      --background-color: #f8f8f8;
     }
-    .header {
-      background-color: #1e1e1e;
-      color: white;
-      padding: 2rem;
+
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      background: var(--background-color);
+      color: var(--text-color);
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+
+    .hero {
+      height: 100vh;
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                  url('https://images.unsplash.com/photo-1579871494447-9811cf80d66c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       text-align: center;
+      color: white;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      padding: 2rem;
+    }
+
+    .hero h1 {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      letter-spacing: 0.1em;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
       margin-bottom: 2rem;
     }
-    .header h1 {
-      margin: 0;
-      font-size: 2.5rem;
+
+    .menu-section {
+      padding: 5rem 2rem;
+      background: white;
     }
+
+    .section-title {
+      text-align: center;
+      font-family: 'Noto Serif JP', serif;
+      font-size: 2.5rem;
+      margin-bottom: 3rem;
+      color: var(--primary-color);
+    }
+
     .menu-container {
       max-width: 1200px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 2rem;
       padding: 0 1rem;
     }
+
     .dish-card {
       background: white;
-      border-radius: 15px;
+      border: 1px solid #eee;
+      border-radius: 4px;
       overflow: hidden;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
+
     .dish-card:hover {
       transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
     }
+
     .dish-image {
       width: 100%;
-      height: 200px;
+      height: 250px;
       object-fit: cover;
     }
+
     .dish-content {
       padding: 1.5rem;
     }
+
     .dish-name {
+      font-family: 'Noto Serif JP', serif;
       font-size: 1.5rem;
       font-weight: bold;
       margin-bottom: 0.5rem;
-      color: #333;
+      color: var(--primary-color);
     }
+
     .description {
-      font-style: italic;
       color: #666;
       margin: 1rem 0;
-      line-height: 1.6;
+      line-height: 1.8;
+      font-size: 0.95rem;
     }
+
     .price {
-      color: #b22222;
-      font-weight: bold;
+      color: var(--accent-color);
+      font-weight: 500;
       font-size: 1.2rem;
       margin: 1rem 0;
     }
+
     .category {
       color: #666;
       font-size: 0.9rem;
       text-transform: uppercase;
-      letter-spacing: 1px;
+      letter-spacing: 2px;
+      margin-top: 0.5rem;
     }
+
     .no-image {
       background-color: #f0f0f0;
-      height: 200px;
+      height: 250px;
       display: flex;
       align-items: center;
       justify-content: center;
       color: #666;
     }
+
+    .reservation-button {
+      display: inline-block;
+      padding: 1rem 2rem;
+      background-color: var(--accent-color);
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+    }
+
+    .reservation-button:hover {
+      background-color: #a01830;
+    }
+
+    @media (max-width: 1024px) {
+      .menu-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .hero h1 {
+        font-size: 2.8rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .menu-container {
+        grid-template-columns: 1fr;
+      }
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+      .section-title {
+        font-size: 2rem;
+      }
+    }
   </style>
 </head>
 <body>
-  <div class="header">
-    <h1>Restoran Menüsü</h1>
+  <div class="hero">
+    <div class="hero-content">
+      <h1>Authentic Sushi Experience</h1>
+      <p>Experience the art of traditional Japanese cuisine</p>
+      <a href="#menu" class="reservation-button">View Menu</a>
+    </div>
   </div>
 
-  <div class="menu-container">
-    {% for urun in menuler %}
-      <div class="dish-card">
-        {% if urun.resim and urun.resim.data %}
-          {% for image in urun.resim.data %}
-            <img src="{{ image.attributes.url }}" 
-                 alt="{{ urun.isim }}" 
-                 class="dish-image">
-          {% endfor %}
-        {% else %}
-          <div class="no-image">Resim Yok</div>
-        {% endif %}
-        
-        <div class="dish-content">
-          <div class="dish-name">{{ urun.isim }}</div>
-          
-          {% if urun.aciklama %}
-            <div class="description">
-              {% for block in urun.aciklama %}
-                {% if block.type == 'paragraph' %}
-                  {% for child in block.children %}
-                    {{ child.text }}
-                  {% endfor %}
-                {% endif %}
-              {% endfor %}
-            </div>
+  <section id="menu" class="menu-section">
+    <h2 class="section-title">Our Menu</h2>
+    <div class="menu-container">
+      {% for urun in menuler %}
+        <div class="dish-card">
+          {% if urun.resim and urun.resim.data %}
+            {% for image in urun.resim.data %}
+              <img src="https://glowing-basketball-da0bfbc355.strapiapp.com{{ image.attributes.url }}" 
+                   alt="{{ urun.isim }}" 
+                   class="dish-image">
+            {% endfor %}
+          {% else %}
+            <div class="no-image">Resim Yok</div>
           {% endif %}
           
-          <div class="price">{{ urun.fiyat }} TL</div>
-          <div class="category">{{ urun.kategori }}</div>
+          <div class="dish-content">
+            <div class="dish-name">{{ urun.isim }}</div>
+            
+            {% if urun.aciklama %}
+              <div class="description">
+                {% for block in urun.aciklama %}
+                  {% if block.type == 'paragraph' %}
+                    {% for child in block.children %}
+                      {{ child.text }}
+                    {% endfor %}
+                  {% endif %}
+                {% endfor %}
+              </div>
+            {% endif %}
+            
+            <div class="price">{{ urun.fiyat }} TL</div>
+            <div class="category">{{ urun.kategori }}</div>
+          </div>
         </div>
-      </div>
-    {% endfor %}
-  </div>
+      {% endfor %}
+    </div>
+  </section>
 </body>
 </html>
