@@ -24,6 +24,17 @@
       padding: 1rem;
       margin: 1rem 0;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      display: flex;
+      gap: 1rem;
+    }
+    .dish-image {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+    .dish-content {
+      flex: 1;
     }
     .dish-name {
       font-size: 1.2rem;
@@ -42,27 +53,49 @@
       font-size: 0.9rem;
       margin-top: 0.5rem;
     }
+    .no-image {
+      width: 150px;
+      height: 150px;
+      background-color: #f0f0f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #666;
+      border-radius: 8px;
+    }
   </style>
 </head>
 <body>
-  <h1>selamlar</h1>
+  <h1>Restoran Menüsü</h1>
   <div class="menu">
     {% for urun in menuler %}
       <div class="dish">
-        <div class="dish-name">{{ urun.isim }}</div>
-        {% if urun.aciklama %}
-          <div class="description">
-            {% for block in urun.aciklama %}
-              {% if block.type == 'paragraph' %}
-                {% for child in block.children %}
-                  {{ child.text }}
-                {% endfor %}
-              {% endif %}
-            {% endfor %}
-          </div>
+        {% if urun.resim and urun.resim.data %}
+          {% for image in urun.resim.data %}
+            <img src="{{ image.attributes.url }}" 
+                 alt="{{ urun.isim }}" 
+                 class="dish-image">
+          {% endfor %}
+        {% else %}
+          <div class="no-image">Resim Yok</div>
         {% endif %}
-        <div class="price">{{ urun.fiyat }} TL</div>
-        <div class="category">{{ urun.kategori }}</div>
+        
+        <div class="dish-content">
+          <div class="dish-name">{{ urun.isim }}</div>
+          {% if urun.aciklama %}
+            <div class="description">
+              {% for block in urun.aciklama %}
+                {% if block.type == 'paragraph' %}
+                  {% for child in block.children %}
+                    {{ child.text }}
+                  {% endfor %}
+                {% endif %}
+              {% endfor %}
+            </div>
+          {% endif %}
+          <div class="price">{{ urun.fiyat }} TL</div>
+          <div class="category">{{ urun.kategori }}</div>
+        </div>
       </div>
     {% endfor %}
   </div>

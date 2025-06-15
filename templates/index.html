@@ -1,146 +1,126 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>merve'nin Menusu | mervebnin menusu</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto&display=swap" rel="stylesheet">
+  <title>Restoran Menüsü</title>
   <style>
     body {
-      font-family: 'Roboto', sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #fffaf3;
+      font-family: Arial, sans-serif;
+      background: #f8f8f8;
       color: #333;
-      line-height: 1.6;
+      padding: 2rem;
+      margin: 0;
     }
-    header {
+    .header {
       background-color: #1e1e1e;
       color: white;
-      padding: 2rem 1rem;
+      padding: 2rem;
       text-align: center;
+      margin-bottom: 2rem;
     }
-    header h1 {
-      font-family: 'Playfair Display', serif;
+    .header h1 {
       margin: 0;
       font-size: 2.5rem;
     }
-    .menu {
-      max-width: 800px;
-      margin: 2rem auto;
+    .menu-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
       padding: 0 1rem;
     }
-    .menu-section {
-      margin-bottom: 2rem;
+    .dish-card {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
     }
-    .menu-section h2 {
-      border-bottom: 1px solid #aaa;
-      padding-bottom: 0.5rem;
-      font-family: 'Playfair Display', serif;
-      color: #b22222;
+    .dish-card:hover {
+      transform: translateY(-5px);
     }
-    .dish {
-      margin: 1rem 0;
+    .dish-image {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    .dish-content {
+      padding: 1.5rem;
     }
     .dish-name {
+      font-size: 1.5rem;
       font-weight: bold;
-      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      color: #333;
     }
     .description {
       font-style: italic;
-      color: #555;
+      color: #666;
+      margin: 1rem 0;
+      line-height: 1.6;
     }
-    footer {
-      text-align: center;
-      padding: 2rem 1rem;
-      background-color: #f1f1f1;
+    .price {
+      color: #b22222;
+      font-weight: bold;
+      font-size: 1.2rem;
+      margin: 1rem 0;
+    }
+    .category {
+      color: #666;
       font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .no-image {
+      background-color: #f0f0f0;
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       color: #666;
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Omakase Tasting Menu</h1>
-    <p>by Chef Haruki Nakamoto</p>
-  </header>
+  <div class="header">
+    <h1>Restoran Menüsü</h1>
+  </div>
 
-  <main class="menu">
-    <section class="menu-section">
-      <h2>Zensai (Appetizer Selection)</h2>
-      <div class="dish">
-        <div class="dish-name">Seasonal Chawanmushi</div>
-        <div class="description">Dashi-infused egg custard, uni & yuzu zest</div>
+  <div class="menu-container">
+    {% for urun in menuler %}
+      <div class="dish-card">
+        {% if urun.resim and urun.resim.data %}
+          {% for image in urun.resim.data %}
+            <img src="{{ image.attributes.url }}" 
+                 alt="{{ urun.isim }}" 
+                 class="dish-image">
+          {% endfor %}
+        {% else %}
+          <div class="no-image">Resim Yok</div>
+        {% endif %}
+        
+        <div class="dish-content">
+          <div class="dish-name">{{ urun.isim }}</div>
+          
+          {% if urun.aciklama %}
+            <div class="description">
+              {% for block in urun.aciklama %}
+                {% if block.type == 'paragraph' %}
+                  {% for child in block.children %}
+                    {{ child.text }}
+                  {% endfor %}
+                {% endif %}
+              {% endfor %}
+            </div>
+          {% endif %}
+          
+          <div class="price">{{ urun.fiyat }} TL</div>
+          <div class="category">{{ urun.kategori }}</div>
+        </div>
       </div>
-      <div class="dish">
-        <div class="dish-name">Kinmedai Tataki</div>
-        <div class="description">Lightly seared golden eye snapper, miso ponzu</div>
-      </div>
-      <div class="dish">
-        <div class="dish-name">Shiro Ebi Tartare</div>
-        <div class="description">White shrimp, sudachi foam, shiso leaf</div>
-      </div>
-    </section>
-
-    <section class="menu-section">
-      <h2>Tsukuri (Sashimi Course)</h2>
-      <div class="dish">
-        <div class="dish-name">Bluefin Otoro</div>
-        <div class="description">Aged fatty tuna</div>
-      </div>
-      <div class="dish">
-        <div class="dish-name">Hokkigai</div>
-        <div class="description">Surf clam with yuzu salt</div>
-      </div>
-      <div class="dish">
-        <div class="dish-name">Kampachi</div>
-        <div class="description">Amberjack, jalapeño-soy sauce</div>
-      </div>
-    </section>
-
-    <section class="menu-section">
-      <h2>Nigiri Sushi (12 Pieces)</h2>
-      <div class="dish"><div class="dish-name">Shima Aji</div></div>
-      <div class="dish"><div class="dish-name">Akami Zuke</div></div>
-      <div class="dish"><div class="dish-name">Engawa</div></div>
-      <div class="dish"><div class="dish-name">Ikura</div></div>
-      <div class="dish"><div class="dish-name">Uni</div></div>
-      <div class="dish"><div class="dish-name">Anago</div></div>
-      <div class="dish"><div class="dish-name">Sayori</div></div>
-      <div class="dish"><div class="dish-name">Kohada</div></div>
-      <div class="dish"><div class="dish-name">Kuruma Ebi</div></div>
-      <div class="dish"><div class="dish-name">Hotate</div></div>
-      <div class="dish"><div class="dish-name">Aji</div></div>
-      <div class="dish"><div class="dish-name">Tamago</div></div>
-    </section>
-
-    <section class="menu-section">
-      <h2>Soup & Palate Cleanser</h2>
-      <div class="dish">
-        <div class="dish-name">Aka Dashi Miso</div>
-        <div class="description">Red miso, seaweed, silken tofu</div>
-      </div>
-      <div class="dish">
-        <div class="dish-name">Ume Shiso Granita</div>
-        <div class="description">Plum & shiso leaf granita</div>
-      </div>
-    </section>
-
-    <section class="menu-section">
-      <h2>Dessert</h2>
-      <div class="dish">
-        <div class="dish-name">Matcha Crème Brûlée</div>
-        <div class="description">Kyoto matcha with crisp caramel top</div>
-      </div>
-      <div class="dish">
-        <div class="dish-name">Yuzu Sorbet</div>
-        <div class="description">Handcrafted sorbet with fresh yuzu</div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    Beverage Pairing Available | Chef-selected Junmai Daiginjo Series
-  </footer>
+    {% endfor %}
+  </div>
 </body>
 </html>
