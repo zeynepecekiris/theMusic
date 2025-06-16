@@ -42,7 +42,7 @@ def menu():
         data = response.json()
         
         print(">> Gelen veri:", data)  
-        menuler = [item for item in data.get("data", [])]
+        menuler = [item["attributes"] for item in data.get("data", [])]
 
         return render_template("menu.html", menuler=menuler)
     except requests.exceptions.RequestException as e:
@@ -50,4 +50,5 @@ def menu():
         return render_template("menu.html", menuler=[])
 
 if __name__ == "__main__":
-    app.run(debug=True, port=5007)
+    app.run(debug=True, port=5008
+            )

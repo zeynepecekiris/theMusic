@@ -245,10 +245,22 @@
     /* Awards Section */
     .awards-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       gap: 2rem;
       max-width: 1200px;
       margin: 0 auto;
+    }
+
+    .awards-text-content {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .awards-image-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     .award-card {
@@ -263,6 +275,21 @@
       font-size: 3rem;
       color: var(--accent-color);
       margin-bottom: 1rem;
+    }
+
+    .award-image {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-bottom: 1rem;
+    }
+
+    .big-award-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 8px;
     }
 
     /* Gallery Section */
@@ -585,58 +612,55 @@
     </div>
   </div>
 
-  <!-- Michael Plate Image Section -->
+  
   <div class="michael-plate-section">
     <img src="{{ url_for('static', filename='micheal-plate.png') }}" alt="Michael Plate" class="michael-plate-image">
   </div>
 
   <div class="page-divider"></div>
 
-  <!-- Menu Section -->
+  
   <section id="menu" class="menu-section">
     <div class="menu-header">
       <img src="{{ url_for('static', filename='hikayemiz.jpg') }}" 
            alt="Menu Header Image"
            onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1579871494447-9811cf80d66c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80';">
-      <h2>Our Menu</h2>
+      
     </div>
+    <h2 class="section-title">Our Menu</h2>
     <div class="menu-container">
-      {% for urun in menuler %}
-        <div class="dish-card">
-          {% if urun.resim and urun.resim.data %}
-            {% for image in urun.resim.data %}
-              <img src="https://glowing-basketball-da0bfbc355.strapiapp.com{{ image.attributes.url }}" 
-                   alt="{{ urun.isim }}" 
-                   class="dish-image">
-            {% endfor %}
-          {% else %}
-            <div class="no-image">Resim Yok</div>
-          {% endif %}
-          
-          <div class="dish-content">
-            <div class="dish-name">{{ urun.isim }}</div>
-            
-            {% if urun.aciklama %}
-              <div class="description">
-                {% for block in urun.aciklama %}
-                  {% if block.type == 'paragraph' %}
+        {% for urun in menuler %}
+          <div class="dish-card">
+            {% if urun.resim and urun.resim | length > 0 %}
+              <img src="{{ urun.resim[0].formats.medium.url }}" alt="{{ urun.isim }}" class="dish-image">
+            {% else %}
+              <div class="no-image">Resim Yok</div>
+            {% endif %}
+      
+            <div class="dish-content">
+              <div class="dish-name">{{ urun.isim }}</div>
+      
+              {% if urun.aciklama %}
+                <div class="description">
+                  {% for block in urun.aciklama %}
                     {% for child in block.children %}
                       {{ child.text }}
                     {% endfor %}
-                  {% endif %}
-                {% endfor %}
-              </div>
-            {% endif %}
-            
-            <div class="price">{{ urun.fiyat }} TL</div>
-            <div class="category">{{ urun.kategori }}</div>
+                  {% endfor %}
+                </div>
+              {% endif %}
+              print(menuler)
+      
+              <div class="price">{{ urun.fiyat }} TL</div>
+              <div class="category">{{ urun.kategori }}</div>
+            </div>
           </div>
-        </div>
-      {% endfor %}
-    </div>
+        {% endfor %}
+      </div>
+      
   </section>
 
-  <!-- Story Section -->
+  
   <section id="story" class="section">
     <h2 class="section-title">Hikayemiz</h2>
     <div class="story-content">
@@ -679,7 +703,14 @@ Artık siz de bu hikâyenin bir parçasısınız.
     <h2 class="section-title">Konum</h2>
     <div class="location-info">
       <div class="map">
-        <!-- Google Maps iframe will go here -->
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.6698064970425!2d139.7027963152542!3d35.69080518019349!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188d227f27a69b%3A0x673c68a4a2b2e88a!2zSmFwb255YSwg4oCtMTYwLTAwMjEgVG9reW8sIFNoaW5qdWt1IENpdHksIEthYnVraWNobywgMSBDaG9tZeKAlTE24oCtMyDlsI_jg5zjgqLjg7Pjgr_jgrnjgqTjgrnjg7zjgrjjgqbjg6_jgr_jgq8gNuepkw!5e0!3m2!1sen!2sjp!4v1678888888888!5m2!1sen!2sjp" 
+                width="100%" 
+                height="100%" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
       </div>
       <div class="address-info">
         <h3>Adres: Japonya, 〒160-0021 Tokyo, Shinjuku City, Kabukicho, 1 Chome−16−3 セレサ陽栄新宿ビル 6階</h3>
@@ -695,12 +726,23 @@ Artık siz de bu hikâyenin bir parçasısınız.
   <section id="awards" class="section">
     <h2 class="section-title">Ödüller</h2>
     <div class="awards-grid">
-      <div class="award-card">
-        <i class="fas fa-award award-icon"></i>
-        <h3>En İyi Sushi 2023</h3>
-        <p>Ödül açıklaması</p>
+      <div class="awards-text-content">
+        <div class="award-card">
+          <i class="fas fa-award award-icon"></i>
+          <h3>En İyi Sushi 2023</h3>
+          <p>Lezzetin, ustalığın ve tazeliğin buluşma noktası olarak gururla duyuruyoruz:
+            Sushi restoranımız, 2023 yılında "En İyi Sushi" ödülüne layık görüldü!
+            
+            Uluslararası gastronomi uzmanlarının değerlendirmeleriyle seçilen bu ödül; kullandığımız kaliteli malzemeleri, özgün tariflerimizi ve ustalarımızın sanata dönüşen el becerisini taçlandırıyor.
+            Bu başarı, siz değerli misafirlerimizin güveni ve sevgisiyle mümkün oldu.
+            
+            Teşekkür ederiz. 🍣</p>
+        </div>
+        <!-- Add more award cards here if needed -->
       </div>
-      <!-- Add more award cards -->
+      <div class="awards-image-container">
+        <img src="{{ url_for('static', filename='usta.jpg') }}" alt="Usta" class="big-award-image">
+      </div>
     </div>
   </section>
 
