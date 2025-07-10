@@ -4,8 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sushi Restaurant</title>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-yada-yada-hash" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
     :root {
       --primary-color: #1a1a1a;
@@ -579,6 +584,9 @@
   </style>
 </head>
 <body>
+
+  <div id="menu-container"></div>
+
   <!-- Navigation Bar -->
   <nav class="navbar">
     <div class="nav-container">
@@ -594,6 +602,7 @@
         <a href="#gallery">Galeri</a>
         <a href="#careers">Kariyer</a>
         <a href="#contact">İletişim</a>
+        <a href="ece">Ece</a>
       </div>
     </div>
   </nav>
@@ -632,7 +641,7 @@
         {% for urun in menuler %}
           <div class="dish-card">
             {% if urun.resim and urun.resim | length > 0 %}
-              <img src="{{ urun.resim[0].formats.medium.url }}" alt="{{ urun.isim }}" class="dish-image">
+              <img src="{{ url_for('static', filename=urun.resim[0].filename) }}" alt="{{ urun.isim }}" class="dish-image">
             {% else %}
               <div class="no-image">Resim Yok</div>
             {% endif %}
@@ -703,7 +712,7 @@ Artık siz de bu hikâyenin bir parçasısınız.
     <h2 class="section-title">Konum</h2>
     <div class="location-info">
       <div class="map">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.6698064970425!2d139.7027963152542!3d35.69080518019349!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188d227f27a69b%3A0x673c68a4a2b2e88a!2zSmFwb255YSwg4oCtMTYwLTAwMjEgVG9reW8sIFNoaW5qdWt1IENpdHksIEthYnVraWNobywgMSBDaG9tZeKAlTE24oCtMyDlsI_jg5zjgqLjg7Pjgr_jgrnjgqTjgrnjg7zjgrjjgqbjg6_jgr_jgq8gNuepkw!5e0!3m2!1sen!2sjp!4v1678888888888!5m2!1sen!2sjp" 
+        <iframe src=": Feneryolu, Şefizade Sk. No:4/B, 34724 Kadıköy/İstanbul" 
                 width="100%" 
                 height="100%" 
                 style="border:0;" 
@@ -765,7 +774,7 @@ Artık siz de bu hikâyenin bir parçasısınız.
     </div>
   </section>
 
-  <!-- Contact Section -->
+
   <section id="contact" class="section">
     <h2 class="section-title">İletişim</h2>
     <div class="contact-form">
@@ -791,8 +800,35 @@ Artık siz de bu hikâyenin bir parçasısınız.
     </div>
   </section>
 
-  <script>
-    // Navbar scroll effect
+  
+
+<script>
+    fetch("https://glowing-basketball-da0bfbc355.strapiapp.com/api/isims?populate=*")
+      .then(res => res.json())
+      .then(data => {
+        const container = document.getElementById("menu-container");
+
+        data.data.forEach(item => {
+          const isim = item.attributes.isim;
+          const aciklama = item.attributes.aciklama?.[0]?.children?.[0]?.text || "";
+          const fiyat = item.attributes.fiyat;
+          const kategori = item.attributes.kategori;
+          const resimUrl = item.attributes.resim?.[0]?.formats?.medium?.url;
+
+          const card = `
+            <div class="dish-card">
+              ${resimUrl ? `<img src="${resimUrl}" alt="${isim}" class="dish-image">` : `<div class="no-image">Resim yok</div>`}
+              <h3>${isim}</h3>
+              <p>${aciklama}</p>
+              <p><strong>${fiyat} TL</strong></p>
+              <p><em>${kategori}</em></p>
+            </div>
+          `;
+
+          container.innerHTML += card;
+        });
+      });
+    
     window.addEventListener('scroll', function() {
       const navbar = document.querySelector('.navbar');
       if (window.scrollY > 50) {
@@ -802,7 +838,7 @@ Artık siz de bu hikâyenin bir parçasısınız.
       }
     });
 
-    // Smooth scrolling for navigation links
+    
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -811,6 +847,50 @@ Artık siz de bu hikâyenin bir parçasısınız.
         });
       });
     });
+
+
+    <>
+  fetch("https://glowing-basketball-da0bfbc355.strapiapp.com/api/menulers?populate=*")
+    .then(response => response.json())
+    .then(data => {
+      const menuler = data.data;
+      const container = document.querySelector(".menu-container");
+
+      container.innerHTML = ""; // Önceki sabit HTML temizlenir
+
+      menuler.forEach(item => {
+        const urun = item.attributes;
+        const isim = urun.isim || "Ürün İsmi Yok";
+        const fiyat = urun.fiyat || "";
+        const kategori = urun.kategori || "";
+        
+        let aciklama = "";
+        try {
+          aciklama = urun.aciklama[0].children[0].text || "";
+        } catch (e) {}
+
+        const resimUrl = urun.resim?.data?.attributes?.url;
+        const fullImage = resimUrl
+          ? `https://glowing-basketball-da0bfbc355.media.strapiapp.com${resimUrl}`
+          : "https://via.placeholder.com/300x250?text=No+Image";
+
+        container.innerHTML += `
+          <div class="dish-card">
+            <img src="${fullImage}" alt="${isim}" class="dish-image">
+            <div class="dish-content">
+              <div class="dish-name">${isim}</div>
+              <div class="description">${aciklama}</div>
+              <div class="price">${fiyat} TL</div>
+              <div class="category">${kategori}</div>
+            </div>
+          </div>
+        `;
+      });
+    })
+    .catch(error => {
+      console.error("Strapi verisi alınamadı:", error);
+    });
+
   </script>
 </body>
 </html>

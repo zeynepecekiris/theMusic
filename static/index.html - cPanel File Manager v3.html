@@ -1,0 +1,1616 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+<html>
+    <head>
+        <title>index.html - cPanel File Manager v3</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+        <link rel="stylesheet" type="text/css" href="/cPanel_magic_revision_1731953507/frontend/jupiter/libraries/bootstrap/optimized/css/bootstrap.min.css" />
+        
+        <link rel="stylesheet" type="text/css" href="/cPanel_magic_revision_1648610195/frontend/jupiter/libraries/ui-fonts/open_sans/optimized/open_sans.min.css" />
+        <link rel="stylesheet" type="text/css" href="/cPanel_magic_revision_1738602305/frontend/jupiter/libraries/fontawesome/css/all.min.css" />
+        <link rel="stylesheet" type="text/css" href="/cPanel_magic_revision_1722271617/frontend/jupiter/filemanager/css/tree_styles2_optimized.css" />
+
+        <script type="text/javascript" src="/cPanel_magic_revision_1722271616/yui-gen/utilities_container/utilities_container.js"></script>
+        <script type="text/javascript" src="/cPanel_magic_revision_1749674312/cjt/cpanel-all-min.js?locale=tr&locale_revision=1750969298"></script>
+        <script type="text/javascript" src="/cPanel_magic_revision_1722271617/frontend/jupiter/js/filemanager_editors_optimized.js"></script>
+
+        
+<link rel="stylesheet" type="text/css" href="/cPanel_magic_revision_1722271616/cjt/css/ajaxapp-min.css" />
+<!--[if IE 6]>
+<link rel="stylesheet" type="text/css" href="/cPanel_magic_revision_1721939512/cjt/css/ajaxapp_ie6.css" />
+<![endif]-->
+
+
+        <style type="text/css">
+            html, body, #maintbl {
+                height: 100%;
+                width: 100%;
+                margin: 0;
+                padding: 0;
+                background: none !important;
+            }
+
+            form { margin: 0 }
+
+            #maintbl, #maintbl tr, #maintbl td {
+                margin:0;
+                padding:0;
+                border-collapse: collapse;
+                border: none;
+            }
+
+            .cjt_progress_overlay .bd {
+                background: transparent;
+            }
+
+            /* Suppress inherited styles from global style sheets. */
+            .yui-panel .hd,
+            .yui-panel .bd,
+            .yui-panel .ft {
+                background-image: none;
+                font-size: 100%;
+
+            }
+            .yui-panel .ft {
+                background-color: #CCCCCC;
+            }
+
+            /* overrides from tree_styles2_optimized.css */
+            p {
+                line-height: normal;
+            }
+            .header {
+                background: #333333;
+                color: #FFFFFF;
+                padding: 5px;
+            }
+            .button-group .default {
+                background: none !important;
+                padding: 0;
+            }
+
+            .action-buttons {
+                text-align: right;
+            }
+
+            .editor-area {
+                position: absolute !important;
+                top: 94px;
+                right: 0;
+                left: 0;
+                bottom: 20px;
+                border: 1px solid #CCCCCC;
+            }
+
+            .editor-toolbar {
+                padding-top: 5px;
+                padding-bottom: 5px;
+            }
+
+            .editor-toolbar .fa-terminal {
+                font-size: inherit;
+            }
+
+            .btn-group-ddl {
+                padding: 1px;
+            }
+
+            .help-link {
+                padding: 14px;
+                display: block;
+            }
+
+            @media (max-width: 503px) {
+                .editor-area {
+                    top: 245px;
+                }
+                .action-buttons {
+                    text-align: left;
+                }
+            }
+
+            @media (min-width: 504px) and (max-width: 768px) {
+                .editor-area {
+                    top: 200px;
+                }
+            }
+
+            @media (min-width: 769px) and (max-width: 1074px) {
+                .editor-area {
+                    top: 130px;
+                }
+            }
+        </style>
+
+        <!--[if IE]>
+        <style type="text/css">
+            #legacy_codewindow {
+                width: 99.5%;
+            }
+        </style>
+        <![endif]-->
+
+    </head>
+    <body class="nomargins yui-skin-sam">
+        <form action="javascript:void(0)" name="sform" onsubmit="loadfdata('sform_submit'); return false;" class="form-inline">
+            <table border="0" id="maintbl">
+                <tr class="header">
+                    <td style="padding: 5px">
+                        <div class="row">
+                            <div class="col-xs-12 col-md-8">
+                                <label style="font-weight: 900; font-size:13px;">
+                                    Düzenleme:
+                                    <input  id="path" name="path" value="/home/healthyo/public_html/index.html" class="form-control">
+                                </label>
+                                <label >Kodlama:
+                                    <select id="charset" name="charset" class="form-control">
+                                    
+                                        
+                                            <option value="ansi_x3.110-1983" >
+                                                ansi_x3.110-1983
+                                            </option>
+                                        
+                                            <option value="ansi_x3.4-1968" >
+                                                ansi_x3.4-1968
+                                            </option>
+                                        
+                                            <option value="armscii-8" >
+                                                armscii-8
+                                            </option>
+                                        
+                                            <option value="asmo_449" >
+                                                asmo_449
+                                            </option>
+                                        
+                                            <option value="big5" >
+                                                big5
+                                            </option>
+                                        
+                                            <option value="big5-hkscs" >
+                                                big5-hkscs
+                                            </option>
+                                        
+                                            <option value="brf" >
+                                                brf
+                                            </option>
+                                        
+                                            <option value="bs_4730" >
+                                                bs_4730
+                                            </option>
+                                        
+                                            <option value="bs_viewdata" >
+                                                bs_viewdata
+                                            </option>
+                                        
+                                            <option value="cp10007" >
+                                                cp10007
+                                            </option>
+                                        
+                                            <option value="cp1125" >
+                                                cp1125
+                                            </option>
+                                        
+                                            <option value="cp1250" >
+                                                cp1250
+                                            </option>
+                                        
+                                            <option value="cp1253" >
+                                                cp1253
+                                            </option>
+                                        
+                                            <option value="cp1254" >
+                                                cp1254
+                                            </option>
+                                        
+                                            <option value="cp1255" >
+                                                cp1255
+                                            </option>
+                                        
+                                            <option value="cp1256" >
+                                                cp1256
+                                            </option>
+                                        
+                                            <option value="cp1257" >
+                                                cp1257
+                                            </option>
+                                        
+                                            <option value="cp1258" >
+                                                cp1258
+                                            </option>
+                                        
+                                            <option value="cp737" >
+                                                cp737
+                                            </option>
+                                        
+                                            <option value="cp770" >
+                                                cp770
+                                            </option>
+                                        
+                                            <option value="cp771" >
+                                                cp771
+                                            </option>
+                                        
+                                            <option value="cp772" >
+                                                cp772
+                                            </option>
+                                        
+                                            <option value="cp773" >
+                                                cp773
+                                            </option>
+                                        
+                                            <option value="cp774" >
+                                                cp774
+                                            </option>
+                                        
+                                            <option value="cp775" >
+                                                cp775
+                                            </option>
+                                        
+                                            <option value="csa_z243.4-1985-1" >
+                                                csa_z243.4-1985-1
+                                            </option>
+                                        
+                                            <option value="csa_z243.4-1985-2" >
+                                                csa_z243.4-1985-2
+                                            </option>
+                                        
+                                            <option value="csa_z243.4-1985-gr" >
+                                                csa_z243.4-1985-gr
+                                            </option>
+                                        
+                                            <option value="csn_369103" >
+                                                csn_369103
+                                            </option>
+                                        
+                                            <option value="cwi" >
+                                                cwi
+                                            </option>
+                                        
+                                            <option value="dec-mcs" >
+                                                dec-mcs
+                                            </option>
+                                        
+                                            <option value="din_66003" >
+                                                din_66003
+                                            </option>
+                                        
+                                            <option value="ds_2089" >
+                                                ds_2089
+                                            </option>
+                                        
+                                            <option value="ebcdic-at-de" >
+                                                ebcdic-at-de
+                                            </option>
+                                        
+                                            <option value="ebcdic-at-de-a" >
+                                                ebcdic-at-de-a
+                                            </option>
+                                        
+                                            <option value="ebcdic-ca-fr" >
+                                                ebcdic-ca-fr
+                                            </option>
+                                        
+                                            <option value="ebcdic-dk-no" >
+                                                ebcdic-dk-no
+                                            </option>
+                                        
+                                            <option value="ebcdic-dk-no-a" >
+                                                ebcdic-dk-no-a
+                                            </option>
+                                        
+                                            <option value="ebcdic-es" >
+                                                ebcdic-es
+                                            </option>
+                                        
+                                            <option value="ebcdic-es-a" >
+                                                ebcdic-es-a
+                                            </option>
+                                        
+                                            <option value="ebcdic-es-s" >
+                                                ebcdic-es-s
+                                            </option>
+                                        
+                                            <option value="ebcdic-fi-se" >
+                                                ebcdic-fi-se
+                                            </option>
+                                        
+                                            <option value="ebcdic-fi-se-a" >
+                                                ebcdic-fi-se-a
+                                            </option>
+                                        
+                                            <option value="ebcdic-fr" >
+                                                ebcdic-fr
+                                            </option>
+                                        
+                                            <option value="ebcdic-is-friss" >
+                                                ebcdic-is-friss
+                                            </option>
+                                        
+                                            <option value="ebcdic-it" >
+                                                ebcdic-it
+                                            </option>
+                                        
+                                            <option value="ebcdic-pt" >
+                                                ebcdic-pt
+                                            </option>
+                                        
+                                            <option value="ebcdic-uk" >
+                                                ebcdic-uk
+                                            </option>
+                                        
+                                            <option value="ebcdic-us" >
+                                                ebcdic-us
+                                            </option>
+                                        
+                                            <option value="ecma-cyrillic" >
+                                                ecma-cyrillic
+                                            </option>
+                                        
+                                            <option value="es" >
+                                                es
+                                            </option>
+                                        
+                                            <option value="es2" >
+                                                es2
+                                            </option>
+                                        
+                                            <option value="euc-jisx0213" >
+                                                euc-jisx0213
+                                            </option>
+                                        
+                                            <option value="euc-jp" >
+                                                euc-jp
+                                            </option>
+                                        
+                                            <option value="euc-jp-ms" >
+                                                euc-jp-ms
+                                            </option>
+                                        
+                                            <option value="euc-kr" >
+                                                euc-kr
+                                            </option>
+                                        
+                                            <option value="euc-tw" >
+                                                euc-tw
+                                            </option>
+                                        
+                                            <option value="gb18030" >
+                                                gb18030
+                                            </option>
+                                        
+                                            <option value="gb2312" >
+                                                gb2312
+                                            </option>
+                                        
+                                            <option value="gb_1988-80" >
+                                                gb_1988-80
+                                            </option>
+                                        
+                                            <option value="gbk" >
+                                                gbk
+                                            </option>
+                                        
+                                            <option value="georgian-academy" >
+                                                georgian-academy
+                                            </option>
+                                        
+                                            <option value="georgian-ps" >
+                                                georgian-ps
+                                            </option>
+                                        
+                                            <option value="gost_19768-74" >
+                                                gost_19768-74
+                                            </option>
+                                        
+                                            <option value="greek-ccitt" >
+                                                greek-ccitt
+                                            </option>
+                                        
+                                            <option value="greek7" >
+                                                greek7
+                                            </option>
+                                        
+                                            <option value="greek7-old" >
+                                                greek7-old
+                                            </option>
+                                        
+                                            <option value="gsm03.38" >
+                                                gsm03.38
+                                            </option>
+                                        
+                                            <option value="hp-greek8" >
+                                                hp-greek8
+                                            </option>
+                                        
+                                            <option value="hp-roman8" >
+                                                hp-roman8
+                                            </option>
+                                        
+                                            <option value="hp-roman9" >
+                                                hp-roman9
+                                            </option>
+                                        
+                                            <option value="hp-thai8" >
+                                                hp-thai8
+                                            </option>
+                                        
+                                            <option value="hp-turkish8" >
+                                                hp-turkish8
+                                            </option>
+                                        
+                                            <option value="hz-gb-2312" >
+                                                hz-gb-2312
+                                            </option>
+                                        
+                                            <option value="ibm037" >
+                                                ibm037
+                                            </option>
+                                        
+                                            <option value="ibm038" >
+                                                ibm038
+                                            </option>
+                                        
+                                            <option value="ibm1004" >
+                                                ibm1004
+                                            </option>
+                                        
+                                            <option value="ibm1026" >
+                                                ibm1026
+                                            </option>
+                                        
+                                            <option value="ibm1047" >
+                                                ibm1047
+                                            </option>
+                                        
+                                            <option value="ibm1124" >
+                                                ibm1124
+                                            </option>
+                                        
+                                            <option value="ibm1129" >
+                                                ibm1129
+                                            </option>
+                                        
+                                            <option value="ibm1132" >
+                                                ibm1132
+                                            </option>
+                                        
+                                            <option value="ibm1133" >
+                                                ibm1133
+                                            </option>
+                                        
+                                            <option value="ibm1160" >
+                                                ibm1160
+                                            </option>
+                                        
+                                            <option value="ibm1161" >
+                                                ibm1161
+                                            </option>
+                                        
+                                            <option value="ibm1162" >
+                                                ibm1162
+                                            </option>
+                                        
+                                            <option value="ibm1163" >
+                                                ibm1163
+                                            </option>
+                                        
+                                            <option value="ibm1164" >
+                                                ibm1164
+                                            </option>
+                                        
+                                            <option value="ibm256" >
+                                                ibm256
+                                            </option>
+                                        
+                                            <option value="ibm273" >
+                                                ibm273
+                                            </option>
+                                        
+                                            <option value="ibm274" >
+                                                ibm274
+                                            </option>
+                                        
+                                            <option value="ibm275" >
+                                                ibm275
+                                            </option>
+                                        
+                                            <option value="ibm277" >
+                                                ibm277
+                                            </option>
+                                        
+                                            <option value="ibm278" >
+                                                ibm278
+                                            </option>
+                                        
+                                            <option value="ibm280" >
+                                                ibm280
+                                            </option>
+                                        
+                                            <option value="ibm281" >
+                                                ibm281
+                                            </option>
+                                        
+                                            <option value="ibm284" >
+                                                ibm284
+                                            </option>
+                                        
+                                            <option value="ibm285" >
+                                                ibm285
+                                            </option>
+                                        
+                                            <option value="ibm290" >
+                                                ibm290
+                                            </option>
+                                        
+                                            <option value="ibm297" >
+                                                ibm297
+                                            </option>
+                                        
+                                            <option value="ibm420" >
+                                                ibm420
+                                            </option>
+                                        
+                                            <option value="ibm423" >
+                                                ibm423
+                                            </option>
+                                        
+                                            <option value="ibm424" >
+                                                ibm424
+                                            </option>
+                                        
+                                            <option value="ibm437" >
+                                                ibm437
+                                            </option>
+                                        
+                                            <option value="ibm500" >
+                                                ibm500
+                                            </option>
+                                        
+                                            <option value="ibm850" >
+                                                ibm850
+                                            </option>
+                                        
+                                            <option value="ibm851" >
+                                                ibm851
+                                            </option>
+                                        
+                                            <option value="ibm852" >
+                                                ibm852
+                                            </option>
+                                        
+                                            <option value="ibm855" >
+                                                ibm855
+                                            </option>
+                                        
+                                            <option value="ibm856" >
+                                                ibm856
+                                            </option>
+                                        
+                                            <option value="ibm857" >
+                                                ibm857
+                                            </option>
+                                        
+                                            <option value="ibm858" >
+                                                ibm858
+                                            </option>
+                                        
+                                            <option value="ibm860" >
+                                                ibm860
+                                            </option>
+                                        
+                                            <option value="ibm861" >
+                                                ibm861
+                                            </option>
+                                        
+                                            <option value="ibm862" >
+                                                ibm862
+                                            </option>
+                                        
+                                            <option value="ibm863" >
+                                                ibm863
+                                            </option>
+                                        
+                                            <option value="ibm864" >
+                                                ibm864
+                                            </option>
+                                        
+                                            <option value="ibm865" >
+                                                ibm865
+                                            </option>
+                                        
+                                            <option value="ibm866" >
+                                                ibm866
+                                            </option>
+                                        
+                                            <option value="ibm866nav" >
+                                                ibm866nav
+                                            </option>
+                                        
+                                            <option value="ibm868" >
+                                                ibm868
+                                            </option>
+                                        
+                                            <option value="ibm869" >
+                                                ibm869
+                                            </option>
+                                        
+                                            <option value="ibm870" >
+                                                ibm870
+                                            </option>
+                                        
+                                            <option value="ibm871" >
+                                                ibm871
+                                            </option>
+                                        
+                                            <option value="ibm874" >
+                                                ibm874
+                                            </option>
+                                        
+                                            <option value="ibm875" >
+                                                ibm875
+                                            </option>
+                                        
+                                            <option value="ibm880" >
+                                                ibm880
+                                            </option>
+                                        
+                                            <option value="ibm891" >
+                                                ibm891
+                                            </option>
+                                        
+                                            <option value="ibm903" >
+                                                ibm903
+                                            </option>
+                                        
+                                            <option value="ibm904" >
+                                                ibm904
+                                            </option>
+                                        
+                                            <option value="ibm905" >
+                                                ibm905
+                                            </option>
+                                        
+                                            <option value="ibm918" >
+                                                ibm918
+                                            </option>
+                                        
+                                            <option value="ibm922" >
+                                                ibm922
+                                            </option>
+                                        
+                                            <option value="iec_p27-1" >
+                                                iec_p27-1
+                                            </option>
+                                        
+                                            <option value="inis" >
+                                                inis
+                                            </option>
+                                        
+                                            <option value="inis-8" >
+                                                inis-8
+                                            </option>
+                                        
+                                            <option value="inis-cyrillic" >
+                                                inis-cyrillic
+                                            </option>
+                                        
+                                            <option value="invariant" >
+                                                invariant
+                                            </option>
+                                        
+                                            <option value="isiri-3342" >
+                                                isiri-3342
+                                            </option>
+                                        
+                                            <option value="iso-8859-1" >
+                                                iso-8859-1
+                                            </option>
+                                        
+                                            <option value="iso-8859-10" >
+                                                iso-8859-10
+                                            </option>
+                                        
+                                            <option value="iso-8859-11" >
+                                                iso-8859-11
+                                            </option>
+                                        
+                                            <option value="iso-8859-13" >
+                                                iso-8859-13
+                                            </option>
+                                        
+                                            <option value="iso-8859-14" >
+                                                iso-8859-14
+                                            </option>
+                                        
+                                            <option value="iso-8859-15" >
+                                                iso-8859-15
+                                            </option>
+                                        
+                                            <option value="iso-8859-16" >
+                                                iso-8859-16
+                                            </option>
+                                        
+                                            <option value="iso-8859-2" >
+                                                iso-8859-2
+                                            </option>
+                                        
+                                            <option value="iso-8859-3" >
+                                                iso-8859-3
+                                            </option>
+                                        
+                                            <option value="iso-8859-4" >
+                                                iso-8859-4
+                                            </option>
+                                        
+                                            <option value="iso-8859-5" >
+                                                iso-8859-5
+                                            </option>
+                                        
+                                            <option value="iso-8859-6" >
+                                                iso-8859-6
+                                            </option>
+                                        
+                                            <option value="iso-8859-7" >
+                                                iso-8859-7
+                                            </option>
+                                        
+                                            <option value="iso-8859-8" >
+                                                iso-8859-8
+                                            </option>
+                                        
+                                            <option value="iso-8859-9" >
+                                                iso-8859-9
+                                            </option>
+                                        
+                                            <option value="iso-8859-9e" >
+                                                iso-8859-9e
+                                            </option>
+                                        
+                                            <option value="iso-ir-197" >
+                                                iso-ir-197
+                                            </option>
+                                        
+                                            <option value="iso-ir-209" >
+                                                iso-ir-209
+                                            </option>
+                                        
+                                            <option value="iso-ir-90" >
+                                                iso-ir-90
+                                            </option>
+                                        
+                                            <option value="iso_10367-box" >
+                                                iso_10367-box
+                                            </option>
+                                        
+                                            <option value="iso_10646" >
+                                                iso_10646
+                                            </option>
+                                        
+                                            <option value="iso_11548-1" >
+                                                iso_11548-1
+                                            </option>
+                                        
+                                            <option value="iso_2033-1983" >
+                                                iso_2033-1983
+                                            </option>
+                                        
+                                            <option value="iso_5427" >
+                                                iso_5427
+                                            </option>
+                                        
+                                            <option value="iso_5427-ext" >
+                                                iso_5427-ext
+                                            </option>
+                                        
+                                            <option value="iso_5428" >
+                                                iso_5428
+                                            </option>
+                                        
+                                            <option value="iso_646.basic" >
+                                                iso_646.basic
+                                            </option>
+                                        
+                                            <option value="iso_646.irv" >
+                                                iso_646.irv
+                                            </option>
+                                        
+                                            <option value="iso_6937" >
+                                                iso_6937
+                                            </option>
+                                        
+                                            <option value="iso_6937-2-25" >
+                                                iso_6937-2-25
+                                            </option>
+                                        
+                                            <option value="iso_6937-2-add" >
+                                                iso_6937-2-add
+                                            </option>
+                                        
+                                            <option value="iso_8859-1,gl" >
+                                                iso_8859-1,gl
+                                            </option>
+                                        
+                                            <option value="iso_8859-supp" >
+                                                iso_8859-supp
+                                            </option>
+                                        
+                                            <option value="it" >
+                                                it
+                                            </option>
+                                        
+                                            <option value="jis_c6220-1969-jp" >
+                                                jis_c6220-1969-jp
+                                            </option>
+                                        
+                                            <option value="jis_c6220-1969-ro" >
+                                                jis_c6220-1969-ro
+                                            </option>
+                                        
+                                            <option value="jis_c6229-1984-a" >
+                                                jis_c6229-1984-a
+                                            </option>
+                                        
+                                            <option value="jis_c6229-1984-b" >
+                                                jis_c6229-1984-b
+                                            </option>
+                                        
+                                            <option value="jis_c6229-1984-b-add" >
+                                                jis_c6229-1984-b-add
+                                            </option>
+                                        
+                                            <option value="jis_c6229-1984-hand" >
+                                                jis_c6229-1984-hand
+                                            </option>
+                                        
+                                            <option value="jis_c6229-1984-hand-add" >
+                                                jis_c6229-1984-hand-add
+                                            </option>
+                                        
+                                            <option value="jis_c6229-1984-kana" >
+                                                jis_c6229-1984-kana
+                                            </option>
+                                        
+                                            <option value="jis_x0201" >
+                                                jis_x0201
+                                            </option>
+                                        
+                                            <option value="johab" >
+                                                johab
+                                            </option>
+                                        
+                                            <option value="jus_i.b1.002" >
+                                                jus_i.b1.002
+                                            </option>
+                                        
+                                            <option value="jus_i.b1.003-mac" >
+                                                jus_i.b1.003-mac
+                                            </option>
+                                        
+                                            <option value="jus_i.b1.003-serb" >
+                                                jus_i.b1.003-serb
+                                            </option>
+                                        
+                                            <option value="koi-8" >
+                                                koi-8
+                                            </option>
+                                        
+                                            <option value="koi8-r" >
+                                                koi8-r
+                                            </option>
+                                        
+                                            <option value="koi8-ru" >
+                                                koi8-ru
+                                            </option>
+                                        
+                                            <option value="koi8-t" >
+                                                koi8-t
+                                            </option>
+                                        
+                                            <option value="koi8-u" >
+                                                koi8-u
+                                            </option>
+                                        
+                                            <option value="ks_c_5601-1987" >
+                                                ks_c_5601-1987
+                                            </option>
+                                        
+                                            <option value="ksc5636" >
+                                                ksc5636
+                                            </option>
+                                        
+                                            <option value="latin-greek" >
+                                                latin-greek
+                                            </option>
+                                        
+                                            <option value="latin-greek-1" >
+                                                latin-greek-1
+                                            </option>
+                                        
+                                            <option value="mac-centraleurope" >
+                                                mac-centraleurope
+                                            </option>
+                                        
+                                            <option value="mac-cyrillic" >
+                                                mac-cyrillic
+                                            </option>
+                                        
+                                            <option value="mac-is" >
+                                                mac-is
+                                            </option>
+                                        
+                                            <option value="mac-sami" >
+                                                mac-sami
+                                            </option>
+                                        
+                                            <option value="mac-uk" >
+                                                mac-uk
+                                            </option>
+                                        
+                                            <option value="macintosh" >
+                                                macintosh
+                                            </option>
+                                        
+                                            <option value="mik" >
+                                                mik
+                                            </option>
+                                        
+                                            <option value="msz_7795.3" >
+                                                msz_7795.3
+                                            </option>
+                                        
+                                            <option value="nats-dano" >
+                                                nats-dano
+                                            </option>
+                                        
+                                            <option value="nats-dano-add" >
+                                                nats-dano-add
+                                            </option>
+                                        
+                                            <option value="nats-sefi" >
+                                                nats-sefi
+                                            </option>
+                                        
+                                            <option value="nats-sefi-add" >
+                                                nats-sefi-add
+                                            </option>
+                                        
+                                            <option value="nc_nc00-10" >
+                                                nc_nc00-10
+                                            </option>
+                                        
+                                            <option value="nextstep" >
+                                                nextstep
+                                            </option>
+                                        
+                                            <option value="nf_z_62-010" >
+                                                nf_z_62-010
+                                            </option>
+                                        
+                                            <option value="nf_z_62-010_1973" >
+                                                nf_z_62-010_1973
+                                            </option>
+                                        
+                                            <option value="ns_4551-1" >
+                                                ns_4551-1
+                                            </option>
+                                        
+                                            <option value="ns_4551-2" >
+                                                ns_4551-2
+                                            </option>
+                                        
+                                            <option value="pt" >
+                                                pt
+                                            </option>
+                                        
+                                            <option value="pt154" >
+                                                pt154
+                                            </option>
+                                        
+                                            <option value="pt2" >
+                                                pt2
+                                            </option>
+                                        
+                                            <option value="rk1048" >
+                                                rk1048
+                                            </option>
+                                        
+                                            <option value="sami" >
+                                                sami
+                                            </option>
+                                        
+                                            <option value="sami-ws2" >
+                                                sami-ws2
+                                            </option>
+                                        
+                                            <option value="sen_850200_b" >
+                                                sen_850200_b
+                                            </option>
+                                        
+                                            <option value="sen_850200_c" >
+                                                sen_850200_c
+                                            </option>
+                                        
+                                            <option value="shift_jis" >
+                                                shift_jis
+                                            </option>
+                                        
+                                            <option value="shift_jisx0213" >
+                                                shift_jisx0213
+                                            </option>
+                                        
+                                            <option value="t.101-g2" >
+                                                t.101-g2
+                                            </option>
+                                        
+                                            <option value="t.61-7bit" >
+                                                t.61-7bit
+                                            </option>
+                                        
+                                            <option value="t.61-8bit" >
+                                                t.61-8bit
+                                            </option>
+                                        
+                                            <option value="tcvn5712-1" >
+                                                tcvn5712-1
+                                            </option>
+                                        
+                                            <option value="tis-620" >
+                                                tis-620
+                                            </option>
+                                        
+                                            <option value="tscii" >
+                                                tscii
+                                            </option>
+                                        
+                                            <option value="us-ascii" >
+                                                us-ascii
+                                            </option>
+                                        
+                                            <option value="utf-7" >
+                                                utf-7
+                                            </option>
+                                        
+                                            <option value="utf-8" selected>
+                                                utf-8
+                                            </option>
+                                        
+                                            <option value="videotex-suppl" >
+                                                videotex-suppl
+                                            </option>
+                                        
+                                            <option value="viscii" >
+                                                viscii
+                                            </option>
+                                        
+                                            <option value="windows-1251" >
+                                                windows-1251
+                                            </option>
+                                        
+                                            <option value="windows-1252" >
+                                                windows-1252
+                                            </option>
+                                        
+                                            <option value="windows-31j" >
+                                                windows-31j
+                                            </option>
+                                        
+                                    
+                                    </select>
+                                </label>
+                                <input type="button" onclick="loadfile(this);" class="btn btn-default" value="Yeniden aç" id="btnReOpen">
+                            </div>
+                            <div class="col-xs-12 col-md-4 action-buttons">
+                                <button type="button" class="btn btn-default" id="switch_editor_control" onclick="try {toggle_EditArea(this)} catch(e) {} return false" title="Switch to legacy editor.">
+                                    Use legacy editor
+                                </button>
+                                &nbsp;
+                                <button type="submit" id="sform_submit" class="btn btn-primary" style="font-weight:bold">
+                                    Değişiklikleri Kaydet
+                                </button>
+                                <input type="button" onclick="confirm_close(this);" class="btn btn-default" value="Kapat" id="btnClose" />
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="show-ace-editor">
+                    <td>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-4">
+                                <a href="https://github.com/ajaxorg/ace/wiki/Default-Keyboard-Shortcuts"
+                                    target="_blank" class="help-link">
+                                    <span class="fas fa-external-link-alt"></span>
+                                    Keyboard shortcuts
+                                </a>
+                            </div>
+                            <!-- Editor Toolbar -->
+                            <div class="col-xs-12 col-sm-8">
+                                <div class="btn-toolbar editor-toolbar" role="toolbar">
+                                    <div class="btn-group" role="group">
+                                        <button id="btnSearch"
+                                            type="button"
+                                            onclick="toolbarActions('search')"
+                                            class="btn btn-default"
+                                            title="Ara">
+                                            <i class="fas fa-search"></i>
+                                        </button>
+                                        <button id="btnGoto"
+                                            type="button"
+                                            onclick="toolbarActions('goto')"
+                                            class="btn btn-default"
+                                            title="Go to line.">
+                                            <i class="fas fa-terminal"></i>
+                                        </button>
+                                    </div>
+                                    <div class="btn-group" role="group">
+                                        <button id="btnUndo"
+                                            type="button"
+                                            onclick="toolbarActions('undo')"
+                                            class="btn btn-default"
+                                            title="Geri Al">
+                                            <i class="fas fa-undo"></i>
+                                        </button>
+                                        <button id="btnRedo"
+                                            type="button"
+                                            onclick="toolbarActions('redo')"
+                                            class="btn btn-default"
+                                            title="Redo">
+                                            <i class="fas fa-redo"></i>
+                                        </button>
+                                    </div>
+                                    <div class="btn-group" role="group">
+                                        <button id="btnLineWrap"
+                                            type="button"
+                                            onclick="toolbarActions('linewrap')"
+                                            class="btn btn-default"
+                                            title="Wrap">
+                                            <i class="fas fa-arrows-alt-h"></i>
+                                        </button>
+                                    </div>
+                                    <div class="btn-group" role="group">
+                                        <select id="ddlFontSizes"
+                                            class="btn btn-default form-control btn-group-ddl">
+                                        </select>
+                                    </div>
+                                    <div class="btn-group" role="group">
+                                        <select id="ddlModes"
+                                            class="btn btn-default form-control btn-group-ddl">
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td id="codewindow_container">
+                        <!-- Editor -->
+                        <div id="codewindow" class="show-ace-editor editor-area"></div>
+                        <textarea id="legacy_codewindow" class="codepress " style="visibility:hidden" wrap="soft" name="page"></textarea>
+                    </td>
+                </tr>
+            </table>
+        </form>
+
+        <script type="text/plain" id="general_encoding_changed_template">
+            <p>
+                Sistem belgenizi “{old_charset}” kodlamasında kaydedemedi. Büyük olasılıkla belgeniz “{old_charset}” ile uyumsuz karakterler içeriyor.
+            </p>
+
+            <p>
+                cPanel, belgenizi “{new_charset}” kodlamasına yükseltti. Lütfen dosyanın uygulamanızda düzgün açıldığını doğrulayın.
+            </p>
+
+            <p>
+                Dosya kodlaması hakkında daha fazla bilgi için <a href="https://go.cpanel.net/encoding">https://go.cpanel.net/encoding</a> adresini ziyaret edin.
+            </p>
+        </script>
+
+        
+
+<img src="/cPanel_magic_revision_1721939512/cjt/images/progress_bar.gif" class="preloadedImage" />
+<img src="/cPanel_magic_revision_1721939512/cjt/images/check.png" class="preloadedImage" />
+
+<script id="cjt_error_dialog_template" type="text/plain">
+<div class="error_notice">{error_html}</div>
+</script>
+
+<script id="cjt_http_error_dialog_template" type="text/plain">
+<div class="error_notice http_error_notice">
+    <div class="http_status">{status}: {status_text_html}</div>
+    <div><a href="javascript:void(0)" class="http_error_details_link">Ayrıntıları Göster/Gizle</a></div>
+    <div class="cjt_error_details" style="display:none">
+        <div class="url">URL ({method}):<pre>{url_html}</pre></div>
+        <div class="post">Ana Metin: <pre>{post_html}</pre></div>
+        <div class="response">Yanıt:<pre>{response_html}</pre></div>
+    </div>
+</div>
+</script>
+
+<script>
+CPANEL.application = "cpaneld";
+YAHOO.lang.augmentObject( CPANEL.Locale.prototype.LEXICON, {"An unknown error occurred.":"Bilinmeyen bir hata oluştu.","Success!":"Başarılı!","HTTP ERROR":"HTTP HATASI","OK":"Tamam","ERROR":"HATA","Cancel":"İptal Et","Proceed":"İlerle","Processing …":"İşleniyor…","Notice":"Uyarı","Error":"Hata"} );
+</script>
+
+<script src="/cPanel_magic_revision_1722271616/cjt/ajaxapp-min.js"></script>
+
+
+        <script type="text/javascript">
+            var savedContent = "";
+            var CHARSET = document.sform.charset.value;
+            var file_path_textbox = document.getElementById("path");
+            var file_path_initial_value = file_path_textbox.value;
+            var reopen_btn = document.getElementById("btnReOpen");
+            var USE_LEGACY_EDITOR = (0) ? true : false;
+
+            if ( !window.LEXICON ) {
+                LEXICON = {};
+            }
+
+            LEXICON.charset_changed = "Karakter Kodlama Değişimi";
+            LEXICON.confirm_close   = "Kaydedilmemiş değişiklikleriniz var. Bu pencereyi kapatmak istediğinize emin misiniz?";
+            LEXICON.confirm_save    = "Are you sure you want to save? The file will be overwritten.";
+            LEXICON.reloading       = "Yeniden yükleniyor …";
+
+            file_path_textbox.addEventListener("keydown", function(event) {
+                if ( event.keyCode == 13 ) {
+                    event.preventDefault(); // prevents default action of form submit
+                    reopen_btn.click();
+                }
+            });
+
+            function loadfile(clicked_el) {
+                var result = check_file_edits();
+                var isFileEdited = result.isFileModified;
+
+                if (isFileEdited) {
+                    var sure = confirm("Yeni bir dosya açmak istediğinizden emin misiniz? Yaptığınız tüm değişiklikleri kaybedeceksiniz.");
+                    if (!sure) {
+                        file_path_textbox.value = file_path_initial_value;
+                        return;
+                    }
+                }
+
+                var filen = document.sform.path.value;
+                var fpath = filen.split("/");
+                var filename = fpath.pop();
+                var dir = fpath.join("/");
+                var sdir = encodeURIComponent(dir);
+                var sfilename = encodeURIComponent(filename);
+                var charset = document.getElementById("charset").value;
+
+                var pp = new CPANEL.ajax.Progress_Panel( DOM.generateId(), {
+                    status_html: "Yeniden yükleniyor …",
+                    effect: CPANEL.ajax.FADE_MODAL,
+                } );
+
+                if (clicked_el) {
+                    pp.show_from_source(clicked_el);
+                } else {
+                    pp.show();
+                }
+                var tt_value = (USE_LEGACY_EDITOR) ? 1 : 0;
+                document.location.href = "?dir=" + sdir + "&file=" + sfilename + "&file_charset=" + charset + "&use_legacy_editor=" + tt_value;
+
+                // update the title
+                document.title = filename.replace(/\n|\r/, "").html_encode() + " - cPanel File Manager v3";
+            }
+
+            var LAST_NOTICE = null;
+
+            function loadfdata(clicked_el) {
+                var path     = DOM.get("path");
+                var result = check_file_edits();
+                var changedContent = result.changedContent;
+                var isFileEdited = result.isFileModified;
+
+                if (!isFileEdited) {
+                    LAST_NOTICE = new CPANEL.ajax.Dynamic_Notice({content:"Kaydedilecek bir değişiklik yapmadınız.", level:"info", replaces:LAST_NOTICE});
+                    return;
+                }
+
+                var match = path.value.match(/^(.+)\/([^\/]+)$/);
+                if ( !match ) {
+                    LAST_NOTICE = new CPANEL.ajax.Dynamic_Notice({content:"Geçersiz yol.", level:"error", replaces:LAST_NOTICE});
+                    return;
+                }
+
+                var api_params = {
+                    module: "Fileman",
+                    func: "savefile",
+                    data: {
+                        dir: match[1],
+                        filename: match[2],
+                        content: changedContent,
+                        utf8_fallback: 1,
+                        charset: CHARSET,
+                    },
+                    progress_panel: {
+                        zIndex: 2500,
+                        show_status: true,
+                        source_el: clicked_el,
+                        status_html: "“{the_file}” kaydediliyor…".replace('{the_file}',match[2].html_encode()),
+                        success_notice_options: { replaces: LAST_NOTICE },
+                        before_success: function(result) {
+                            savedContent = (USE_LEGACY_EDITOR) ? editAreaLoader.getValue(editAreaEl) : ace_editor.getValue();
+                            return check_for_encoding_change.call(
+                                this,
+                                CPANEL.ajax.templates.general_encoding_changed_template,
+                                result.cpanel_data
+                            );
+                        },
+                    },
+                    callback: {
+                        success: function() {
+                            LAST_NOTICE = req.notice;
+                        },
+                    },
+                };
+
+                savedContent = changedContent;
+                var req = CPANEL.api( api_params );
+
+                return false;
+            }
+
+	</script>
+
+        <script type="text/javascript" charset="utf-8"
+                src="/cPanel_magic_revision_1518373903/frontend/jupiter/libraries/ace-editor/optimized/src-min-noconflict/ace.js">
+        </script>
+        <script type="text/javascript" charset="utf-8"
+                src="/cPanel_magic_revision_1518373903/frontend/jupiter/libraries/ace-editor/optimized/src-min-noconflict/ext-modelist.js">
+        </script>
+        <script type="text/javascript" src="/cPanel_magic_revision_1660667362/frontend/jupiter/libraries/editarea/0.8.2/edit_area/edit_area_full.js"></script>
+        <script type="text/javascript" src="/cPanel_magic_revision_1721939512/frontend/jupiter/js/edit_area_resizer.js"></script>
+
+        <script type="text/javascript" src="/cPanel_magic_revision_1614706040/frontend/jupiter/libraries/jquery/current/jquery.min.js"></script>
+        <script>
+        
+
+        
+        var file_content = "\u003c!DOCTYPE html>\n\u003chtml lang=\"tr\">\n\u003chead>\n  \u003cmeta charset=\"UTF-8\">\n  \u003cmeta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  \u003ctitle>Sushi Restaurant\u003c\/title>\n  \u003clink href=\"https:\/\/fonts.googleapis.com\/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@300;400;500&display=swap\" rel=\"stylesheet\">\n  \u003clink rel=\"stylesheet\" href=\"https:\/\/cdnjs.cloudflare.com\/ajax\/libs\/font-awesome\/6.0.0\/css\/all.min.css\">\n  \u003cstyle>\n    :root {\n      --primary-color: #1a1a1a;\n      --accent-color: #c41e3a;\n      --text-color: #333;\n      --background-color: #f8f8f8;\n    }\n\n    body {\n      font-family: 'Noto Sans JP', sans-serif;\n      background: var(--background-color);\n      color: var(--text-color);\n      margin: 0;\n      padding: 0;\n      line-height: 1.6;\n    }\n\n    \/* Navigation Bar Styles *\/\n    .navbar {\n      position: fixed;\n      top: 0;\n      left: 0;\n      right: 0;\n      background: rgba(26, 26, 26, 0.95);\n      padding: 1rem 0;\n      z-index: 1000;\n      transition: all 0.3s ease;\n    }\n\n    .navbar.scrolled {\n      background: rgba(26, 26, 26, 1);\n      box-shadow: 0 2px 10px rgba(0,0,0,0.1);\n    }\n\n    .nav-container {\n      max-width: 1200px;\n      margin: 0 auto;\n      display: flex;\n      justify-content: space-between;\n      align-items: center;\n      padding: 0 2rem;\n    }\n\n    .logo {\n      color: white;\n      font-family: 'Noto Serif JP', serif;\n      font-size: 1.5rem;\n      text-decoration: none;\n    }\n\n    .nav-links {\n      display: flex;\n      gap: 2rem;\n    }\n\n    .nav-links a {\n      color: white;\n      text-decoration: none;\n      font-size: 0.9rem;\n      text-transform: uppercase;\n      letter-spacing: 1px;\n      transition: color 0.3s ease;\n    }\n\n    .nav-links a:hover {\n      color: var(--accent-color);\n    }\n\n    \/* Existing styles... *\/\n    .hero {\n      height: 100vh;\n      position: relative;\n      overflow: hidden;\n      padding-top: 60px;\n    }\n\n    .hero-video {\n      position: absolute;\n      top: 0;\n      left: 0;\n      width: 100%;\n      height: 100%;\n      object-fit: cover;\n      z-index: -1;\n    }\n\n    .hero-overlay {\n      position: absolute;\n      top: 0;\n      left: 0;\n      width: 100%;\n      height: 100%;\n      background: rgba(0, 0, 0, 0.4);\n      z-index: 0;\n    }\n\n    .hero-content {\n      position: relative;\n      z-index: 1;\n      max-width: 800px;\n      padding: 2rem;\n      background: rgba(0, 0, 0, 0.4);\n      border-radius: 15px;\n      backdrop-filter: blur(5px);\n    }\n\n    .hero-content h1 {\n      font-family: 'Noto Serif JP', serif;\n      font-size: 3rem;\n      margin-bottom: 1rem;\n      letter-spacing: 0.05em;\n      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);\n      color: white;\n      font-weight: 400;\n    }\n\n    .hero-content p {\n      font-size: 1.2rem;\n      margin-bottom: 1.5rem;\n      text-shadow: 1px 1px 3px rgba(0,0,0,0.5);\n      color: white;\n      font-weight: 300;\n      line-height: 1.6;\n    }\n\n    .reservation-button {\n      display: inline-block;\n      padding: 0.8rem 1.8rem;\n      background-color: var(--accent-color);\n      color: white;\n      text-decoration: none;\n      border-radius: 4px;\n      font-size: 1rem;\n      font-weight: 400;\n      transition: all 0.3s ease;\n      text-transform: uppercase;\n      letter-spacing: 1px;\n      border: 1px solid var(--accent-color);\n    }\n\n    .reservation-button:hover {\n      background-color: transparent;\n      color: white;\n      transform: translateY(-2px);\n      box-shadow: 0 3px 10px rgba(0,0,0,0.2);\n    }\n\n    @media (max-width: 768px) {\n      .hero-content h1 {\n        font-size: 2.2rem;\n      }\n      .hero-content p {\n        font-size: 1rem;\n      }\n      .reservation-button {\n        padding: 0.7rem 1.5rem;\n        font-size: 0.9rem;\n      }\n    }\n\n    \/* Section Styles *\/\n    section {\n      padding: 5rem 2rem;\n    }\n\n    .section-title {\n      text-align: center;\n      font-family: 'Noto Serif JP', serif;\n      font-size: 2.5rem;\n      margin-bottom: 3rem;\n      color: var(--primary-color);\n    }\n\n    \/* Contact Form Styles *\/\n    .contact-form {\n      max-width: 600px;\n      margin: 0 auto;\n      background: white;\n      padding: 2rem;\n      border-radius: 8px;\n      box-shadow: 0 4px 6px rgba(0,0,0,0.1);\n    }\n\n    .form-group {\n      margin-bottom: 1.5rem;\n    }\n\n    .form-group label {\n      display: block;\n      margin-bottom: 0.5rem;\n      color: var(--primary-color);\n    }\n\n    .form-group input,\n    .form-group textarea {\n      width: 100%;\n      padding: 0.8rem;\n      border: 1px solid #ddd;\n      border-radius: 4px;\n      font-family: inherit;\n    }\n\n    .form-group textarea {\n      height: 150px;\n      resize: vertical;\n    }\n\n    .submit-button {\n      background-color: var(--accent-color);\n      color: white;\n      padding: 1rem 2rem;\n      border: none;\n      border-radius: 4px;\n      cursor: pointer;\n      transition: background-color 0.3s ease;\n    }\n\n    .submit-button:hover {\n      background-color: #a01830;\n    }\n\n    \/* Location Section *\/\n    .location-info {\n      display: grid;\n      grid-template-columns: repeat(2, 1fr);\n      gap: 2rem;\n      max-width: 1200px;\n      margin: 0 auto;\n    }\n\n    .map {\n      width: 100%;\n      height: 400px;\n      border-radius: 8px;\n    }\n\n    \/* Awards Section *\/\n    .awards-grid {\n      display: grid;\n      grid-template-columns: repeat(2, 1fr);\n      gap: 2rem;\n      max-width: 1200px;\n      margin: 0 auto;\n    }\n\n    .awards-text-content {\n      display: flex;\n      flex-direction: column;\n      gap: 1rem;\n    }\n\n    .awards-image-container {\n      display: flex;\n      justify-content: center;\n      align-items: center;\n    }\n\n    .award-card {\n      background: white;\n      padding: 2rem;\n      border-radius: 8px;\n      text-align: center;\n      box-shadow: 0 4px 6px rgba(0,0,0,0.1);\n    }\n\n    .award-icon {\n      font-size: 3rem;\n      color: var(--accent-color);\n      margin-bottom: 1rem;\n    }\n\n    .award-image {\n      width: 100px;\n      height: 100px;\n      object-fit: cover;\n      border-radius: 50%;\n      margin-bottom: 1rem;\n    }\n\n    .big-award-image {\n      width: 100%;\n      height: 100%;\n      object-fit: cover;\n      border-radius: 8px;\n    }\n\n    \/* Gallery Section *\/\n    .gallery-grid {\n      max-width: 100%;\n      margin: 0 auto;\n    }\n\n    .gallery-item {\n      position: relative;\n      overflow: hidden;\n      width: 100%;\n      height: 80vh;\n      box-shadow: 0 10px 20px rgba(0,0,0,0.2);\n    }\n\n    .gallery-item video {\n      width: 100%;\n      height: 100%;\n      object-fit: cover;\n    }\n\n    .gallery-item.play-icon {\n      position: absolute;\n      top: 50%;\n      left: 50%;\n      transform: translate(-50%, -50%);\n      color: white;\n      font-size: 3rem;\n      z-index: 2;\n      opacity: 0;\n      transition: opacity 0.3s ease;\n    }\n\n    .gallery-item:hover .play-icon {\n      opacity: 1;\n    }\n\n    \/* Responsive Design *\/\n    @media (max-width: 1024px) {\n      .nav-links {\n        gap: 1rem;\n      }\n    }\n\n    @media (max-width: 768px) {\n      .nav-container {\n        flex-direction: column;\n        gap: 1rem;\n      }\n      .nav-links {\n        flex-direction: column;\n        text-align: center;\n        gap: 0.5rem;\n      }\n      .location-info {\n        grid-template-columns: 1fr;\n      }\n      .awards-grid {\n        grid-template-columns: 1fr;\n      }\n    }\n\n    \/* Menu Section Styles *\/\n    .menu-section {\n      padding: 5rem 2rem;\n      background: var(--background-color);\n    }\n\n    .menu-header {\n      position: relative;\n      width: 100%;\n      height: 60vh;\n      margin-bottom: 4rem;\n    }\n\n    .menu-header img {\n      width: 100%;\n      height: 100%;\n      object-fit: cover;\n    }\n\n    .menu-header h2 {\n      position: absolute;\n      top: 50%;\n      left: 50%;\n      transform: translate(-50%, -50%);\n      color: white;\n      font-size: 4rem;\n      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);\n      z-index: 2;\n    }\n\n    .menu-header::after {\n      content: '';\n      position: absolute;\n      top: 0;\n      left: 0;\n      right: 0;\n      bottom: 0;\n      background: rgba(0,0,0,0.4);\n      z-index: 1;\n    }\n\n    .menu-container {\n      max-width: 1200px;\n      margin: 0 auto;\n      display: grid;\n      grid-template-columns: repeat(3, 1fr);\n      gap: 2rem;\n      padding: 0 1rem;\n    }\n\n    .dish-card {\n      background: white;\n      border-radius: 8px;\n      overflow: hidden;\n      box-shadow: 0 10px 20px rgba(0,0,0,0.2);\n      transition: transform 0.3s ease, box-shadow 0.3s ease;\n      height: 100%;\n      display: flex;\n      flex-direction: column;\n    }\n\n    .dish-card:hover {\n      transform: translateY(-5px);\n      box-shadow: 0 15px 30px rgba(0,0,0,0.3);\n    }\n\n    .dish-image {\n      width: 100%;\n      height: 250px;\n      object-fit: cover;\n    }\n\n    .dish-content {\n      padding: 1.5rem;\n      flex-grow: 1;\n      display: flex;\n      flex-direction: column;\n    }\n\n    .dish-name {\n      font-family: 'Noto Serif JP', serif;\n      font-size: 1.5rem;\n      font-weight: bold;\n      margin-bottom: 0.5rem;\n      color: var(--primary-color);\n    }\n\n    .description {\n      color: #666;\n      margin: 1rem 0;\n      line-height: 1.8;\n      font-size: 0.95rem;\n      flex-grow: 1;\n    }\n\n    .price {\n      color: var(--accent-color);\n      font-weight: 500;\n      font-size: 1.2rem;\n      margin: 1rem 0;\n    }\n\n    .category {\n      color: #666;\n      font-size: 0.9rem;\n      text-transform: uppercase;\n      letter-spacing: 2px;\n      margin-top: 0.5rem;\n    }\n\n    .no-image {\n      background-color: #f0f0f0;\n      height: 250px;\n      display: flex;\n      align-items: center;\n      justify-content: center;\n      color: #666;\n    }\n\n    \/* Restaurant Logo *\/\n    .logo {\n      display: flex;\n      align-items: center;\n      gap: 1rem;\n      color: white;\n      font-family: 'Noto Serif JP', serif;\n      font-size: 1.5rem;\n      text-decoration: none;\n    }\n\n    .logo-icon {\n      width: 40px;\n      height: 40px;\n      background: var(--accent-color);\n      border-radius: 50%;\n      display: flex;\n      align-items: center;\n      justify-content: center;\n      font-size: 1.2rem;\n      color: white;\n    }\n\n    \/* Page Divider *\/\n    .page-divider {\n      height: 100px;\n      background: linear-gradient(to bottom, var(--background-color), white);\n      margin-top: -50px;\n      position: relative;\n      z-index: 1;\n    }\n\n    \/* Story Section Styles *\/\n    .story-content {\n      max-width: 100%;\n      margin: 0;\n      padding: 0;\n      background: white;\n    }\n\n    .hikayemiz-kismi {\n      text-align: center;\n      margin-bottom: 3rem;\n      position: relative;\n    }\n\n    .hikayemiz-kismi h2 {\n      font-family: 'Noto Serif JP', serif;\n      font-size: 3rem;\n      color: var(--primary-color);\n      margin-bottom: 2rem;\n      position: absolute;\n      top: 50%;\n      left: 50%;\n      transform: translate(-50%, -50%);\n      z-index: 2;\n      color: white;\n      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);\n    }\n\n    .hikayemiz-kismi img {\n      width: 100%;\n      height: 80vh;\n      object-fit: cover;\n      margin-bottom: 2rem;\n      display: block;\n      background-color: #f0f0f0; \/* Fallback background color *\/\n    }\n\n    .story-text {\n      max-width: 1200px;\n      margin: 0 auto;\n      padding: 2rem;\n    }\n\n    .story-content p {\n      font-size: 1.1rem;\n      line-height: 1.8;\n      color: #444;\n      white-space: pre-line;\n      text-align: justify;\n    }\n\n    .story-content p:first-of-type {\n      font-family: 'Noto Serif JP', serif;\n      font-size: 1.3rem;\n      color: var(--primary-color);\n      margin-bottom: 2rem;\n    }\n\n    \/* Michael Plate Section Styles *\/\n    .michael-plate-section {\n      width: 100%;\n      height: 100vh;\n      overflow: hidden;\n      position: relative;\n    }\n\n    .michael-plate-image {\n      width: 100%;\n      height: 100%;\n      object-fit: cover;\n      display: block;\n    }\n  \u003c\/style>\n\u003c\/head>\n\u003cbody>\n  \u003c!-- Navigation Bar -->\n  \u003cnav class=\"navbar\">\n    \u003cdiv class=\"nav-container\">\n      \u003ca href=\"#\" class=\"logo\">\n        \u003cdiv class=\"logo-icon\">寿\u003c\/div>\n        Sushi Restaurant\n      \u003c\/a>\n      \u003cdiv class=\"nav-links\">\n        \u003ca href=\"#menu\">Menü\u003c\/a>\n        \u003ca href=\"#story\">Hikayemiz\u003c\/a>\n        \u003ca href=\"#location\">Konum\u003c\/a>\n        \u003ca href=\"#awards\">Ödüller\u003c\/a>\n        \u003ca href=\"#gallery\">Galeri\u003c\/a>\n        \u003ca href=\"#careers\">Kariyer\u003c\/a>\n        \u003ca href=\"#contact\">İletişim\u003c\/a>\n      \u003c\/div>\n    \u003c\/div>\n  \u003c\/nav>\n\n  \u003c!-- Hero Section -->\n  \u003cdiv class=\"hero\">\n    \u003cvideo class=\"hero-video\" autoplay muted loop playsinline>\n      \u003csource src=\"{{ url_for('static', filename='giris-sayfası.mp4') }}\" type=\"video\/mp4\">\n      Your browser does not support the video tag.\n    \u003c\/video>\n    \u003cdiv class=\"hero-overlay\">\u003c\/div>\n    \u003cdiv class=\"hero-content\">\n      \u003ch1>Authentic Sushi Experience\u003c\/h1>\n      \u003cp>Experience the art of traditional Japanese cuisine\u003c\/p>\n      \u003ca href=\"#menu\" class=\"reservation-button\">View Menu\u003c\/a>\n    \u003c\/div>\n  \u003c\/div>\n\n  \n  \u003cdiv class=\"michael-plate-section\">\n    \u003cimg src=\"{{ url_for('static', filename='micheal-plate.png') }}\" alt=\"Michael Plate\" class=\"michael-plate-image\">\n  \u003c\/div>\n\n  \u003cdiv class=\"page-divider\">\u003c\/div>\n\n  \n  \u003csection id=\"menu\" class=\"menu-section\">\n    \u003cdiv class=\"menu-header\">\n      \u003cimg src=\"{{ url_for('static', filename='hikayemiz.jpg') }}\" \n           alt=\"Menu Header Image\"\n           onerror=\"this.onerror=null; this.src='https:\/\/images.unsplash.com\/photo-1579871494447-9811cf80d66c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80';\">\n      \n    \u003c\/div>\n    \u003ch2 class=\"section-title\">Our Menu\u003c\/h2>\n    \u003cdiv class=\"menu-container\">\n        {% for urun in menuler %}\n          \u003cdiv class=\"dish-card\">\n            {% if urun.resim and urun.resim | length > 0 %}\n              \u003cimg src=\"{{ urun.resim[0].formats.medium.url }}\" alt=\"{{ urun.isim }}\" class=\"dish-image\">\n            {% else %}\n              \u003cdiv class=\"no-image\">Resim Yok\u003c\/div>\n            {% endif %}\n      \n            \u003cdiv class=\"dish-content\">\n              \u003cdiv class=\"dish-name\">{{ urun.isim }}\u003c\/div>\n      \n              {% if urun.aciklama %}\n                \u003cdiv class=\"description\">\n                  {% for block in urun.aciklama %}\n                    {% for child in block.children %}\n                      {{ child.text }}\n                    {% endfor %}\n                  {% endfor %}\n                \u003c\/div>\n              {% endif %}\n              print(menuler)\n      \n              \u003cdiv class=\"price\">{{ urun.fiyat }} TL\u003c\/div>\n              \u003cdiv class=\"category\">{{ urun.kategori }}\u003c\/div>\n            \u003c\/div>\n          \u003c\/div>\n        {% endfor %}\n      \u003c\/div>\n      \n  \u003c\/section>\n\n  \n  \u003csection id=\"story\" class=\"section\">\n    \u003ch2 class=\"section-title\">Hikayemiz\u003c\/h2>\n    \u003cdiv class=\"story-content\">\n      \u003cdiv class=\"hikayemiz-kismi\">\n        \u003ch2>\u003c\/h2>\n        \u003cimg src=\"{{ url_for('static', filename='sushi-tabagi.png') }}\" \n             alt=\"Hikayemiz Görseli\"\n             onerror=\"this.onerror=null; this.src='https:\/\/images.unsplash.com\/photo-1579871494447-9811cf80d66c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80';\">\n      \u003c\/div>\n      \u003cdiv class=\"story-text\">\n        \u003cp>\n     DENİZİN HİKAYESİ\nBir suşi tanesi…\nBir ömrün özeti gibidir.\nBinlerce yıldır Japon denizlerinden esen tuzlu rüzgârın, yosun kokusunun, sabahın ilk ışığında uyanan balıkçıların, bambu tezgâhlarda çalışan ustaların, her biri ayrı bir hafızaya kazınan ellerinin mirasıdır bu sofrada duran her parça.\n\nBen bu yolculuğa çocukken, büyükannemin bambu döşeli mutfağında, sirke kokusuyla başladım. Her pirinç tanesi avucumda bir dua gibi yoğrulurdu. Sadece karın doyurmak değil; zamanı, denizi ve insanı bir lokmaya sığdırmaktı bizim işimiz.\n\nRestoranımda size sunduğum her suşi, sadece bir yemek değil.\nBir duyu yolculuğudur:\n– Tat: Yosunların hafif tuzlu ısırığıyla, torik balığının derin umami aroması\n– Doku: Dilinizin ucunda eriyen yağlı otoro, pirincin hafif yapışkan dokusu\n– Koku: Taze rendelenmiş wasabi'nin sinüsleri açan ferahlığı\n– Ses: Bıçağın noriye attığı keskin çizgi, suşi ustasının nefesini tuttuğu an\n\nUmi No Hikayesi, yani \"Denizin Hikayesi\", sadece bir restoran değil.\nBir efsanenin yaşayan mutfağıdır. Her tabakta binlerce yıllık bir deniz halkının, sabırla yoğrulmuş bir geleneğin, benim hayatımın ve sizin damağınızın birleştiği o kutsal noktadır.\n\nHoş geldiniz.\nArtık siz de bu hikâyenin bir parçasısınız.\n\n– Usta Hiroshi Ece\n        \u003c\/p>\n      \u003c\/div>\n    \u003c\/div>\n  \u003c\/section>\n\n  \u003c!-- Location Section -->\n  \u003csection id=\"location\" class=\"section\">\n    \u003ch2 class=\"section-title\">Konum\u003c\/h2>\n    \u003cdiv class=\"location-info\">\n      \u003cdiv class=\"map\">\n        \u003ciframe src=\"https:\/\/www.google.com\/maps\/embed?pb=!1m18!1m12!1m3!1d3240.6698064970425!2d139.7027963152542!3d35.69080518019349!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188d227f27a69b%3A0x673c68a4a2b2e88a!2zSmFwb255YSwg4oCtMTYwLTAwMjEgVG9reW8sIFNoaW5qdWt1IENpdHksIEthYnVraWNobywgMSBDaG9tZeKAlTE24oCtMyDlsI_jg5zjgqLjg7Pjgr_jgrnjgqTjgrnjg7zjgrjjgqbjg6_jgr_jgq8gNuepkw!5e0!3m2!1sen!2sjp!4v1678888888888!5m2!1sen!2sjp\" \n                width=\"100%\" \n                height=\"100%\" \n                style=\"border:0;\" \n                allowfullscreen=\"\" \n                loading=\"lazy\" \n                referrerpolicy=\"no-referrer-when-downgrade\">\n        \u003c\/iframe>\n      \u003c\/div>\n      \u003cdiv class=\"address-info\">\n        \u003ch3>Adres: Japonya, 〒160-0021 Tokyo, Shinjuku City, Kabukicho, 1 Chome−16−3 セレサ陽栄新宿ビル 6階\u003c\/h3>\n        \u003cp>Dünyanın bir numaralı chef\u003c\/p>\n        \u003ch3>Çalışma Saatleri\u003c\/h3>\n        \u003cp>Pazartesi - Cuma: 11:00 - 22:00\u003c\/p>\n        \u003cp>Cumartesi - Pazar: 10:00 - 23:00\u003c\/p>\n      \u003c\/div>\n    \u003c\/div>\n  \u003c\/section>\n\n  \u003c!-- Awards Section -->\n  \u003csection id=\"awards\" class=\"section\">\n    \u003ch2 class=\"section-title\">Ödüller\u003c\/h2>\n    \u003cdiv class=\"awards-grid\">\n      \u003cdiv class=\"awards-text-content\">\n        \u003cdiv class=\"award-card\">\n          \u003ci class=\"fas fa-award award-icon\">\u003c\/i>\n          \u003ch3>En İyi Sushi 2023\u003c\/h3>\n          \u003cp>Lezzetin, ustalığın ve tazeliğin buluşma noktası olarak gururla duyuruyoruz:\n            Sushi restoranımız, 2023 yılında \"En İyi Sushi\" ödülüne layık görüldü!\n            \n            Uluslararası gastronomi uzmanlarının değerlendirmeleriyle seçilen bu ödül; kullandığımız kaliteli malzemeleri, özgün tariflerimizi ve ustalarımızın sanata dönüşen el becerisini taçlandırıyor.\n            Bu başarı, siz değerli misafirlerimizin güveni ve sevgisiyle mümkün oldu.\n            \n            Teşekkür ederiz. 🍣\u003c\/p>\n        \u003c\/div>\n        \u003c!-- Add more award cards here if needed -->\n      \u003c\/div>\n      \u003cdiv class=\"awards-image-container\">\n        \u003cimg src=\"{{ url_for('static', filename='usta.jpg') }}\" alt=\"Usta\" class=\"big-award-image\">\n      \u003c\/div>\n    \u003c\/div>\n  \u003c\/section>\n\n  \u003c!-- Gallery Section -->\n  \u003csection id=\"gallery\" class=\"section\">\n    \u003ch2 class=\"section-title\">Galeri\u003c\/h2>\n    \u003cdiv class=\"gallery-grid\">\n      \u003cdiv class=\"gallery-item\">\n        \u003cimg src=\"{{ url_for('static', filename='hikayemiz.jpg') }}\" alt=\"Gallery Image\">\n      \u003c\/div>\n    \u003c\/div>\n  \u003c\/section>\n\n  \u003c!-- Careers Section -->\n  \u003csection id=\"careers\" class=\"section\">\n    \u003ch2 class=\"section-title\">Kariyer\u003c\/h2>\n    \u003cdiv class=\"careers-content\">\n      \u003cp>Kariyer fırsatları ve başvuru bilgileri...\u003c\/p>\n      \u003ca href=\"mailto:careers@restaurant.com\" class=\"submit-button\">İnsan Kaynaklarına Ulaş\u003c\/a>\n    \u003c\/div>\n  \u003c\/section>\n\n  \u003c!-- Contact Section -->\n  \u003csection id=\"contact\" class=\"section\">\n    \u003ch2 class=\"section-title\">İletişim\u003c\/h2>\n    \u003cdiv class=\"contact-form\">\n      \u003cform action=\"mailto:owner@restaurant.com\" method=\"post\" enctype=\"text\/plain\">\n        \u003cdiv class=\"form-group\">\n          \u003clabel for=\"name\">İsim\u003c\/label>\n          \u003cinput type=\"text\" id=\"name\" name=\"name\" required>\n        \u003c\/div>\n        \u003cdiv class=\"form-group\">\n          \u003clabel for=\"email\">E-posta\u003c\/label>\n          \u003cinput type=\"email\" id=\"email\" name=\"email\" required>\n        \u003c\/div>\n        \u003cdiv class=\"form-group\">\n          \u003clabel for=\"subject\">Konu\u003c\/label>\n          \u003cinput type=\"text\" id=\"subject\" name=\"subject\" required>\n        \u003c\/div>\n        \u003cdiv class=\"form-group\">\n          \u003clabel for=\"message\">Mesaj\u003c\/label>\n          \u003ctextarea id=\"message\" name=\"message\" required>\u003c\/textarea>\n        \u003c\/div>\n        \u003cbutton type=\"submit\" class=\"submit-button\">Gönder\u003c\/button>\n      \u003c\/form>\n    \u003c\/div>\n  \u003c\/section>\n\n  \u003cscript>\n    \/\/ Navbar scroll effect\n    window.addEventListener('scroll', function() {\n      const navbar = document.querySelector('.navbar');\n      if (window.scrollY > 50) {\n        navbar.classList.add('scrolled');\n      } else {\n        navbar.classList.remove('scrolled');\n      }\n    });\n\n    \/\/ Smooth scrolling for navigation links\n    document.querySelectorAll('a[href^=\"#\"]').forEach(anchor => {\n      anchor.addEventListener('click', function (e) {\n        e.preventDefault();\n        document.querySelector(this.getAttribute('href')).scrollIntoView({\n          behavior: 'smooth'\n        });\n      });\n    });\n  \u003c\/script>\n\u003c\/body>\n\u003c\/html>\n";
+        
+        var fileName = "index.html";
+        var editAreaEl = "";
+        var lastResizeTime = 0;
+        var lastResizeRequestTime = 0;
+        var NVData = {"editor_fontsize":"","editor_nowrap":""};
+
+        function load_EditArea(workingContent) {
+            workingContent = workingContent;
+            if(USE_LEGACY_EDITOR){
+                showAceEditorElements(false);
+
+                editAreaEl = 'legacy_codewindow';
+                CODEWINDOW = DOM.get(editAreaEl);
+                editAreaLoader.show(editAreaEl);
+                loadLegacyEditor(editAreaEl, workingContent);
+            } else {
+                editAreaLoader.hide(editAreaEl);
+
+                editAreaEl = 'codewindow';
+                CODEWINDOW = DOM.get(editAreaEl);
+                showAceEditorElements(true);
+                loadAceEditor(editAreaEl, workingContent);
+            }
+        }
+
+        function showAceEditorElements(show){
+            if(show){
+                $(".show-ace-editor").show();
+            } else {
+                $(".show-ace-editor").hide();
+            }
+        }
+
+        function loadLegacyEditor(editAreaId, editContent){
+            // Setting up the ids in js/edit_area_resizer.js file to
+            // use it for resizing purposes.
+            setElementIds(editAreaId);
+            var EditArea_config = {
+                id: editAreaEl,
+                start_highlight: true,
+                allow_resize: "both",
+                allow_toggle: false,
+                language: "en",
+                toolbar: "search, go_to_line, |, undo, redo, |, select_font, |, syntax_selection, |, change_smooth_selection, highlight, reset_highlight, word_wrap, |, help",
+                syntax: "html",
+                word_wrap: true
+            };
+            editAreaLoader.setValue(editAreaId, editContent);
+
+            editAreaLoader.init(EditArea_config);
+            doResizeSoon();
+        }
+
+        function loadAceEditor(editAreaEl, editContent){
+            ace_editor = ace.edit(editAreaEl);
+            // The line below is added to disable a
+            // warning message as required by ace editor
+            // script.
+            ace_editor.$blockScrolling = Infinity;
+            ace_editor.focus();
+
+            var editSession = ace.createEditSession(editContent);
+            ace_editor.setSession(editSession);
+            if(typeof(editSession) !== "undefined"){
+                var defaultFontSize = parseInt(NVData.editor_fontsize, 10) || 13;
+                // Load the modelist extension to identify the file
+                // type of the given file and open the file in that
+                // editor mode.
+                var modelist = ace.require("ace/ext/modelist");
+                var modeObj = modelist.getModeForPath(fileName);
+
+                ace_editor.setOptions({
+                    "fontSize": defaultFontSize,
+                    "mode": modeObj.mode,
+                    "theme": "ace/theme/chrome"
+                });
+                updateWordWrapInterface();
+
+                // Fill mode list dropdown in the toolbar.
+                var $modeEl = $('#ddlModes');
+                fillModesDropdown($modeEl, modelist);
+                $modeEl.val(modeObj.name);
+                // Bind change event.
+                $modeEl.change(function(){
+                    var selectedMode = $modeEl.find( "option:selected" ).first().val();
+                    ace_editor.getSession().setMode(modelist.modesByName[selectedMode].mode);
+                });
+
+                // Fill font size dropdown.
+                var $fontEl = $('#ddlFontSizes');
+                fillFontsDropdown($fontEl);
+                $fontEl.val(defaultFontSize);
+                // Bind change event.
+                $fontEl.change(function(){
+                    var selectedSize = parseInt($fontEl.find( "option:selected" ).first().val());
+                    SetNvData("editor_fontsize", selectedSize);
+                    ace_editor.setFontSize(selectedSize);
+                });
+            }
+        }
+
+        function fillFontsDropdown($el) {
+            var arr = [10, 11, 12, 13, 14, 16, 18, 20, 24].map(function(size){
+                return {val: size, text: size + "px"};
+            });
+            arr.forEach(function(val){
+                $el.append($("<option>", val));
+            });
+        }
+
+        function fillModesDropdown($el, modeList) {
+            var arr = modeList.modes.map(function(oMode){
+                return {val: oMode.name, text: oMode.caption};
+            });
+            arr.forEach(function(val){
+                $el.append($("<option>", val));
+            });
+        }
+
+        function toolbarActions(action){
+            switch(action){
+                case "search":
+                ace_editor.execCommand("find");
+                break;
+                case "goto":
+                ace_editor.execCommand("gotoline");
+                break;
+                case "undo":
+                ace_editor.undo();
+                break;
+                case "redo":
+                ace_editor.redo();
+                break;
+                case "linewrap":
+                toggleWordWrap();
+                break;
+            }
+        }
+
+        function toggleWordWrap() {
+            if (NVData.editor_nowrap) {
+                SetNvData("editor_nowrap", 0);
+            } else {
+                SetNvData("editor_nowrap", 1);
+            }
+            updateWordWrapInterface();
+        }
+
+        function updateWordWrapInterface() {
+            var btnEl = document.querySelector("#btnLineWrap");
+
+            if (btnEl && NVData.editor_nowrap) {
+                ace_editor.setOption("wrap", false);
+                btnEl.classList.remove("active");
+            } else {
+                ace_editor.setOption("wrap", 80);
+                btnEl.classList.add("active");
+            }
+            // Remove the focus button state for less UI confusion
+            btnEl.blur();
+        }
+
+        /*
+         * This function detects if the browser is in a mobile
+         * environment.
+         * Note: This is used to open the editor in legacy editor mode
+         * until Ace editor comes with the fixes for issues described in
+         * ZC-2558.
+        */
+        function detectmobile() {
+         if( navigator.userAgent.match(/Android/i)
+         || navigator.userAgent.match(/webOS/i)
+         || navigator.userAgent.match(/iPhone/i)
+         || navigator.userAgent.match(/iPad/i)
+         || navigator.userAgent.match(/iPod/i)
+         || navigator.userAgent.match(/BlackBerry/i)
+         || navigator.userAgent.match(/Windows Phone/i)
+         ){
+            return true;
+          }
+         else {
+            return false;
+          }
+        }
+
+        function toggle_EditArea(link) {
+            var workingContent = "";
+            if(USE_LEGACY_EDITOR){
+                USE_LEGACY_EDITOR = false;
+                // send working content to not loose working data
+                // when user switches between two editors.
+                workingContent = (editAreaLoader) ? editAreaLoader.getValue(editAreaEl) : "";
+            } else {
+                USE_LEGACY_EDITOR = true;
+                // Reset the word wrap
+                toggleWordWrap();
+                // send working content to not loose working data
+                // when user switches between two editors.
+                workingContent = (ace_editor) ? ace_editor.getSession().getValue() : "";
+            }
+            toggleSwitchButtonAttr(link);
+            load_EditArea(workingContent);
+        }
+
+        function toggleSwitchButtonAttr(btnEl) {
+            var $switchButton = $(btnEl);
+            if(USE_LEGACY_EDITOR){
+                $switchButton.text("Use latest editor").prop("title", "Switch to latest editor.");
+            } else {
+                $switchButton.text("Use legacy editor").prop("title", "Switch to legacy editor.");
+            }
+        }
+
+        var CODEWINDOW;
+        var ace_editor;
+
+        EVENT.throwErrors = true;
+
+        YAHOO.util.Event.addListener(window, "load", function(){
+            savedContent = file_content;
+            if(detectmobile()){
+                USE_LEGACY_EDITOR = true;
+            }
+            toggleSwitchButtonAttr(DOM.get("switch_editor_control"));
+            load_EditArea(savedContent);
+        });
+        $(window).resize(function(e) {
+            doResize();
+        });
+        </script>
+
+    </body>
+</html>

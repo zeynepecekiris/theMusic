@@ -72,7 +72,7 @@
       <div class="dish">
         {% if urun.resim and urun.resim.data %}
           {% for image in urun.resim.data %}
-            <img src="{{ image.attributes.url }}" 
+            <img src="{{ url_for('static', filename=image.attributes.name) }}" 
                  alt="{{ urun.isim }}" 
                  class="dish-image">
           {% endfor %}
