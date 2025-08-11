@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS menu_items (
 )
 """)
 sample_data = [
-    ("Anago Sweet Glaze", "Tatlı yılan balığı sosuyla kaplanmış eşsiz bir lezzet.", 42342.0, "salatalar, içecekler, tatlılar, ana yemek, atıştırmalık", "anago.png"),
+    ("Anago Sweet Glaze", "Tatlı yılan balığı sosuyla kaplanmış eşsiz bir lezzet.", 42342.0, "salatalar, içecekler, tatlılar, ana yemek, atıştırmalık", "static/stock-photo-japanese-cuisine-anago-oshizushi-wiki-with-sweet-sauce-for-gourmet-lunch-image-142904026.jpg"),
     ("Bluefin Otoro", "Mavi yüzgeçli ton balığının en değerli kısmı, yumuşacık dokusuyla.", 213234.0, "salatalar, içecekler, tatlılar, ana yemek, atıştırmalık", "bluefin.png"),
     ("Engawa Flame Kissed", "Izgara halibut kanadı, ateşle öpülmüş gibi aromatik bir tat.", 232234.0, "salatalar, içecekler, tatlılar, ana yemek, atıştırmalık", "engawa.png"),
     ("Sayori Elegance", "İnce yapılı sayori balığının zarif sunumu.", 23423.0, "salatalar, içecekler, tatlılar, ana yemek, atıştırmalık", "sayori.png"),

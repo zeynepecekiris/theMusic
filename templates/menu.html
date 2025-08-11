@@ -3,67 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Restoran Menüsü</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f8f8f8;
-      color: #333;
-      padding: 2rem;
-    }
-    h1 {
-      text-align: center;
-      color: #b22222;
-    }
-    .menu {
-      max-width: 800px;
-      margin: auto;
-    }
-    .dish {
-      background: white;
-      border-radius: 10px;
-      padding: 1rem;
-      margin: 1rem 0;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      display: flex;
-      gap: 1rem;
-    }
-    .dish-image {
-      width: 150px;
-      height: 150px;
-      object-fit: cover;
-      border-radius: 8px;
-    }
-    .dish-content {
-      flex: 1;
-    }
-    .dish-name {
-      font-size: 1.2rem;
-      font-weight: bold;
-    }
-    .description {
-      font-style: italic;
-      margin: 0.5rem 0;
-    }
-    .price {
-      color: #b22222;
-      font-weight: bold;
-    }
-    .category {
-      color: #666;
-      font-size: 0.9rem;
-      margin-top: 0.5rem;
-    }
-    .no-image {
-      width: 150px;
-      height: 150px;
-      background-color: #f0f0f0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #666;
-      border-radius: 8px;
-    }
-  </style>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
   <h1>Restoran Menüsü</h1>
