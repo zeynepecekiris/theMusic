@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sushi Restaurant</title>
+  <title>Healthy or Guilty </title>
   
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,9 +23,9 @@
   <!-- Navigation Bar -->
   <nav class="navbar">
     <div class="nav-container">
-      <a href="#" class="logo">
-        <div class="logo-icon">寿</div>
-        Sushi Restaurant
+      <a href="#" class="logo-container">
+        <div class="logo-icon"></div>
+        <span class="logo-text">Healthy or Guilty</span>
       </a>
       <div class="nav-links">
         <a href="#menu">Menü</a>
@@ -35,7 +35,6 @@
         <a href="#gallery">Galeri</a>
         <a href="#careers">Kariyer</a>
         <a href="#contact">İletişim</a>
-        <a href="ece">Ece</a>
       </div>
     </div>
   </nav>
@@ -44,13 +43,13 @@
   <div class="hero">
     <video class="hero-video" autoplay muted loop playsinline>
       <source src="{{ url_for('static', filename='giris-sayfası.mp4') }}" type="video/mp4">
-      Your browser does not support the video tag.
+      Tarayıcınız video etiketini desteklemiyor.
     </video>
     <div class="hero-overlay"></div>
     <div class="hero-content">
-      <h1>Authentic Sushi Experience</h1>
-      <p>Experience the art of traditional Japanese cuisine</p>
-      <a href="#menu" class="reservation-button">View Menu</a>
+      <h1>Sağlıklı mı Suçlu mu?</h1>
+      <p>Yemek maceranızı seçin - besleyici lezzetlerden suçlu zevklere</p>
+      <a href="#menu" class="reservation-button">Menüyü Keşfet</a>
     </div>
   </div>
 
@@ -65,11 +64,12 @@
   <section id="menu" class="menu-section">
     <div class="menu-header">
       <img src="{{ url_for('static', filename='hikayemiz.jpg') }}" 
-           alt="Menu Header Image"
+           alt="Menü Başlık Görseli"
            onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1579871494447-9811cf80d66c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80';">
     </div>
   
-    <h2 class="section-title">Our Menu</h2>
+    <h2 class="section-title">Menümüz</h2>
+    <p class="menu-description">Çeşitli seçeneklerimizi keşfedin - sağlıklı, besleyici seçeneklerden suçlu zevklere. Her yemek lezzet ve seçim hikayesi anlatır.</p>
   
     <div class="menu-container">
       {% for urun in menuler %}
@@ -104,27 +104,25 @@
       </div>
       <div class="story-text">
         <p>
-     DENİZİN HİKAYESİ
-Bir suşi tanesi…
-Bir ömrün özeti gibidir.
-Binlerce yıldır Japon denizlerinden esen tuzlu rüzgârın, yosun kokusunun, sabahın ilk ışığında uyanan balıkçıların, bambu tezgâhlarda çalışan ustaların, her biri ayrı bir hafızaya kazınan ellerinin mirasıdır bu sofrada duran her parça.
+     SAĞLIKLI MI SUÇLU MU HİKAYESİ
+Her yemek bir seçimdir...
+Beslenme ile zevk arasında, sağlık ile haz arasında bir seçim.
 
-Ben bu yolculuğa çocukken, büyükannemin bambu döşeli mutfağında, sirke kokusuyla başladım. Her pirinç tanesi avucumda bir dua gibi yoğrulurdu. Sadece karın doyurmak değil; zamanı, denizi ve insanı bir lokmaya sığdırmaktı bizim işimiz.
+Healthy or Guilty'de, yemeğin sadece beslenme aracı olmaktan daha fazlası olması gerektiğine inanıyoruz - ruhunuzla konuşan ve ne olursa olsun arzularınızı tatmin eden bir deneyim olmalı.
 
-Restoranımda size sunduğum her suşi, sadece bir yemek değil.
-Bir duyu yolculuğudur:
-– Tat: Yosunların hafif tuzlu ısırığıyla, torik balığının derin umami aroması
-– Doku: Dilinizin ucunda eriyen yağlı otoro, pirincin hafif yapışkan dokusu
-– Koku: Taze rendelenmiş wasabi'nin sinüsleri açan ferahlığı
-– Ses: Bıçağın noriye attığı keskin çizgi, suşi ustasının nefesini tuttuğu an
+Yolculuğumuz basit bir felsefe ile başladı: neden sağlıklı ve lezzetli arasında seçim yapasınız ki ikisini birden alabilirsiniz? Mutfak arzularının çeşitliliğini kutlayan bir menü yarattık - vücudunuzu besleyen hafif, besleyici yemeklerden ruhunuzu besleyen zengin, suçlu yaratımlara kadar.
 
-Umi No Hikayesi, yani "Denizin Hikayesi", sadece bir restoran değil.
-Bir efsanenin yaşayan mutfağıdır. Her tabakta binlerce yıllık bir deniz halkının, sabırla yoğrulmuş bir geleneğin, benim hayatımın ve sizin damağınızın birleştiği o kutsal noktadır.
+Menümüzdeki her yemek bir hikaye anlatır:
+– Organik sebzelerin çıtır tazeliği, mükemmel baharatlanmış proteinlerin zengin umami'si ile buluşur
+– Geleneksel rahat yemekler ruhlarını kaybetmeden sağlıklı bir dönüşüm geçirir
+– Tatlı dişinizi tatmin eden ama seçimlerinize saygı duyan suçlu tatlılar
 
-Hoş geldiniz.
-Artık siz de bu hikâyenin bir parçasısınız.
+Healthy or Guilty sadece bir restoran adı değil - her ziyaretinizde yapmanızı davet ettiğimiz bir yaşam tarzı seçimidir. İster hafif, enerji veren bir yemek istediğinizde, ister sizi harika bir şekilde suçlu hissettiren bir şey arzuladığınızda, her ruh hali ve her an için bir şeyimiz var.
 
-– Usta Hiroshi Ece
+Her seçimin doğru seçim olduğu bir yere hoş geldiniz.
+Healthy or Guilty'ye hoş geldiniz.
+
+– Şef Ekibi
         </p>
       </div>
     </div>
@@ -135,7 +133,7 @@ Artık siz de bu hikâyenin bir parçasısınız.
     <h2 class="section-title">Konum</h2>
     <div class="location-info">
       <div class="map">
-        <iframe src=": Feneryolu, Şefizade Sk. No:4/B, 34724 Kadıköy/İstanbul" 
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.6698064970425!2d139.7027963152542!3d35.69080518019349!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188d227f27a69b%3A0x673c68a4a2b2e88a!2zSmFwb255YSwg4oCtMTYwLTAwMjEgVG9reW8sIFNoaW5qdWt1IENpdHksIEthYnVraWNobywgMSBDaG9tZeKAlTE24oCtMyDlsI_jg5zjgqLjg7Pjgr_jgrnjgqTjgrnjg7zjgrjjgqbjg6_jgr_jgq8gNuepkw!5e0!3m2!1sen!2sjp!4v1678888888888!5m2!1sen!2sjp" 
                 width="100%" 
                 height="100%" 
                 style="border:0;" 
@@ -146,7 +144,7 @@ Artık siz de bu hikâyenin bir parçasısınız.
       </div>
       <div class="address-info">
         <h3>Adres: Japonya, 〒160-0021 Tokyo, Shinjuku City, Kabukicho, 1 Chome−16−3 セレサ陽栄新宿ビル 6階</h3>
-        <p>Dünyanın bir numaralı chef</p>
+        <p>Dünyanın bir numaralı şefi</p>
         <h3>Çalışma Saatleri</h3>
         <p>Pazartesi - Cuma: 11:00 - 22:00</p>
         <p>Cumartesi - Pazar: 10:00 - 23:00</p>
@@ -161,14 +159,14 @@ Artık siz de bu hikâyenin bir parçasısınız.
       <div class="awards-text-content">
         <div class="award-card">
           <i class="fas fa-award award-icon"></i>
-          <h3>En İyi Sushi 2023</h3>
+          <h3>En İyi Yemek Deneyimi 2023</h3>
           <p>Lezzetin, ustalığın ve tazeliğin buluşma noktası olarak gururla duyuruyoruz:
-            Sushi restoranımız, 2023 yılında "En İyi Sushi" ödülüne layık görüldü!
+            Restoranımız, 2023 yılında "En İyi Yemek Deneyimi" ödülüne layık görüldü!
             
-            Uluslararası gastronomi uzmanlarının değerlendirmeleriyle seçilen bu ödül; kullandığımız kaliteli malzemeleri, özgün tariflerimizi ve ustalarımızın sanata dönüşen el becerisini taçlandırıyor.
+            Uluslararası gastronomi uzmanlarının değerlendirmeleriyle seçilen bu ödül; kullandığımız kaliteli malzemeleri, özgün tariflerimizi ve şeflerimizin sanata dönüşen el becerisini taçlandırıyor.
             Bu başarı, siz değerli misafirlerimizin güveni ve sevgisiyle mümkün oldu.
             
-            Teşekkür ederiz. 🍣</p>
+            Teşekkür ederiz. 🍽️</p>
         </div>
         <!-- Add more award cards here if needed -->
       </div>
@@ -183,7 +181,7 @@ Artık siz de bu hikâyenin bir parçasısınız.
     <h2 class="section-title">Galeri</h2>
     <div class="gallery-grid">
       <div class="gallery-item">
-        <img src="{{ url_for('static', filename='hikayemiz.jpg') }}" alt="Gallery Image">
+        <img src="{{ url_for('static', filename='hikayemiz.jpg') }}" alt="Galeri Görseli">
       </div>
     </div>
   </section>
@@ -269,6 +267,7 @@ Artık siz de bu hikâyenin bir parçasısınız.
           behavior: 'smooth'
         });
       });
+    });
  
   fetch("https://glowing-basketball-da0bfbc355.strapiapp.com/api/menulers?populate=*")
     .then(response => response.json())

@@ -1,0 +1,97 @@
+/* Water-Themed Sushi Restaurant Logo */
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none;
+}
+
+.logo-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #006994 0%, #00b4d8 50%, #90e0ef 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 105, 148, 0.3);
+  transition: all 0.3s ease;
+}
+
+.logo-icon:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(0, 105, 148, 0.4);
+}
+
+/* Water Drop Symbol */
+.logo-icon::before {
+  content: '';
+  width: 20px;
+  height: 20px;
+  background: white;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  position: absolute;
+  top: 8px;
+  left: 15px;
+}
+
+/* Wave Effect */
+.logo-icon::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.3) 50%, transparent 100%);
+  animation: wave 2s ease-in-out infinite;
+}
+
+@keyframes wave {
+  0%, 100% { transform: translateX(-100%); }
+  50% { transform: translateX(100%); }
+}
+
+/* Logo Text */
+.logo-text {
+  color: white;
+  font-family: 'Noto Serif JP', serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+}
+
+/* Alternative Logo Variations */
+.logo-icon.wave-theme {
+  background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #60a5fa 100%);
+}
+
+.logo-icon.ocean-theme {
+  background: linear-gradient(135deg, #0f172a 0%, #1e40af 50%, #3b82f6 100%);
+}
+
+.logo-icon.fresh-theme {
+  background: linear-gradient(135deg, #059669 0%, #10b981 50%, #34d399 100%);
+}
+
+/* Responsive Logo */
+@media (max-width: 768px) {
+  .logo-icon {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .logo-icon::before {
+    width: 16px;
+    height: 16px;
+    top: 6px;
+    left: 12px;
+  }
+  
+  .logo-text {
+    font-size: 1.2rem;
+  }
+} 
