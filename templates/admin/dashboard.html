@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Healthy or Guilty</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Header -->
+        <header class="admin-header">
+            <div class="header-content">
+                <h1>🍽️ Admin Panel</h1>
+                <div class="header-actions">
+                    <a href="{{ url_for('admin_add_item') }}" class="btn btn-primary">
+                        <i class="fas fa-plus"></i> Yeni Ürün Ekle
+                    </a>
+                    <a href="{{ url_for('admin_logout') }}" class="btn btn-danger">
+                        <i class="fas fa-sign-out-alt"></i> Çıkış
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Flash Messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="flash-messages">
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <!-- Main Content -->
+        <main class="admin-main">
+            <div class="dashboard-stats">
+                <div class="stat-card">
+                    <i class="fas fa-utensils"></i>
+                    <div class="stat-info">
+                        <h3>{{ menu_items|length }}</h3>
+                        <p>Toplam Ürün</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Menu Items Table -->
+            <div class="content-section">
+                <h2>Menü Ürünleri</h2>
+                
+                {% if menu_items %}
+                    <div class="table-container">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>Resim</th>
+                                    <th>İsim</th>
+                                    <th>Açıklama</th>
+                                    <th>Fiyat</th>
+                                    <th>Kategori</th>
+                                    <th>İşlemler</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for item in menu_items %}
+                                <tr>
+                                    <td class="image-cell">
+                                        {% if item.resim %}
+                                            <img src="{{ url_for('static', filename='images/' + item.resim) }}" 
+                                                 alt="{{ item.isim }}" class="item-thumbnail">
+                                        {% else %}
+                                            <div class="no-image">Resim Yok</div>
+                                        {% endif %}
+                                    </td>
+                                    <td>{{ item.isim }}</td>
+                                    <td class="description-cell">{{ item.aciklama[:50] }}{% if item.aciklama|length > 50 %}...{% endif %}</td>
+                                    <td>{{ item.fiyat }} TL</td>
+                                    <td>{{ item.kategori }}</td>
+                                    <td class="actions-cell">
+                                        <a href="{{ url_for('admin_edit_item', id=item.id) }}" 
+                                           class="btn btn-small btn-edit" title="Düzenle">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        <a href="{{ url_for('admin_delete_item', id=item.id) }}" 
+                                           class="btn btn-small btn-delete" 
+                                           onclick="return confirm('Bu ürünü silmek istediğinizden emin misiniz?')"
+                                           title="Sil">
+                                            <i class="fas fa-trash"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% else %}
+                    <div class="empty-state">
+                        <i class="fas fa-utensils"></i>
+                        <h3>Henüz ürün eklenmemiş</h3>
+                        <p>İlk ürününüzü eklemek için "Yeni Ürün Ekle" butonuna tıklayın.</p>
+                        <a href="{{ url_for('admin_add_item') }}" class="btn btn-primary">
+                            <i class="fas fa-plus"></i> İlk Ürünü Ekle
+                        </a>
+                    </div>
+                {% endif %}
+            </div>
+        </main>
+    </div>
+</body>
+</html> 

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yeni Ürün Ekle - Admin Panel</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Header -->
+        <header class="admin-header">
+            <div class="header-content">
+                <h1>🍽️ Yeni Ürün Ekle</h1>
+                <div class="header-actions">
+                    <a href="{{ url_for('admin_dashboard') }}" class="btn btn-secondary">
+                        <i class="fas fa-arrow-left"></i> Geri Dön
+                    </a>
+                    <a href="{{ url_for('admin_logout') }}" class="btn btn-danger">
+                        <i class="fas fa-sign-out-alt"></i> Çıkış
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="admin-main">
+            <div class="content-section">
+                <div class="form-container">
+                    <form method="POST" enctype="multipart/form-data" class="admin-form">
+                        <div class="form-group">
+                            <label for="isim">Ürün İsmi *</label>
+                            <input type="text" id="isim" name="isim" required 
+                                   placeholder="Örn: Karışık Pizza">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="aciklama">Açıklama</label>
+                            <textarea id="aciklama" name="aciklama" rows="4" 
+                                      placeholder="Ürün hakkında detaylı bilgi..."></textarea>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="fiyat">Fiyat (TL) *</label>
+                                <input type="number" id="fiyat" name="fiyat" step="0.01" min="0" required 
+                                       placeholder="0.00">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="kategori">Kategori</label>
+                                <select id="kategori" name="kategori">
+                                    <option value="">Kategori Seçin</option>
+                                    <option value="Ana Yemek">Ana Yemek</option>
+                                    <option value="Çorba">Çorba</option>
+                                    <option value="Salata">Salata</option>
+                                    <option value="Tatlı">Tatlı</option>
+                                    <option value="İçecek">İçecek</option>
+                                    <option value="Kahvaltı">Kahvaltı</option>
+                                    <option value="Fast Food">Fast Food</option>
+                                    <option value="Sağlıklı">Sağlıklı</option>
+                                    <option value="Suçlu Zevk">Suçlu Zevk</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="resim">Ürün Resmi</label>
+                            <div class="file-upload">
+                                <input type="file" id="resim" name="resim" accept="image/*">
+                                <div class="file-upload-info">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <p>Resim yüklemek için tıklayın veya sürükleyin</p>
+                                    <small>Desteklenen formatlar: JPG, PNG, GIF (Max: 5MB)</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save"></i> Ürünü Kaydet
+                            </button>
+                            <a href="{{ url_for('admin_dashboard') }}" class="btn btn-secondary">
+                                <i class="fas fa-times"></i> İptal
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // File upload preview
+        document.getElementById('resim').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            const fileUpload = document.querySelector('.file-upload');
+            const info = document.querySelector('.file-upload-info');
+            
+            if (file) {
+                // Add visual feedback
+                fileUpload.classList.add('has-file');
+                
+                info.innerHTML = `
+                    <i class="fas fa-check-circle"></i>
+                    <p>Seçilen dosya: ${file.name}</p>
+                    <small>Boyut: ${(file.size / 1024 / 1024).toFixed(2)} MB</small>
+                `;
+                
+                console.log('File selected:', file.name, 'Size:', file.size);
+            } else {
+                // Reset to default state
+                fileUpload.classList.remove('has-file');
+                info.innerHTML = `
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <p>Resim yüklemek için tıklayın veya sürükleyin</p>
+                    <small>Desteklenen formatlar: JPG, PNG, GIF (Max: 5MB)</small>
+                `;
+            }
+        });
+        
+        // Drag and drop functionality
+        const fileUpload = document.querySelector('.file-upload');
+        const fileInput = document.getElementById('resim');
+        
+        fileUpload.addEventListener('dragover', function(e) {
+            e.preventDefault();
+            fileUpload.style.borderColor = 'var(--primary-color)';
+            fileUpload.style.background = '#f0f8ff';
+        });
+        
+        fileUpload.addEventListener('dragleave', function(e) {
+            e.preventDefault();
+            if (!fileUpload.contains(e.relatedTarget)) {
+                fileUpload.style.borderColor = 'var(--border-color)';
+                fileUpload.style.background = '#f8f9fa';
+            }
+        });
+        
+        fileUpload.addEventListener('drop', function(e) {
+            e.preventDefault();
+            fileUpload.style.borderColor = 'var(--border-color)';
+            fileUpload.style.background = '#f8f9fa';
+            
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                fileInput.files = files;
+                fileInput.dispatchEvent(new Event('change'));
+            }
+        });
+    </script>
+</body>
+</html> 

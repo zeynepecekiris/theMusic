@@ -14,11 +14,9 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-yada-yada-hash" crossorigin="anonymous" referrerpolicy="no-referrer" />
   
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
-
-  <div id="menu-container"></div>
 
   <!-- Navigation Bar -->
   <nav class="navbar">
@@ -82,9 +80,9 @@
   
           <div class="dish-content">
             <div class="dish-name">{{ urun.isim }}</div>
-            <div class="description">{{ urun.aciklama }}</div>
+            <div class="description">{{ urun.aciklama or 'Açıklama yok' }}</div>
             <div class="price">{{ urun.fiyat }} TL</div>
-            <div class="category">{{ urun.kategori }}</div>
+            <div class="category">{{ urun.kategori or 'Kategori yok' }}</div>
           </div>
         </div>
       {% endfor %}
@@ -224,32 +222,6 @@ Healthy or Guilty'ye hoş geldiniz.
   
 
 <script>
-    fetch("https://glowing-basketball-da0bfbc355.strapiapp.com/api/isims?populate=*")
-      .then(res => res.json())
-      .then(data => {
-        const container = document.getElementById("menu-container");
-
-        data.data.forEach(item => {
-          const isim = item.attributes.isim;
-          const aciklama = item.attributes.aciklama?.[0]?.children?.[0]?.text || "";
-          const fiyat = item.attributes.fiyat;
-          const kategori = item.attributes.kategori;
-          const resimUrl = item.attributes.resim?.[0]?.formats?.medium?.url;
-
-          const card = `
-            <div class="dish-card">
-              ${resimUrl ? `<img src="${resimUrl}" alt="${isim}" class="dish-image">` : `<div class="no-image">Resim yok</div>`}
-              <h3>${isim}</h3>
-              <p>${aciklama}</p>
-              <p><strong>${fiyat} TL</strong></p>
-              <p><em>${kategori}</em></p>
-            </div>
-          `;
-
-          container.innerHTML += card;
-        });
-      });
-    
     window.addEventListener('scroll', function() {
       const navbar = document.querySelector('.navbar');
       if (window.scrollY > 50) {
@@ -259,7 +231,7 @@ Healthy or Guilty'ye hoş geldiniz.
       }
     });
 
-    
+    // Smooth scrolling for navigation links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -268,48 +240,6 @@ Healthy or Guilty'ye hoş geldiniz.
         });
       });
     });
- 
-  fetch("https://glowing-basketball-da0bfbc355.strapiapp.com/api/menulers?populate=*")
-    .then(response => response.json())
-    .then(data => {
-      const menuler = data.data;
-      const container = document.querySelector(".menu-container");
-
-      container.innerHTML = ""; 
-
-      menuler.forEach(item => {
-        const urun = item.attributes;
-        const isim = urun.isim || "Ürün İsmi Yok";
-        const fiyat = urun.fiyat || "";
-        const kategori = urun.kategori || "";
-        
-        let aciklama = "";
-        try {
-          aciklama = urun.aciklama[0].children[0].text || "";
-        } catch (e) {}
-
-        const resimUrl = urun.resim?.data?.attributes?.url;
-        const fullImage = resimUrl
-          ? `https://glowing-basketball-da0bfbc355.media.strapiapp.com${resimUrl}`
-          : "https://via.placeholder.com/300x250?text=No+Image";
-
-        container.innerHTML += `
-          <div class="dish-card">
-            <img src="${fullImage}" alt="${isim}" class="dish-image">
-            <div class="dish-content">
-              <div class="dish-name">${isim}</div>
-              <div class="description">${aciklama}</div>
-              <div class="price">${fiyat} TL</div>
-              <div class="category">${kategori}</div>
-            </div>
-          </div>
-        `;
-      });
-    })
-    .catch(error => {
-      console.error("Strapi verisi alınamadı:", error);
-    });
-
-  </script>
+</script>
 </body>
 </html>

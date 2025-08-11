@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ürün Düzenle - Admin Panel</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Header -->
+        <header class="admin-header">
+            <div class="header-content">
+                <h1>🍽️ Ürün Düzenle</h1>
+                <div class="header-actions">
+                    <a href="{{ url_for('admin_dashboard') }}" class="btn btn-secondary">
+                        <i class="fas fa-arrow-left"></i> Geri Dön
+                    </a>
+                    <a href="{{ url_for('admin_logout') }}" class="btn btn-danger">
+                        <i class="fas fa-sign-out-alt"></i> Çıkış
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="admin-main">
+            <div class="content-section">
+                <div class="form-container">
+                    <form method="POST" enctype="multipart/form-data" class="admin-form">
+                        <div class="form-group">
+                            <label for="isim">Ürün İsmi *</label>
+                            <input type="text" id="isim" name="isim" value="{{ item.isim }}" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="aciklama">Açıklama</label>
+                            <textarea id="aciklama" name="aciklama" rows="4">{{ item.aciklama or '' }}</textarea>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="fiyat">Fiyat (TL) *</label>
+                                <input type="number" id="fiyat" name="fiyat" step="0.01" min="0" 
+                                       value="{{ item.fiyat }}" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="kategori">Kategori</label>
+                                <select id="kategori" name="kategori">
+                                    <option value="">Kategori Seçin</option>
+                                    <option value="Ana Yemek" {% if item.kategori == 'Ana Yemek' %}selected{% endif %}>Ana Yemek</option>
+                                    <option value="Çorba" {% if item.kategori == 'Çorba' %}selected{% endif %}>Çorba</option>
+                                    <option value="Salata" {% if item.kategori == 'Salata' %}selected{% endif %}>Salata</option>
+                                    <option value="Tatlı" {% if item.kategori == 'Tatlı' %}selected{% endif %}>Tatlı</option>
+                                    <option value="İçecek" {% if item.kategori == 'İçecek' %}selected{% endif %}>İçecek</option>
+                                    <option value="Kahvaltı" {% if item.kategori == 'Kahvaltı' %}selected{% endif %}>Kahvaltı</option>
+                                    <option value="Fast Food" {% if item.kategori == 'Fast Food' %}selected{% endif %}>Fast Food</option>
+                                    <option value="Sağlıklı" {% if item.kategori == 'Sağlıklı' %}selected{% endif %}>Sağlıklı</option>
+                                    <option value="Suçlu Zevk" {% if item.kategori == 'Suçlu Zevk' %}selected{% endif %}>Suçlu Zevk</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="resim">Ürün Resmi</label>
+                            
+                            <!-- Mevcut Resim -->
+                            {% if item.resim %}
+                            <div class="current-image">
+                                <img src="{{ url_for('static', filename='images/' + item.resim) }}" 
+                                     alt="{{ item.isim }}" class="current-image-preview">
+                                <p>Mevcut resim: {{ item.resim }}</p>
+                            </div>
+                            {% endif %}
+                            
+                            <div class="file-upload">
+                                <input type="file" id="resim" name="resim" accept="image/*">
+                                <div class="file-upload-info">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <p>Yeni resim yüklemek için tıklayın (opsiyonel)</p>
+                                    <small>Desteklenen formatlar: JPG, PNG, GIF (Max: 5MB)</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save"></i> Değişiklikleri Kaydet
+                            </button>
+                            <a href="{{ url_for('admin_dashboard') }}" class="btn btn-secondary">
+                                <i class="fas fa-times"></i> İptal
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // File upload preview
+        document.getElementById('resim').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const info = document.querySelector('.file-upload-info');
+                info.innerHTML = `
+                    <i class="fas fa-check-circle"></i>
+                    <p>Seçilen dosya: ${file.name}</p>
+                    <small>Boyut: ${(file.size / 1024 / 1024).toFixed(2)} MB</small>
+                `;
+            }
+        });
+    </script>
+</body>
+</html> 

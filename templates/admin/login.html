@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Girişi - Healthy or Guilty</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin.css') }}">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-box">
+            <div class="login-header">
+                <h1>🍽️ Admin Panel</h1>
+                <p>Healthy or Guilty</p>
+            </div>
+            
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            
+            <form method="POST" class="login-form">
+                <div class="form-group">
+                    <label for="username">Kullanıcı Adı</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Şifre</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                
+                <button type="submit" class="login-btn">Giriş Yap</button>
+            </form>
+            
+            <div class="login-footer">
+                <p>Şef erişimi için giriş yapın</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 
