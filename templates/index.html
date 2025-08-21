@@ -166,7 +166,7 @@
   <!-- Story Section -->
   <section id="story" class="story-section">
     <div class="story-hero" data-aos="fade-up">
-      <img src="{{ url_for('static', filename='sushi-tabagi.png') }}" alt="Hikayemiz" class="story-hero-image">
+      
       <div class="story-hero-overlay">
         <h2>Hikayemiz</h2>
       </div>
@@ -548,12 +548,17 @@
     // Loading Screen
     window.addEventListener('load', function() {
       const loadingScreen = document.querySelector('.loading-screen');
+      const loadingProgress = document.querySelector('.loading-progress');
+      
+      // Progress bar animasyonunu hızlandır
+      loadingProgress.style.animation = 'loading 1.8s ease-in-out forwards';
+      
       setTimeout(() => {
         loadingScreen.style.opacity = '0';
         setTimeout(() => {
           loadingScreen.style.display = 'none';
-        }, 500);
-      }, 2000);
+        }, 300);
+      }, 2000); // 2 saniye olarak değiştirdim
     });
 
     // Navigation
