@@ -1,0 +1,46 @@
+name: Deploy to Heroku and Sync with GitHub
+
+on:
+  push:
+    branches: [ main, premium-design, development ]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+    
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+    
+    - name: Deploy to Heroku
+      uses: akhileshns/heroku-deploy@v3.12.14
+      with:
+        heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+        heroku_app_name: ${{secrets.HEROKU_APP_NAME}}
+        heroku_email: ${{secrets.HEROKU_EMAIL}}
+        usedocker: false
+        
+    - name: Notify deployment success
+      if: success()
+      run: |
+        echo "✅ Deployment successful!"
+        echo "🚀 App is live at: https://${{secrets.HEROKU_APP_NAME}}.herokuapp.com"
+        
+    - name: Notify deployment failure
+      if: failure()
+      run: |
+        echo "❌ Deployment failed!"
+        echo "Check the logs above for details." 
