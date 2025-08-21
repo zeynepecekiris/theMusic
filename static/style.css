@@ -82,14 +82,14 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  animation: pulse 1.5s ease-in-out infinite;
+  animation: pulse 1.2s ease-in-out infinite;
 }
 
 .loading-text {
   font-size: 1.2rem;
   margin-bottom: 2rem;
   opacity: 0.8;
-  animation: fadeInUp 0.8s ease forwards 0.3s;
+  animation: fadeInUp 0.5s ease forwards 0.2s;
 }
 
 .loading-bar {
@@ -99,7 +99,7 @@ body {
   border-radius: 2px;
   overflow: hidden;
   margin: 0 auto;
-  animation: fadeInUp 0.8s ease forwards 0.5s;
+  animation: fadeInUp 0.5s ease forwards 0.3s;
   opacity: 0;
 }
 
@@ -107,18 +107,18 @@ body {
   height: 100%;
   background: var(--gradient-gold);
   border-radius: 2px;
-  animation: loading 1.3s ease-in-out forwards;
+  animation: loading 1.0s ease-out forwards;
 }
 
 @keyframes pulse {
-  0%, 100% { transform: scale(1); opacity: 0.8; }
-  50% { transform: scale(1.08); opacity: 1; }
+  0%, 100% { transform: scale(1); opacity: 0.7; }
+  50% { transform: scale(1.12); opacity: 1; }
 }
 
 @keyframes loading {
   0% { width: 0%; }
-  30% { width: 40%; }
-  70% { width: 85%; }
+  25% { width: 60%; }
+  75% { width: 90%; }
   100% { width: 100%; }
 }
 

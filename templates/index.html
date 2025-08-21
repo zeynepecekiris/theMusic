@@ -550,15 +550,15 @@
       const loadingScreen = document.querySelector('.loading-screen');
       const loadingProgress = document.querySelector('.loading-progress');
       
-      // Progress bar animasyonunu hızlandır
-      loadingProgress.style.animation = 'loading 1.8s ease-in-out forwards';
+      // Progress bar animasyonunu daha hızlandır
+      loadingProgress.style.animation = 'loading 1.0s ease-out forwards';
       
       setTimeout(() => {
         loadingScreen.style.opacity = '0';
         setTimeout(() => {
           loadingScreen.style.display = 'none';
-        }, 300);
-      }, 2000); // 2 saniye olarak değiştirdim
+        }, 200);
+      }, 1200); // 1.2 saniye olarak kısalttım
     });
 
     // Navigation
