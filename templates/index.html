@@ -39,18 +39,17 @@
     <div class="nav-container">
       <a href="#" class="logo-container">
         <div class="logo-icon">
-          <span>H&G</span>
+          <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo">
         </div>
-        <span class="logo-text">Healthy or Guilty</span>
+       
       </a>
       
       <div class="nav-menu" id="nav-menu">
-        <a href="#menu" class="nav-link">Menü</a>
+        <a href="#menu" class="nav-link active">Menü</a>
         <a href="#story" class="nav-link">Hikayemiz</a>
         <a href="#location" class="nav-link">Konum</a>
         <a href="#awards" class="nav-link">Ödüller</a>
         <a href="#gallery" class="nav-link">Galeri</a>
-        <a href="#careers" class="nav-link">Kariyer</a>
         <a href="#contact" class="nav-link">İletişim</a>
       </div>
       
@@ -75,8 +74,8 @@
     <div class="hero-content">
       <div class="hero-text" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500">
         <h1 class="hero-title">
-          <span class="title-line">Sağlıklı mı</span>
-          <span class="title-line accent">Suçlu mu?</span>
+          <span class="title-line">Healthy or</span>
+          <span class="title-line accent">Guilty?</span>
         </h1>
         <p class="hero-subtitle">Yemek maceranızı seçin - besleyici lezzetlerden suçlu zevklere</p>
         <div class="hero-buttons">
@@ -85,12 +84,7 @@
         </div>
       </div>
       
-      <div class="scroll-indicator" data-aos="fade-up" data-aos-delay="1500">
-        <div class="scroll-text">Aşağı Kaydır</div>
-        <div class="scroll-arrow">
-          <i class="fas fa-chevron-down"></i>
-        </div>
-      </div>
+      
     </div>
     
     <!-- Floating Elements -->
@@ -150,7 +144,7 @@
           <div class="dish-content">
             <div class="dish-header">
               <h3 class="dish-name">{{ urun.isim }}</h3>
-              <div class="dish-price">{{ urun.fiyat }} <span>TL</span></div>
+              <div class="dish-price">{{ urun.fiyat }} TL</div>
             </div>
             <p class="dish-description">{{ urun.aciklama or 'Lezzetli bir seçenek sizi bekliyor' }}</p>
             <div class="dish-footer">
@@ -212,7 +206,6 @@
             
             <div class="story-conclusion">
               <p>Healthy or Guilty sadece bir restoran adı değil - her ziyaretinizde yapmanızı davet ettiğimiz bir yaşam tarzı seçimidir.</p>
-              <p class="story-signature">– Şef Ekibi</p>
             </div>
           </div>
         </div>
@@ -277,48 +270,131 @@
     </div>
   </section>
 
-  <!-- Awards Section -->
-  <section id="awards" class="awards-section">
+  <!-- Chefs & Certificates Section -->
+  <section id="awards" class="chefs-section">
     <div class="container">
       <div class="section-header" data-aos="fade-up">
-        <div class="section-tag">Başarılarımız</div>
-        <h2 class="section-title">Ödüller</h2>
+        <div class="section-tag">Uzmanlarımız</div>
+        <h2 class="section-title">Şefler ve Sertifikaları</h2>
+        <p class="section-subtitle">Dünya çapında deneyime sahip şeflerimiz ve prestijli sertifikaları</p>
       </div>
       
-      <div class="awards-content">
-        <div class="awards-text" data-aos="fade-right">
-          <div class="award-card">
-            <div class="award-icon">
-              <i class="fas fa-trophy"></i>
-            </div>
-            <div class="award-content">
-              <h3>En İyi Yemek Deneyimi 2023</h3>
-              <p>Lezzetin, ustalığın ve tazeliğin buluşma noktası olarak gururla duyuruyoruz: Restoranımız, 2023 yılında "En İyi Yemek Deneyimi" ödülüne layık görüldü!</p>
-              <p>Uluslararası gastronomi uzmanlarının değerlendirmeleriyle seçilen bu ödül; kullandığımız kaliteli malzemeleri, özgün tariflerimizi ve şeflerimizin sanata dönüşen el becerisini taçlandırıyor.</p>
+      <div class="chefs-content">
+        <div class="chef-profile" data-aos="fade-right">
+          <div class="chef-image-container">
+            <img src="{{ url_for('static', filename='usta.jpg') }}" alt="Baş Şef" class="chef-image">
+            <div class="chef-overlay">
+              <div class="chef-badge">
+                <i class="fas fa-crown"></i>
+                <span>Baş Şef</span>
+              </div>
             </div>
           </div>
           
-          <div class="award-stats">
-            <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
-              <div class="stat-number">5</div>
-              <div class="stat-label">Michelin Yıldızı</div>
-            </div>
-            <div class="stat-item" data-aos="fade-up" data-aos-delay="400">
-              <div class="stat-number">50</div>
-              <div class="stat-label">Dünya'nın En İyisi</div>
-            </div>
-            <div class="stat-item" data-aos="fade-up" data-aos-delay="600">
-              <div class="stat-number">10K+</div>
-              <div class="stat-label">Mutlu Müşteri</div>
+          <div class="chef-info">
+            <h3 class="chef-name">Hiroshi Tanaka</h3>
+            <p class="chef-title">Executive Chef & Founder</p>
+            <p class="chef-experience">15+ yıl Michelin yıldızlı restoran deneyimi</p>
+            
+            <div class="chef-stats">
+              <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
+                <div class="stat-number">15</div>
+                <div class="stat-label">Yıl Deneyim</div>
+              </div>
+              <div class="stat-item" data-aos="fade-up" data-aos-delay="400">
+                <div class="stat-number">3</div>
+                <div class="stat-label">Michelin Yıldızı</div>
+              </div>
+              <div class="stat-item" data-aos="fade-up" data-aos-delay="600">
+                <div class="stat-number">50+</div>
+                <div class="stat-label">Ödül</div>
+              </div>
             </div>
           </div>
         </div>
         
-        <div class="awards-image" data-aos="fade-left">
-          <img src="{{ url_for('static', filename='usta.jpg') }}" alt="Ödüller" class="award-image">
-          <div class="image-overlay">
-            <div class="play-button">
-              <i class="fas fa-play"></i>
+        <div class="certificates-grid" data-aos="fade-left">
+          <div class="certificate-card" data-aos="zoom-in" data-aos-delay="200">
+            <div class="certificate-icon">
+              <i class="fas fa-medal"></i>
+            </div>
+            <div class="certificate-content">
+              <h4>Michelin Star Chef</h4>
+              <p class="certificate-issuer">Michelin Guide</p>
+              <p class="certificate-year">2023</p>
+            </div>
+            <div class="certificate-badge">
+              <i class="fas fa-check-circle"></i>
+            </div>
+          </div>
+          
+          <div class="certificate-card" data-aos="zoom-in" data-aos-delay="300">
+            <div class="certificate-icon">
+              <i class="fas fa-trophy"></i>
+            </div>
+            <div class="certificate-content">
+              <h4>World's 50 Best Restaurants</h4>
+              <p class="certificate-issuer">Restaurant Magazine</p>
+              <p class="certificate-year">2023</p>
+            </div>
+            <div class="certificate-badge">
+              <i class="fas fa-check-circle"></i>
+            </div>
+          </div>
+          
+          <div class="certificate-card" data-aos="zoom-in" data-aos-delay="400">
+            <div class="certificate-icon">
+              <i class="fas fa-star"></i>
+            </div>
+            <div class="certificate-content">
+              <h4>James Beard Award</h4>
+              <p class="certificate-issuer">James Beard Foundation</p>
+              <p class="certificate-year">2022</p>
+            </div>
+            <div class="certificate-badge">
+              <i class="fas fa-check-circle"></i>
+            </div>
+          </div>
+          
+          <div class="certificate-card" data-aos="zoom-in" data-aos-delay="500">
+            <div class="certificate-icon">
+              <i class="fas fa-leaf"></i>
+            </div>
+            <div class="certificate-content">
+              <h4>Sustainable Restaurant</h4>
+              <p class="certificate-issuer">Green Restaurant Association</p>
+              <p class="certificate-year">2023</p>
+            </div>
+            <div class="certificate-badge">
+              <i class="fas fa-check-circle"></i>
+            </div>
+          </div>
+          
+          <div class="certificate-card" data-aos="zoom-in" data-aos-delay="600">
+            <div class="certificate-icon">
+              <i class="fas fa-graduation-cap"></i>
+            </div>
+            <div class="certificate-content">
+              <h4>Culinary Arts Master</h4>
+              <p class="certificate-issuer">Le Cordon Bleu</p>
+              <p class="certificate-year">2015</p>
+            </div>
+            <div class="certificate-badge">
+              <i class="fas fa-check-circle"></i>
+            </div>
+          </div>
+          
+          <div class="certificate-card" data-aos="zoom-in" data-aos-delay="700">
+            <div class="certificate-icon">
+              <i class="fas fa-utensils"></i>
+            </div>
+            <div class="certificate-content">
+              <h4>Innovation in Cuisine</h4>
+              <p class="certificate-issuer">Tokyo Culinary Institute</p>
+              <p class="certificate-year">2023</p>
+            </div>
+            <div class="certificate-badge">
+              <i class="fas fa-check-circle"></i>
             </div>
           </div>
         </div>
@@ -361,43 +437,6 @@
               <h3>Detay</h3>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Careers Section -->
-  <section id="careers" class="careers-section">
-    <div class="container">
-      <div class="section-header" data-aos="fade-up">
-        <div class="section-tag">Takımımıza Katıl</div>
-        <h2 class="section-title">Kariyer</h2>
-        <p class="section-subtitle">Tutkulu, yaratıcı ve mükemmeliyetçi ekip arkadaşları arıyoruz</p>
-      </div>
-      
-      <div class="careers-content" data-aos="fade-up" data-aos-delay="300">
-        <div class="career-benefits">
-          <div class="benefit-item">
-            <i class="fas fa-graduation-cap"></i>
-            <h3>Sürekli Gelişim</h3>
-            <p>Dünya çapında eğitim fırsatları</p>
-          </div>
-          
-          <div class="benefit-item">
-            <i class="fas fa-users"></i>
-            <h3>Takım Ruhu</h3>
-            <p>Destekleyici ve ilham verici ortam</p>
-          </div>
-          
-          <div class="benefit-item">
-            <i class="fas fa-trophy"></i>
-            <h3>Başarı Odaklı</h3>
-            <p>Performans bazlı ödüller</p>
-          </div>
-        </div>
-        
-        <div class="career-cta">
-          <a href="mailto:careers@healthyorguilty.com" class="btn btn-primary">İnsan Kaynaklarına Ulaş</a>
         </div>
       </div>
     </div>
@@ -477,7 +516,7 @@
       <div class="footer-content">
         <div class="footer-logo">
           <div class="logo-icon">
-            <span>H&G</span>
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo">
           </div>
           <span class="logo-text">Healthy or Guilty</span>
         </div>
@@ -521,14 +560,33 @@
     const navbar = document.getElementById('navbar');
     const hamburger = document.getElementById('hamburger');
     const navMenu = document.getElementById('nav-menu');
+    const navLinks = document.querySelectorAll('.nav-link');
 
-    // Scroll effect
+    // Scroll effect and active navigation
     window.addEventListener('scroll', function() {
       if (window.scrollY > 100) {
         navbar.classList.add('scrolled');
       } else {
         navbar.classList.remove('scrolled');
       }
+
+      // Active navigation based on scroll position
+      const sections = document.querySelectorAll('section[id]');
+      const scrollPos = window.scrollY + 200;
+
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.offsetHeight;
+        const sectionId = section.getAttribute('id');
+        
+        if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+          navLinks.forEach(link => link.classList.remove('active'));
+          const activeLink = document.querySelector(`a[href="#${sectionId}"]`);
+          if (activeLink) {
+            activeLink.classList.add('active');
+          }
+        }
+      });
     });
 
     // Mobile menu toggle
