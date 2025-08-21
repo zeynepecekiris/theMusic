@@ -3,243 +3,595 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Healthy or Guilty </title>
+  <title>Healthy or Guilty - Premium Dining Experience</title>
   
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-yada-yada-hash" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- AOS Animation Library -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   
   <!-- Custom CSS -->
   <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
 
+  <!-- Loading Screen -->
+  <div class="loading-screen">
+    <div class="loading-content">
+      <div class="loading-logo">
+        <div class="logo-animation">H&G</div>
+      </div>
+      <div class="loading-text">Healthy or Guilty</div>
+      <div class="loading-bar">
+        <div class="loading-progress"></div>
+      </div>
+    </div>
+  </div>
+
   <!-- Navigation Bar -->
-  <nav class="navbar">
+  <nav class="navbar" id="navbar">
     <div class="nav-container">
       <a href="#" class="logo-container">
-        <div class="logo-icon"></div>
+        <div class="logo-icon">
+          <span>H&G</span>
+        </div>
         <span class="logo-text">Healthy or Guilty</span>
       </a>
-      <div class="nav-links">
-        <a href="#menu">Menü</a>
-        <a href="#story">Hikayemiz</a>
-        <a href="#location">Konum</a>
-        <a href="#awards">Ödüller</a>
-        <a href="#gallery">Galeri</a>
-        <a href="#careers">Kariyer</a>
-        <a href="#contact">İletişim</a>
+      
+      <div class="nav-menu" id="nav-menu">
+        <a href="#menu" class="nav-link">Menü</a>
+        <a href="#story" class="nav-link">Hikayemiz</a>
+        <a href="#location" class="nav-link">Konum</a>
+        <a href="#awards" class="nav-link">Ödüller</a>
+        <a href="#gallery" class="nav-link">Galeri</a>
+        <a href="#careers" class="nav-link">Kariyer</a>
+        <a href="#contact" class="nav-link">İletişim</a>
+      </div>
+      
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
       </div>
     </div>
   </nav>
 
   <!-- Hero Section -->
-  <div class="hero">
-    <video class="hero-video" autoplay muted loop playsinline>
-      <source src="{{ url_for('static', filename='giris-sayfası.mp4') }}" type="video/mp4">
-      Tarayıcınız video etiketini desteklemiyor.
-    </video>
-    <div class="hero-overlay"></div>
+  <section class="hero" id="hero">
+    <div class="hero-video-container">
+      <video class="hero-video" autoplay muted loop playsinline>
+        <source src="{{ url_for('static', filename='giris-sayfası.mp4') }}" type="video/mp4">
+        Tarayıcınız video etiketini desteklemiyor.
+      </video>
+      <div class="hero-overlay"></div>
+    </div>
+    
     <div class="hero-content">
-      <h1>Sağlıklı mı Suçsuz mu?</h1>
-      <p>Yemek maceranızı seçin - besleyici lezzetlerden suçlu zevklere</p>
-      <a href="#menu" class="reservation-button">Menüyü Keşfet</a>
+      <div class="hero-text" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500">
+        <h1 class="hero-title">
+          <span class="title-line">Sağlıklı mı</span>
+          <span class="title-line accent">Suçlu mu?</span>
+        </h1>
+        <p class="hero-subtitle">Yemek maceranızı seçin - besleyici lezzetlerden suçlu zevklere</p>
+        <div class="hero-buttons">
+          <a href="#menu" class="btn btn-primary">Menüyü Keşfet</a>
+          <a href="#story" class="btn btn-secondary">Hikayemizi Öğren</a>
+        </div>
+      </div>
+      
+      <div class="scroll-indicator" data-aos="fade-up" data-aos-delay="1500">
+        <div class="scroll-text">Aşağı Kaydır</div>
+        <div class="scroll-arrow">
+          <i class="fas fa-chevron-down"></i>
+        </div>
+      </div>
     </div>
-  </div>
+    
+    <!-- Floating Elements -->
+    <div class="floating-elements">
+      <div class="float-element float-1"></div>
+      <div class="float-element float-2"></div>
+      <div class="float-element float-3"></div>
+    </div>
+  </section>
 
-  
-  <div class="michael-plate-section">
-    <img src="{{ url_for('static', filename='micheal-plate.png') }}" alt="Michael Plate" class="michael-plate-image">
-  </div>
+  <!-- Michael Plate Section -->
+  <section class="michael-plate-section" data-aos="zoom-in" data-aos-duration="1000">
+    <div class="plate-container">
+      <img src="{{ url_for('static', filename='micheal-plate.png') }}" alt="Michael Plate" class="michael-plate-image">
+      <div class="plate-overlay">
+        <h2>Ustalık Eseri</h2>
+        <p>Her tabak bir sanat eseri</p>
+      </div>
+    </div>
+  </section>
 
-  <div class="page-divider"></div>
-
-  
+  <!-- Menu Section -->
   <section id="menu" class="menu-section">
-    <div class="menu-header">
-      <img src="{{ url_for('static', filename='hikayemiz.jpg') }}" 
-           alt="Menü Başlık Görseli"
-           onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1579871494447-9811cf80d66c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80';">
+    <div class="section-header" data-aos="fade-up">
+      <div class="section-tag">Lezzetler</div>
+      <h2 class="section-title">Menümüz</h2>
+      <p class="section-subtitle">Çeşitli seçeneklerimizi keşfedin - sağlıklı, besleyici seçeneklerden suçlu zevklere. Her yemek lezzet ve seçim hikayesi anlatır.</p>
     </div>
-  
-    <h2 class="section-title">Menümüz</h2>
-    <p class="menu-description">Çeşitli seçeneklerimizi keşfedin - sağlıklı, besleyici seçeneklerden suçlu zevklere. Her yemek lezzet ve seçim hikayesi anlatır.</p>
-  
+
+    <!-- Menu Filter -->
+    <div class="menu-filter" data-aos="fade-up" data-aos-delay="200">
+      <button class="filter-btn active" data-filter="all">Tümü</button>
+      <button class="filter-btn" data-filter="healthy">Sağlıklı</button>
+      <button class="filter-btn" data-filter="guilty">Suçlu</button>
+      <button class="filter-btn" data-filter="drinks">İçecekler</button>
+    </div>
+
     <div class="menu-container">
       {% for urun in menuler %}
-        <div class="dish-card">
-          {% if urun.resim %}
-            <img src="{{ url_for('static', filename='images/' + urun.resim) }}" alt="{{ urun.isim }}" class="dish-image">
-          {% else %}
-            <div class="no-image">Resim Yok</div>
-          {% endif %}
-  
+        <div class="dish-card" data-aos="fade-up" data-aos-delay="{{ loop.index0 * 100 }}" data-category="all">
+          <div class="dish-image-container">
+            {% if urun.resim %}
+              <img src="{{ url_for('static', filename='images/' + urun.resim) }}" alt="{{ urun.isim }}" class="dish-image">
+            {% else %}
+              <div class="no-image">
+                <i class="fas fa-utensils"></i>
+              </div>
+            {% endif %}
+            <div class="dish-overlay">
+              <div class="dish-actions">
+                <button class="action-btn"><i class="fas fa-heart"></i></button>
+                <button class="action-btn"><i class="fas fa-share"></i></button>
+              </div>
+            </div>
+          </div>
+
           <div class="dish-content">
-            <div class="dish-name">{{ urun.isim }}</div>
-            <div class="description">{{ urun.aciklama or 'Açıklama yok' }}</div>
-            <div class="price">{{ urun.fiyat }} TL</div>
-            <div class="category">{{ urun.kategori or 'Kategori yok' }}</div>
+            <div class="dish-header">
+              <h3 class="dish-name">{{ urun.isim }}</h3>
+              <div class="dish-price">{{ urun.fiyat }} <span>TL</span></div>
+            </div>
+            <p class="dish-description">{{ urun.aciklama or 'Lezzetli bir seçenek sizi bekliyor' }}</p>
+            <div class="dish-footer">
+              <span class="dish-category">{{ urun.kategori or 'Özel' }}</span>
+              <div class="dish-rating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+            </div>
           </div>
         </div>
       {% endfor %}
     </div>
   </section>
-  
 
-  
-  <section id="story" class="section">
-    <h2 class="section-title">Hikayemiz</h2>
-    <div class="story-content">
-      <div class="hikayemiz-kismi">
-        <h2></h2>
-        <img src="{{ url_for('static', filename='sushi-tabagi.png') }}" 
-             alt="Hikayemiz Görseli"
-             onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1579871494447-9811cf80d66c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80';">
+  <!-- Story Section -->
+  <section id="story" class="story-section">
+    <div class="story-hero" data-aos="fade-up">
+      <img src="{{ url_for('static', filename='sushi-tabagi.png') }}" alt="Hikayemiz" class="story-hero-image">
+      <div class="story-hero-overlay">
+        <h2>Hikayemiz</h2>
       </div>
-      <div class="story-text">
-        <p>
-     SAĞLIKLI MI SUÇLU MU HİKAYESİ
-Her yemek bir seçimdir...
-Beslenme ile zevk arasında, sağlık ile haz arasında bir seçim.
-
-Healthy or Guilty'de, yemeğin sadece beslenme aracı olmaktan daha fazlası olması gerektiğine inanıyoruz - ruhunuzla konuşan ve ne olursa olsun arzularınızı tatmin eden bir deneyim olmalı.
-
-Yolculuğumuz basit bir felsefe ile başladı: neden sağlıklı ve lezzetli arasında seçim yapasınız ki ikisini birden alabilirsiniz? Mutfak arzularının çeşitliliğini kutlayan bir menü yarattık - vücudunuzu besleyen hafif, besleyici yemeklerden ruhunuzu besleyen zengin, suçlu yaratımlara kadar.
-
-Menümüzdeki her yemek bir hikaye anlatır:
-– Organik sebzelerin çıtır tazeliği, mükemmel baharatlanmış proteinlerin zengin umami'si ile buluşur
-– Geleneksel rahat yemekler ruhlarını kaybetmeden sağlıklı bir dönüşüm geçirir
-– Tatlı dişinizi tatmin eden ama seçimlerinize saygı duyan suçlu tatlılar
-
-Healthy or Guilty sadece bir restoran adı değil - her ziyaretinizde yapmanızı davet ettiğimiz bir yaşam tarzı seçimidir. İster hafif, enerji veren bir yemek istediğinizde, ister sizi harika bir şekilde suçlu hissettiren bir şey arzuladığınızda, her ruh hali ve her an için bir şeyimiz var.
-
-Her seçimin doğru seçim olduğu bir yere hoş geldiniz.
-Healthy or Guilty'ye hoş geldiniz.
-
-– Şef Ekibi
-        </p>
+    </div>
+    
+    <div class="story-content">
+      <div class="container">
+        <div class="story-text" data-aos="fade-up" data-aos-delay="300">
+          <div class="story-intro">
+            <h3>SAĞLIKLI MI SUÇLU MU HİKAYESİ</h3>
+            <p class="story-tagline">Her yemek bir seçimdir...</p>
+          </div>
+          
+          <div class="story-body">
+            <p>Beslenme ile zevk arasında, sağlık ile haz arasında bir seçim.</p>
+            
+            <p>Healthy or Guilty'de, yemeğin sadece beslenme aracı olmaktan daha fazlası olması gerektiğine inanıyoruz - ruhunuzla konuşan ve ne olursa olsun arzularınızı tatmin eden bir deneyim olmalı.</p>
+            
+            <p>Yolculuğumuz basit bir felsefe ile başladı: neden sağlıklı ve lezzetli arasında seçim yapasınız ki ikisini birden alabilirsiniz? Mutfak arzularının çeşitliliğini kutlayan bir menü yarattık - vücudunuzu besleyen hafif, besleyici yemeklerden ruhunuzu besleyen zengin, suçlu yaratımlara kadar.</p>
+            
+            <div class="story-highlights">
+              <div class="highlight-item" data-aos="fade-right" data-aos-delay="500">
+                <i class="fas fa-leaf"></i>
+                <p>Organik sebzelerin çıtır tazeliği, mükemmel baharatlanmış proteinlerin zengin umami'si ile buluşur</p>
+              </div>
+              
+              <div class="highlight-item" data-aos="fade-right" data-aos-delay="700">
+                <i class="fas fa-heart"></i>
+                <p>Geleneksel rahat yemekler ruhlarını kaybetmeden sağlıklı bir dönüşüm geçirir</p>
+              </div>
+              
+              <div class="highlight-item" data-aos="fade-right" data-aos-delay="900">
+                <i class="fas fa-star"></i>
+                <p>Tatlı dişinizi tatmin eden ama seçimlerinize saygı duyan suçlu tatlılar</p>
+              </div>
+            </div>
+            
+            <div class="story-conclusion">
+              <p>Healthy or Guilty sadece bir restoran adı değil - her ziyaretinizde yapmanızı davet ettiğimiz bir yaşam tarzı seçimidir.</p>
+              <p class="story-signature">– Şef Ekibi</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Location Section -->
-  <section id="location" class="section">
-    <h2 class="section-title">Konum</h2>
-    <div class="location-info">
-      <div class="map">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.6698064970425!2d139.7027963152542!3d35.69080518019349!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188d227f27a69b%3A0x673c68a4a2b2e88a!2zSmFwb255YSwg4oCtMTYwLTAwMjEgVG9reW8sIFNoaW5qdWt1IENpdHksIEthYnVraWNobywgMSBDaG9tZeKAlTE24oCtMyDlsI_jg5zjgqLjg7Pjgr_jgrnjgqTjgrnjg7zjgrjjgqbjg6_jgr_jgq8gNuepkw!5e0!3m2!1sen!2sjp!4v1678888888888!5m2!1sen!2sjp" 
-                width="100%" 
-                height="100%" 
-                style="border:0;" 
-                allowfullscreen="" 
-                loading="lazy" 
-                referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
+  <section id="location" class="location-section">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <div class="section-tag">Bizi Bulun</div>
+        <h2 class="section-title">Konum</h2>
       </div>
-      <div class="address-info">
-        <h3>Adres: Japonya, 〒160-0021 Tokyo, Shinjuku City, Kabukicho, 1 Chome−16−3 セレサ陽栄新宿ビル 6階</h3>
-        <p>Dünyanın bir numaralı şefi</p>
-        <h3>Çalışma Saatleri</h3>
-        <p>Pazartesi - Cuma: 11:00 - 22:00</p>
-        <p>Cumartesi - Pazar: 10:00 - 23:00</p>
+      
+      <div class="location-content">
+        <div class="location-info" data-aos="fade-right">
+          <div class="info-card">
+            <div class="info-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div class="info-content">
+              <h3>Adres</h3>
+              <p>Japonya, 〒160-0021 Tokyo, Shinjuku City, Kabukicho, 1 Chome−16−3 セレサ陽栄新宿ビル 6階</p>
+            </div>
+          </div>
+          
+          <div class="info-card">
+            <div class="info-icon">
+              <i class="fas fa-clock"></i>
+            </div>
+            <div class="info-content">
+              <h3>Çalışma Saatleri</h3>
+              <p>Pazartesi - Cuma: 11:00 - 22:00</p>
+              <p>Cumartesi - Pazar: 10:00 - 23:00</p>
+            </div>
+          </div>
+          
+          <div class="info-card">
+            <div class="info-icon">
+              <i class="fas fa-phone"></i>
+            </div>
+            <div class="info-content">
+              <h3>Rezervasyon</h3>
+              <p>+81 (0) 123 456 7890</p>
+              <p>reservation@healthyorguilty.com</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="location-map" data-aos="fade-left">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.6698064970425!2d139.7027963152542!3d35.69080518019349!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188d227f27a69b%3A0x673c68a4a2b2e88a!2zSmFwb255YSwg4oCtMTYwLTAwMjEgVG9reW8sIFNoaW5qdWt1IENpdHksIEthYnVraWNobywgMSBDaG9tZeKAlTE24oCtMyDlsI_jg5vjgqLjg7Pjgr_jgrnjgqXjgrnjg7zjgrjjgqbjg6_jgr_jgq4gNuepkw!5e0!3m2!1sen!2sjp!4v1678888888888!5m2!1sen!2sjp" 
+                  width="100%" 
+                  height="100%" 
+                  style="border:0;" 
+                  allowfullscreen="" 
+                  loading="lazy" 
+                  referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Awards Section -->
-  <section id="awards" class="section">
-    <h2 class="section-title">Ödüller</h2>
-    <div class="awards-grid">
-      <div class="awards-text-content">
-        <div class="award-card">
-          <i class="fas fa-award award-icon"></i>
-          <h3>En İyi Yemek Deneyimi 2023</h3>
-          <p>Lezzetin, ustalığın ve tazeliğin buluşma noktası olarak gururla duyuruyoruz:
-            Restoranımız, 2023 yılında "En İyi Yemek Deneyimi" ödülüne layık görüldü!
-            
-            Uluslararası gastronomi uzmanlarının değerlendirmeleriyle seçilen bu ödül; kullandığımız kaliteli malzemeleri, özgün tariflerimizi ve şeflerimizin sanata dönüşen el becerisini taçlandırıyor.
-            Bu başarı, siz değerli misafirlerimizin güveni ve sevgisiyle mümkün oldu.
-            
-            Teşekkür ederiz. 🍽️</p>
-        </div>
-        <!-- Add more award cards here if needed -->
+  <section id="awards" class="awards-section">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <div class="section-tag">Başarılarımız</div>
+        <h2 class="section-title">Ödüller</h2>
       </div>
-      <div class="awards-image-container">
-        <img src="{{ url_for('static', filename='usta.jpg') }}" alt="Usta" class="big-award-image">
+      
+      <div class="awards-content">
+        <div class="awards-text" data-aos="fade-right">
+          <div class="award-card">
+            <div class="award-icon">
+              <i class="fas fa-trophy"></i>
+            </div>
+            <div class="award-content">
+              <h3>En İyi Yemek Deneyimi 2023</h3>
+              <p>Lezzetin, ustalığın ve tazeliğin buluşma noktası olarak gururla duyuruyoruz: Restoranımız, 2023 yılında "En İyi Yemek Deneyimi" ödülüne layık görüldü!</p>
+              <p>Uluslararası gastronomi uzmanlarının değerlendirmeleriyle seçilen bu ödül; kullandığımız kaliteli malzemeleri, özgün tariflerimizi ve şeflerimizin sanata dönüşen el becerisini taçlandırıyor.</p>
+            </div>
+          </div>
+          
+          <div class="award-stats">
+            <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
+              <div class="stat-number">5</div>
+              <div class="stat-label">Michelin Yıldızı</div>
+            </div>
+            <div class="stat-item" data-aos="fade-up" data-aos-delay="400">
+              <div class="stat-number">50</div>
+              <div class="stat-label">Dünya'nın En İyisi</div>
+            </div>
+            <div class="stat-item" data-aos="fade-up" data-aos-delay="600">
+              <div class="stat-number">10K+</div>
+              <div class="stat-label">Mutlu Müşteri</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="awards-image" data-aos="fade-left">
+          <img src="{{ url_for('static', filename='usta.jpg') }}" alt="Ödüller" class="award-image">
+          <div class="image-overlay">
+            <div class="play-button">
+              <i class="fas fa-play"></i>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Gallery Section -->
-  <section id="gallery" class="section">
-    <h2 class="section-title">Galeri</h2>
-    <div class="gallery-grid">
-      <div class="gallery-item">
-        <img src="{{ url_for('static', filename='hikayemiz.jpg') }}" alt="Galeri Görseli">
+  <section id="gallery" class="gallery-section">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <div class="section-tag">Görsel Şölen</div>
+        <h2 class="section-title">Galeri</h2>
+      </div>
+      
+      <div class="gallery-grid">
+        <div class="gallery-item large" data-aos="zoom-in">
+          <img src="{{ url_for('static', filename='hikayemiz.jpg') }}" alt="Galeri">
+          <div class="gallery-overlay">
+            <div class="gallery-content">
+              <h3>Lezzet Sanatı</h3>
+              <p>Her tabakta bir hikaye</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="gallery-item" data-aos="zoom-in" data-aos-delay="200">
+          <img src="{{ url_for('static', filename='sushi-tabagi.png') }}" alt="Galeri">
+          <div class="gallery-overlay">
+            <div class="gallery-content">
+              <h3>Ustalık</h3>
+            </div>
+          </div>
+        </div>
+        
+        <div class="gallery-item" data-aos="zoom-in" data-aos-delay="400">
+          <img src="{{ url_for('static', filename='micheal-plate.png') }}" alt="Galeri">
+          <div class="gallery-overlay">
+            <div class="gallery-content">
+              <h3>Detay</h3>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Careers Section -->
-  <section id="careers" class="section">
-    <h2 class="section-title">Kariyer</h2>
-    <div class="careers-content">
-      <p>Kariyer fırsatları ve başvuru bilgileri...</p>
-      <a href="mailto:careers@restaurant.com" class="submit-button">İnsan Kaynaklarına Ulaş</a>
+  <section id="careers" class="careers-section">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <div class="section-tag">Takımımıza Katıl</div>
+        <h2 class="section-title">Kariyer</h2>
+        <p class="section-subtitle">Tutkulu, yaratıcı ve mükemmeliyetçi ekip arkadaşları arıyoruz</p>
+      </div>
+      
+      <div class="careers-content" data-aos="fade-up" data-aos-delay="300">
+        <div class="career-benefits">
+          <div class="benefit-item">
+            <i class="fas fa-graduation-cap"></i>
+            <h3>Sürekli Gelişim</h3>
+            <p>Dünya çapında eğitim fırsatları</p>
+          </div>
+          
+          <div class="benefit-item">
+            <i class="fas fa-users"></i>
+            <h3>Takım Ruhu</h3>
+            <p>Destekleyici ve ilham verici ortam</p>
+          </div>
+          
+          <div class="benefit-item">
+            <i class="fas fa-trophy"></i>
+            <h3>Başarı Odaklı</h3>
+            <p>Performans bazlı ödüller</p>
+          </div>
+        </div>
+        
+        <div class="career-cta">
+          <a href="mailto:careers@healthyorguilty.com" class="btn btn-primary">İnsan Kaynaklarına Ulaş</a>
+        </div>
+      </div>
     </div>
   </section>
 
-
-  <section id="contact" class="section">
-    <h2 class="section-title">İletişim</h2>
-    <div class="contact-form">
-      <form action="mailto:owner@restaurant.com" method="post" enctype="text/plain">
-        <div class="form-group">
-          <label for="name">İsim</label>
-          <input type="text" id="name" name="name" required>
+  <!-- Contact Section -->
+  <section id="contact" class="contact-section">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <div class="section-tag">İletişim</div>
+        <h2 class="section-title">Bizimle İletişime Geçin</h2>
+        <p class="section-subtitle">Sorularınız, önerileriniz veya rezervasyonlarınız için</p>
+      </div>
+      
+      <div class="contact-content">
+        <div class="contact-info" data-aos="fade-right">
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div class="contact-details">
+              <h3>E-posta</h3>
+              <p>info@healthyorguilty.com</p>
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-phone"></i>
+            </div>
+            <div class="contact-details">
+              <h3>Telefon</h3>
+              <p>+81 (0) 123 456 7890</p>
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-clock"></i>
+            </div>
+            <div class="contact-details">
+              <h3>Çalışma Saatleri</h3>
+              <p>Pazartesi - Pazar: 10:00 - 23:00</p>
+            </div>
+          </div>
         </div>
-        <div class="form-group">
-          <label for="email">E-posta</label>
-          <input type="email" id="email" name="email" required>
+        
+        <div class="contact-form" data-aos="fade-left">
+          <form action="mailto:info@healthyorguilty.com" method="post" enctype="text/plain">
+            <div class="form-row">
+              <div class="form-group">
+                <input type="text" id="name" name="name" placeholder="Adınız" required>
+              </div>
+              <div class="form-group">
+                <input type="email" id="email" name="email" placeholder="E-posta Adresiniz" required>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <input type="text" id="subject" name="subject" placeholder="Konu" required>
+            </div>
+            
+            <div class="form-group">
+              <textarea id="message" name="message" placeholder="Mesajınız" required></textarea>
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Mesaj Gönder</button>
+          </form>
         </div>
-        <div class="form-group">
-          <label for="subject">Konu</label>
-          <input type="text" id="subject" name="subject" required>
-        </div>
-        <div class="form-group">
-          <label for="message">Mesaj</label>
-          <textarea id="message" name="message" required></textarea>
-        </div>
-        <button type="submit" class="submit-button">Gönder</button>
-      </form>
+      </div>
     </div>
   </section>
 
-  
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <div class="logo-icon">
+            <span>H&G</span>
+          </div>
+          <span class="logo-text">Healthy or Guilty</span>
+        </div>
+        
+        <div class="footer-social">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2024 Healthy or Guilty. Tüm hakları saklıdır.</p>
+      </div>
+    </div>
+  </footer>
 
-<script>
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    // Initialize AOS
+    AOS.init({
+      duration: 800,
+      once: true,
+      offset: 100
+    });
+
+    // Loading Screen
+    window.addEventListener('load', function() {
+      const loadingScreen = document.querySelector('.loading-screen');
+      setTimeout(() => {
+        loadingScreen.style.opacity = '0';
+        setTimeout(() => {
+          loadingScreen.style.display = 'none';
+        }, 500);
+      }, 2000);
+    });
+
+    // Navigation
+    const navbar = document.getElementById('navbar');
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('nav-menu');
+
+    // Scroll effect
     window.addEventListener('scroll', function() {
-      const navbar = document.querySelector('.navbar');
-      if (window.scrollY > 50) {
+      if (window.scrollY > 100) {
         navbar.classList.add('scrolled');
       } else {
         navbar.classList.remove('scrolled');
       }
     });
 
-    // Smooth scrolling for navigation links
+    // Mobile menu toggle
+    hamburger.addEventListener('click', function() {
+      hamburger.classList.toggle('active');
+      navMenu.classList.toggle('active');
+    });
+
+    // Smooth scrolling
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-          behavior: 'smooth'
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+        
+        // Close mobile menu if open
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+      });
+    });
+
+    // Menu filter
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const dishCards = document.querySelectorAll('.dish-card');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Remove active class from all buttons
+        filterBtns.forEach(b => b.classList.remove('active'));
+        // Add active class to clicked button
+        btn.classList.add('active');
+        
+        const filter = btn.getAttribute('data-filter');
+        
+        dishCards.forEach(card => {
+          if (filter === 'all' || card.getAttribute('data-category').includes(filter)) {
+            card.style.display = 'block';
+          } else {
+            card.style.display = 'none';
+          }
         });
       });
     });
-</script>
+
+    // Parallax effect for hero
+    window.addEventListener('scroll', function() {
+      const scrolled = window.pageYOffset;
+      const heroVideo = document.querySelector('.hero-video');
+      if (heroVideo) {
+        heroVideo.style.transform = `translateY(${scrolled * 0.5}px)`;
+      }
+    });
+
+    // Floating elements animation
+    const floatingElements = document.querySelectorAll('.float-element');
+    floatingElements.forEach((element, index) => {
+      element.style.animationDelay = `${index * 0.5}s`;
+    });
+  </script>
 </body>
 </html>
