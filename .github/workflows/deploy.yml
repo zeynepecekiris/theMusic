@@ -1,4 +1,4 @@
-name: Deploy to Heroku and Sync with GitHub
+name: Deploy to Heroku and Sync Database
 
 on:
   push:
@@ -25,6 +25,13 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
     
+    - name: Backup Local Database
+      run: |
+        if [ -f "menu.db" ]; then
+          cp menu.db menu_backup_$(date +%Y%m%d_%H%M%S).db
+          echo "✅ Local database backed up"
+        fi
+    
     - name: Deploy to Heroku
       uses: akhileshns/heroku-deploy@v3.12.14
       with:
@@ -33,11 +40,13 @@ jobs:
         heroku_email: ${{secrets.HEROKU_EMAIL}}
         usedocker: false
         
-    - name: Notify deployment success
+    - name: Database Sync Notification
       if: success()
       run: |
         echo "✅ Deployment successful!"
         echo "🚀 App is live at: https://${{secrets.HEROKU_APP_NAME}}.herokuapp.com"
+        echo "📊 Database sync: Local changes deployed to Heroku"
+        echo "💡 To sync Heroku changes to local: Run database sync script"
         
     - name: Notify deployment failure
       if: failure()

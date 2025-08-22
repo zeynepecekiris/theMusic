@@ -729,6 +729,85 @@
     floatingElements.forEach((element, index) => {
       element.style.animationDelay = `${index * 0.5}s`;
     });
+
+    // Image Modal Functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      // Create modal overlay
+      const modalOverlay = document.createElement('div');
+      modalOverlay.className = 'image-modal-overlay';
+      modalOverlay.innerHTML = `
+        <div class="modal-image-container">
+          <img class="modal-image" src="" alt="">
+          <div class="modal-info-overlay">
+            <h3 class="modal-dish-title"></h3>
+            <p class="modal-dish-price"></p>
+          </div>
+          <button class="modal-close-btn">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      `;
+      document.body.appendChild(modalOverlay);
+
+      // Add zoom icons to dish images
+      const dishImageContainers = document.querySelectorAll('.dish-image-container');
+      dishImageContainers.forEach(container => {
+        const zoomIcon = document.createElement('div');
+        zoomIcon.className = 'zoom-icon-overlay';
+        zoomIcon.innerHTML = '<i class="fas fa-search-plus"></i>';
+        container.appendChild(zoomIcon);
+      });
+
+      // Modal elements
+      const modalImage = modalOverlay.querySelector('.modal-image');
+      const modalTitle = modalOverlay.querySelector('.modal-dish-title');
+      const modalPrice = modalOverlay.querySelector('.modal-dish-price');
+      const closeBtn = modalOverlay.querySelector('.modal-close-btn');
+
+      // Open modal function
+      function openModal(imageSrc, title, price) {
+        modalImage.src = imageSrc;
+        modalTitle.textContent = title;
+        modalPrice.textContent = price;
+        modalOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+
+      // Close modal function
+      function closeModal() {
+        modalOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+
+      // Add click listeners to dish images
+      dishImageContainers.forEach(container => {
+        container.addEventListener('click', function() {
+          const image = this.querySelector('.dish-image');
+          const dishCard = this.closest('.dish-card');
+          const title = dishCard.querySelector('.dish-name').textContent;
+          const price = dishCard.querySelector('.dish-price').textContent;
+          
+          if (image && image.src) {
+            openModal(image.src, title, price);
+          }
+        });
+      });
+
+      // Close modal events
+      closeBtn.addEventListener('click', closeModal);
+      modalOverlay.addEventListener('click', function(e) {
+        if (e.target === modalOverlay) {
+          closeModal();
+        }
+      });
+
+      // ESC key to close
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
+          closeModal();
+        }
+      });
+    });
   </script>
 </body>
 </html>
