@@ -248,4 +248,5 @@ if __name__ == "__main__":
         print("1. Another application is using port 5012 - try a different port")
         print("2. Wait a few minutes and try again")
         print("3. Check with: lsof -i :5012")
-        app.run(host='0.0.0.0', port=5013, debug=False)
+        print("❌ Port 5012 is busy, please check running processes")
+        exit(1)
