@@ -33,26 +33,6 @@ def init_db():
             resim TEXT
         )
     ''')
-    
-    # Check if table is empty and add sample data
-    count = conn.execute('SELECT COUNT(*) FROM menu_items').fetchone()[0]
-    if count == 0:
-        sample_items = [
-            ('DYNAMITE CHICKEN BURGER', 'Acılı ve çıtır sevenlere özel! Marine edilmiş, hafif baharatlı mescal soslu tavuk göğsü altın sarısı renginde kızartılır. Üzerine eriyen cheddar peyniri, taze marul yaprakları, domates dilimleri ve turşu eklenir. Burgerin lezzetini patlatan özel dynamite sos (acılı mayonez & sarımsak aromalı) ile tamamlanır. Yumuşacık burger ekmeği arasında, hem doyurucu hem de tam bir lezzet bombası! 🌶', 500.0, 'Suçlu Zevk', '20250811_235412_Ekran_Resmi_2025-08-11_23.47.42.png'),
-            ('TRUFFLE CHICKEN BURGER', '🍄 Truffle Chicken Burger\nGurme lezzet arayanlara özel! Altın sarısı renginde çıtır tavuk göğsü, üzerinde eriyen cheddar peyniri ile buluşur. Taze marul yaprakları ve ince domates dilimleriyle dengelenir. Burgerin yıldızı ise özel trüf aromalı sosu – yoğun ve sofistike lezzetiyle her lokmayı unutulmaz kılar. Yumuşacık burger ekmeği arasında şıklığı ve lezzeti bir araya getiriyor. 🍔✨', 650.0, 'Suçlu Zevk', '20250821_195238_Ekran_Resmi_2025-08-21_19.47.09.png'),
-            ('Korean Chicken Burger', '🇰🇷 Uzak Doğu lezzetlerini burger keyfiyle birleştirdik! Özel Kore usulü tatlı-acı sos ile harmanlanan çıtır tavuk göğsü, üzerine eriyen cheddar peyniriyle buluşur. Ferahlatıcı mor lahana salatası ve kremsi dokusuyla her lokmada farklı bir lezzet katmanını hissedeceksiniz. Yumuşacık burger ekmeği arasında tatlı, acı ve çıtır dokuların mükemmel uyumu! 🍔✨', 750.0, 'Suçlu Zevk', '20250821_200849_Ekran_Resmi_2025-08-21_20.05.34.png'),
-            ('BBQ CHICKEN BURGER', 'Doyurucu ve tam bir Amerikan klasiği! Altın sarısı çıtır tavuk göğsü, eriyen cheddar peyniriyle buluşur. Üzerine çıtır soğan ve mozzarella sticks eklenerek ekstra lezzet katılır. Tüm bu lezzetleri taçlandıran yoğun aromalı BBQ sos ile burgeriniz bambaşka bir boyuta taşınır. Yumuşacık burger ekmeği arasında hem doyurucu, hem de tam bir lezzet şöleni! 🍔✨', 780.0, 'Suçlu Zevk', '20250822_131015_Ekran_Resmi_2025-08-22_12.29.02.png'),
-            ('CHICKEN WRAP', 'Hafif ama lezzetli bir seçenek arayanlara özel! Izgara tavuk parçaları, taze mor lahana, çıtır sebzeler ve kremamsı sos ile harmanlanır. İnce lavaş ekmeğine sarılarak hem pratik hem de doyurucu bir lezzet haline gelir. Her lokmada ferah, dengeli ve keyifli bir deneyim sunar! 🥗🔥', 876.0, 'Suçlu Zevk', '20250822_230640_Ekran_Resmi_2025-08-22_22.42.48.png'),
-            ('Honey Chicken Wrap', 'Tatlı ve lezzetli! Ballı tavuk parçaları, çıtır sebzeler ve özel soslarla hazırlanmış wrap. 🍯🌯', 450.0, 'Sağlıklı', None),
-            ('MOZZARELLA STICKS', '🧀 Çıtır dışı, eriyen içi! Altın sarısı kızarmış mozzarella çubukları. Marinara sosla servis edilir. Peynir severlerin vazgeçilmezi! ✨', 350.0, 'Suçlu Zevk', None)
-        ]
-        
-        for item in sample_items:
-            conn.execute('''
-                INSERT INTO menu_items (isim, aciklama, fiyat, kategori, resim)
-                VALUES (?, ?, ?, ?, ?)
-            ''', item)
-    
     conn.commit()
     conn.close()
 
