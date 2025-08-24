@@ -18,6 +18,119 @@
   
   <!-- Custom CSS -->
   <link rel="stylesheet" href="/static/style.css">
+  
+  <!-- Mobile Menu Fix CSS -->
+  <style>
+    /* Mobile Menu Image Fix */
+    @media (max-width: 768px) {
+      .dish-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+      }
+      
+      .dish-image-container {
+        width: 100% !important;
+        max-width: 300px;
+        height: 250px !important;
+        margin-bottom: 1.5rem;
+        z-index: 10 !important;
+        position: relative;
+        border-radius: var(--border-radius);
+        overflow: hidden;
+      }
+      
+      .dish-image {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        object-position: center !important;
+        border-radius: var(--border-radius);
+      }
+      
+      .dish-content {
+        width: 100%;
+        z-index: 15 !important;
+        position: relative;
+        background: rgba(20, 20, 20, 0.95);
+        padding: 1.5rem;
+        border-radius: var(--border-radius);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(212, 175, 55, 0.2);
+      }
+      
+      .dish-header {
+        margin-bottom: 1rem;
+      }
+      
+      .dish-name {
+        font-size: 1.4rem !important;
+        margin-bottom: 0.5rem;
+        color: var(--text-primary);
+      }
+      
+      .dish-price {
+        font-size: 1.2rem !important;
+        color: var(--accent-color);
+        font-weight: 600;
+      }
+      
+      .dish-description {
+        font-size: 0.95rem !important;
+        line-height: 1.6;
+        margin-bottom: 1rem;
+        color: var(--text-secondary);
+      }
+      
+      .dish-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 1rem;
+      }
+      
+      .dish-category {
+        background: linear-gradient(135deg, var(--accent-color), #e6c458);
+        color: var(--primary-dark);
+        padding: 0.3rem 0.8rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 500;
+      }
+      
+      .dish-rating {
+        color: var(--accent-color);
+      }
+      
+      /* Animation fixes for mobile */
+      .floating-shape {
+        opacity: 0.3 !important;
+        animation-duration: 15s !important;
+      }
+    }
+    
+    /* Small mobile screens */
+    @media (max-width: 480px) {
+      .dish-image-container {
+        max-width: 280px;
+        height: 220px !important;
+      }
+      
+      .dish-content {
+        padding: 1.2rem;
+      }
+      
+      .dish-name {
+        font-size: 1.2rem !important;
+      }
+      
+      .dish-price {
+        font-size: 1.1rem !important;
+      }
+    }
+  </style>
 </head>
 <body>
 
