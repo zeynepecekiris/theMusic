@@ -3344,3 +3344,35 @@ section {
     padding: 1.2rem;
   }
 } 
+
+/* mobile-gap-fix.css - Resim ve açıklama arasındaki boşluğu kaldır */
+
+@media (max-width: 768px) {
+  .dish-card {
+    padding: 0 !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+  
+  .dish-image-container {
+    margin-bottom: 0 !important;
+    border-radius: var(--border-radius) var(--border-radius) 0 0 !important;
+  }
+  
+  .dish-image {
+    border-radius: var(--border-radius) var(--border-radius) 0 0 !important;
+  }
+  
+  .dish-content {
+    margin-top: 0 !important;
+    border-radius: 0 0 var(--border-radius) var(--border-radius) !important;
+    border-top: none !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .dish-card {
+    padding: 0 !important;
+  }
+}
