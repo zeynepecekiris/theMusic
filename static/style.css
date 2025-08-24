@@ -3074,4 +3074,155 @@ section {
   display: flex;
   flex-direction: column;
   gap: 2rem;
+}
+
+/* Address Link Styling */
+.address-link {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none;
+  color: var(--accent-color);
+  font-weight: 500;
+  transition: var(--transition);
+  padding: 1rem;
+  border-radius: var(--border-radius-small);
+  background: rgba(212, 175, 55, 0.05);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  backdrop-filter: blur(10px);
+  margin: 0.5rem 0;
+}
+
+.address-link:hover {
+  background: rgba(212, 175, 55, 0.15);
+  border-color: rgba(212, 175, 55, 0.4);
+  color: var(--text-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
+}
+
+.address-link i {
+  color: var(--accent-color);
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+/* Delivery Platforms Styling */
+.delivery-platforms {
+  margin-top: 2rem;
+}
+
+.delivery-platforms p {
+  margin-bottom: 1rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.platform-links {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.platform-link {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 1rem 1.5rem;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-radius: var(--border-radius-small);
+  transition: var(--transition);
+  border: 2px solid transparent;
+  backdrop-filter: blur(10px);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.platform-link i {
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+/* Yemeksepeti - Orange theme */
+.platform-link.yemeksepeti {
+  background: linear-gradient(135deg, rgba(255, 95, 39, 0.15), rgba(255, 95, 39, 0.08));
+  color: #ff5f27;
+  border-color: rgba(255, 95, 39, 0.3);
+}
+
+.platform-link.yemeksepeti:hover {
+  background: linear-gradient(135deg, rgba(255, 95, 39, 0.25), rgba(255, 95, 39, 0.15));
+  border-color: rgba(255, 95, 39, 0.6);
+  color: #ff5f27;
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 30px rgba(255, 95, 39, 0.3);
+}
+
+/* Getir - Purple theme */
+.platform-link.getir {
+  background: linear-gradient(135deg, rgba(93, 62, 188, 0.15), rgba(93, 62, 188, 0.08));
+  color: #5d3ebc;
+  border-color: rgba(93, 62, 188, 0.3);
+}
+
+.platform-link.getir:hover {
+  background: linear-gradient(135deg, rgba(93, 62, 188, 0.25), rgba(93, 62, 188, 0.15));
+  border-color: rgba(93, 62, 188, 0.6);
+  color: #5d3ebc;
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 30px rgba(93, 62, 188, 0.3);
+}
+
+/* Trendyol - Red theme */
+.platform-link.trendyol {
+  background: linear-gradient(135deg, rgba(245, 101, 101, 0.15), rgba(245, 101, 101, 0.08));
+  color: #f56565;
+  border-color: rgba(245, 101, 101, 0.3);
+}
+
+.platform-link.trendyol:hover {
+  background: linear-gradient(135deg, rgba(245, 101, 101, 0.25), rgba(245, 101, 101, 0.15));
+  border-color: rgba(245, 101, 101, 0.6);
+  color: #f56565;
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 30px rgba(245, 101, 101, 0.3);
+}
+
+/* Migros - Green theme */
+.platform-link.migros {
+  background: linear-gradient(135deg, rgba(56, 178, 172, 0.15), rgba(56, 178, 172, 0.08));
+  color: #38b2ac;
+  border-color: rgba(56, 178, 172, 0.3);
+}
+
+.platform-link.migros:hover {
+  background: linear-gradient(135deg, rgba(56, 178, 172, 0.25), rgba(56, 178, 172, 0.15));
+  border-color: rgba(56, 178, 172, 0.6);
+  color: #38b2ac;
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 30px rgba(56, 178, 172, 0.3);
+}
+
+.visit-note {
+  text-align: center;
+  margin-top: 1.5rem;
+  color: var(--text-secondary);
+  font-style: italic;
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
+/* Responsive Design for Platform Links */
+@media (max-width: 768px) {
+  .platform-links {
+    grid-template-columns: 1fr;
+  }
+  
+  .platform-link {
+    justify-content: center;
+    padding: 1.2rem;
+  }
 } 
