@@ -18,14 +18,145 @@
   
   <!-- Custom CSS -->
   <link rel="stylesheet" href="/static/style.css">
+  
+  <!-- Mobile Menu Fix CSS -->
+  <style>
+    /* Mobile Menu Image Fix */
+    @media (max-width: 768px) {
+      .dish-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+      }
+      
+      .dish-image-container {
+        width: 100% !important;
+        max-width: 300px;
+        height: 250px !important;
+        margin-bottom: 1.5rem;
+        z-index: 10 !important;
+        position: relative;
+        border-radius: var(--border-radius);
+        overflow: hidden;
+      }
+      
+      .dish-image {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        object-position: center !important;
+        border-radius: var(--border-radius);
+      }
+      
+      .dish-content {
+        width: 100%;
+        z-index: 15 !important;
+        position: relative;
+        background: rgba(20, 20, 20, 0.95);
+        padding: 1.5rem;
+        border-radius: var(--border-radius);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(212, 175, 55, 0.2);
+      }
+      
+      .dish-header {
+        margin-bottom: 1rem;
+      }
+      
+      .dish-name {
+        font-size: 1.4rem !important;
+        margin-bottom: 0.5rem;
+        color: var(--text-primary);
+      }
+      
+      .dish-price {
+        font-size: 1.2rem !important;
+        color: var(--accent-color);
+        font-weight: 600;
+      }
+      
+      .dish-description {
+        font-size: 0.95rem !important;
+        line-height: 1.6;
+        margin-bottom: 1rem;
+        color: var(--text-secondary);
+      }
+      
+      .dish-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 1rem;
+      }
+      
+      .dish-category {
+        background: linear-gradient(135deg, var(--accent-color), #e6c458);
+        color: var(--primary-dark);
+        padding: 0.3rem 0.8rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 500;
+      }
+      
+      .dish-rating {
+        color: var(--accent-color);
+      }
+      
+      /* Animation fixes for mobile */
+      .floating-shape {
+        opacity: 0.3 !important;
+        animation-duration: 15s !important;
+      }
+    }
+    
+    /* Small mobile screens */
+    @media (max-width: 480px) {
+      .dish-image-container {
+        max-width: 280px;
+        height: 220px !important;
+      }
+      
+      .dish-content {
+        padding: 1.2rem;
+      }
+      
+      .dish-name {
+        font-size: 1.2rem !important;
+      }
+      
+      .dish-price {
+        font-size: 1.1rem !important;
+      }
+    }
+  </style>
 </head>
 <body>
 
   <!-- Loading Screen -->
   <div class="loading-screen">
+    <div class="loading-animated-background">
+      <div class="animated-shapes">
+        <div class="loading-shape circle blue s1"></div>
+        <div class="loading-shape square yellow s2"></div>
+        <div class="loading-shape star pink s3"></div>
+        <div class="loading-shape knife white s4"></div>
+        <div class="loading-shape broccoli green s5"></div>
+        <div class="loading-shape carrot orange s6"></div>
+        <div class="loading-shape bread yellow s7"></div>
+        <div class="loading-shape circle white s8"></div>
+        <div class="loading-shape square pink s9"></div>
+        <div class="loading-shape star blue s10"></div>
+        <div class="loading-shape knife yellow s11"></div>
+        <div class="loading-shape broccoli pink s12"></div>
+        <div class="loading-shape carrot blue s13"></div>
+        <div class="loading-shape bread white s14"></div>
+      </div>
+    </div>
     <div class="loading-content">
       <div class="loading-logo">
-        <div class="logo-animation">H&G</div>
+        <div class="logo-animation">HG</div>
       </div>
       <div class="loading-text">Healthy or Guilty</div>
       <div class="loading-bar">
@@ -229,34 +360,7 @@
     </div>
   </section>
 
-  <!-- Split Image Section -->
-  <section class="split-image-section">
-    <div class="split-container">
-      <div class="split-left" data-aos="fade-right" data-aos-duration="1000">
-        <div class="split-image-wrapper">
-          <img src="{{ url_for('static', filename='images/future-woman-blue.jpg') }}" alt="Future Vision" class="split-image">
-          <div class="split-overlay">
-            <div class="split-content">
-              <h3>Gelecek Vizyonu</h3>
-              <p>İnovasyonla buluşan lezzet deneyimi</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <div class="split-right" data-aos="fade-left" data-aos-duration="1000">
-        <div class="split-image-wrapper">
-          <img src="{{ url_for('static', filename='images/future-woman-red.jpg') }}" alt="Passion Energy" class="split-image">
-          <div class="split-overlay">
-            <div class="split-content">
-              <h3>Tutku Enerjisi</h3>
-              <p>Aşkla hazırlanan her tabak</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+
 
   <!-- Location Section -->
   <section id="location" class="location-section">
@@ -281,7 +385,36 @@
           </div>
           <div class="info-content">
             <h3>Adres</h3>
-            <p>Japonya, 〒160-0021 Tokyo, Shinjuku City, Kabukicho, 1 Chome−16−3 セレサ陽栄新宿ビル 6階</p>
+            <p>
+              <a href="https://www.google.com/maps/place/Healthy+Or+Guilty/@40.9844894,29.0457509,17z/data=!3m1!4b1!4m6!3m5!1s0x14cab96a0f88e49d:0x46def682e9de2a5c!8m2!3d40.9844894!4d29.0457509!16s%2Fg%2F11ydxx8f9w?entry=ttu&g_ep=EgoyMDI1MDgxOS4wIKXMDSoASAFQAw%3D%3D" 
+                 target="_blank" 
+                 class="address-link">
+                <i class="fas fa-map-marker-alt"></i>
+                Feneryolu Mahallesi Şefizade Sokak No 4 B, Istanbul, Turkey 34744
+              </a>
+            </p>
+            <div class="delivery-platforms">
+              <p>Bulunduğumuz konumu merkez alan 5km çapta hizmet verdiğimiz platformlar:</p>
+              <div class="platform-links">
+                <a href="https://www.yemeksepeti.com" target="_blank" class="platform-link yemeksepeti">
+                  <i class="fas fa-utensils"></i>
+                  Yemeksepeti
+                </a>
+                <a href="https://www.getir.com/yemek/" target="_blank" class="platform-link getir">
+                  <i class="fas fa-motorcycle"></i>
+                  Getiryemek
+                </a>
+                <a href="https://www.trendyol.com/yemek/" target="_blank" class="platform-link trendyol">
+                  <i class="fas fa-shopping-bag"></i>
+                  Trendyolyemek
+                </a>
+                <a href="https://www.migros.com.tr/migros-yemek" target="_blank" class="platform-link migros">
+                  <i class="fas fa-store"></i>
+                  Migrosyemek
+                </a>
+              </div>
+              <p class="visit-note">Ayrıca bahçemize bekleriz! 🌿</p>
+            </div>
           </div>
         </div>
         
@@ -302,21 +435,20 @@
           </div>
           <div class="info-content">
             <h3>Rezervasyon</h3>
-            <p>+81 (0) 123 456 7890</p>
+            <p>+90 538 470 52 43</p>
             <p>reservation@healthyorguilty.com</p>
           </div>
         </div>
       </div>
       
       <div class="location-map" data-aos="fade-left">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.6698064970425!2d139.7027963152542!3d35.69080518019349!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188d227f27a69b%3A0x673c68a4a2b2e88a!2zSmFwb255YSwg4oCtMTYwLTAwMjEgVG9reW8sIFNoaW5qdWt1IENpdHksIEthYnVraWNobywgMSBDaG9tZeKAlTE24oCtMyDlsI_jg5vjgqLjg7Pjgr_jgrnjgqXjgrnjg7zjgrjjgqbjg6_jgr_jgq4gNuepkw!5e0!3m2!1sen!2sjp!4v1678888888888!5m2!1sen!2sjp" 
-                  width="100%" 
-                  height="100%" 
-                  style="border:0;" 
-                  allowfullscreen="" 
-                  loading="lazy" 
-                  referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
+        <iframe src="https://www.google.com/maps?q=40.9844894,29.0457509&z=17&hl=tr&output=embed"
+                width="100%"
+                height="100%"
+                style="border:0;"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </div>
   </section>
@@ -625,14 +757,14 @@
       const loadingProgress = document.querySelector('.loading-progress');
       
       // Progress bar animasyonunu daha hızlandır
-      loadingProgress.style.animation = 'loading 1.0s ease-out forwards';
+      loadingProgress.style.animation = 'loading 0.6s ease-out forwards';
       
       setTimeout(() => {
         loadingScreen.style.opacity = '0';
         setTimeout(() => {
           loadingScreen.style.display = 'none';
         }, 200);
-      }, 1200); // 1.2 saniye olarak kısalttım
+      }, 800); // 0.8 saniye olarak kısalttım
     });
 
     // Navigation
@@ -728,6 +860,85 @@
     const floatingElements = document.querySelectorAll('.float-element');
     floatingElements.forEach((element, index) => {
       element.style.animationDelay = `${index * 0.5}s`;
+    });
+
+    // Image Modal Functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      // Create modal overlay
+      const modalOverlay = document.createElement('div');
+      modalOverlay.className = 'image-modal-overlay';
+      modalOverlay.innerHTML = `
+        <div class="modal-image-container">
+          <img class="modal-image" src="" alt="">
+          <div class="modal-info-overlay">
+            <h3 class="modal-dish-title"></h3>
+            <p class="modal-dish-price"></p>
+          </div>
+          <button class="modal-close-btn">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      `;
+      document.body.appendChild(modalOverlay);
+
+      // Add zoom icons to dish images
+      const dishImageContainers = document.querySelectorAll('.dish-image-container');
+      dishImageContainers.forEach(container => {
+        const zoomIcon = document.createElement('div');
+        zoomIcon.className = 'zoom-icon-overlay';
+        zoomIcon.innerHTML = '<i class="fas fa-search-plus"></i>';
+        container.appendChild(zoomIcon);
+      });
+
+      // Modal elements
+      const modalImage = modalOverlay.querySelector('.modal-image');
+      const modalTitle = modalOverlay.querySelector('.modal-dish-title');
+      const modalPrice = modalOverlay.querySelector('.modal-dish-price');
+      const closeBtn = modalOverlay.querySelector('.modal-close-btn');
+
+      // Open modal function
+      function openModal(imageSrc, title, price) {
+        modalImage.src = imageSrc;
+        modalTitle.textContent = title;
+        modalPrice.textContent = price;
+        modalOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+
+      // Close modal function
+      function closeModal() {
+        modalOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+
+      // Add click listeners to dish images
+      dishImageContainers.forEach(container => {
+        container.addEventListener('click', function() {
+          const image = this.querySelector('.dish-image');
+          const dishCard = this.closest('.dish-card');
+          const title = dishCard.querySelector('.dish-name').textContent;
+          const price = dishCard.querySelector('.dish-price').textContent;
+          
+          if (image && image.src) {
+            openModal(image.src, title, price);
+          }
+        });
+      });
+
+      // Close modal events
+      closeBtn.addEventListener('click', closeModal);
+      modalOverlay.addEventListener('click', function(e) {
+        if (e.target === modalOverlay) {
+          closeModal();
+        }
+      });
+
+      // ESC key to close
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
+          closeModal();
+        }
+      });
     });
   </script>
 </body>

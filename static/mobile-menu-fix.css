@@ -1,0 +1,108 @@
+/* Mobile Menu Fixes for Better Display */
+
+/* Enhanced Mobile Menu Styles */
+@media (max-width: 768px) {
+  /* Fix dish image height in mobile */
+  .dish-image-container {
+    height: 220px !important;
+    z-index: 2;
+    position: relative;
+  }
+  
+  /* Ensure dish images are properly displayed */
+  .dish-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: 3;
+    position: relative;
+    display: block;
+  }
+  
+  /* Fix dish card layout */
+  .dish-card {
+    z-index: 1;
+    position: relative;
+    max-width: 100%;
+    margin: 0 auto 2rem;
+  }
+  
+  /* Ensure dish content is above background */
+  .dish-content {
+    z-index: 4;
+    position: relative;
+    background: linear-gradient(135deg, 
+      rgba(255, 255, 255, 0.08) 0%, 
+      rgba(255, 255, 255, 0.04) 100%);
+  }
+  
+  /* Fix menu container spacing */
+  .menu-container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 0 1.5rem;
+  }
+  
+  /* Enhanced hover effects for mobile */
+  .dish-card:hover {
+    transform: translateY(-10px) scale(1.05);
+    z-index: 100;
+  }
+  
+  .dish-card:hover .dish-image {
+    transform: scale(1.2);
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 480px) {
+  .dish-image-container {
+    height: 200px !important;
+  }
+  
+  .menu-container {
+    padding: 0 1rem;
+    gap: 1.5rem;
+  }
+  
+  .dish-card:hover {
+    transform: translateY(-8px) scale(1.03);
+  }
+  
+  .dish-card:hover .dish-image {
+    transform: scale(1.15);
+  }
+}
+
+/* Ensure all animated elements work properly on mobile */
+@media (max-width: 768px) {
+  .animated-background,
+  .animated-shapes,
+  .floating-shape {
+    z-index: 1;
+  }
+  
+  .dish-card,
+  .dish-content,
+  .dish-image-container,
+  .dish-image {
+    z-index: auto;
+  }
+  
+  /* Stack context fix */
+  .menu-section {
+    position: relative;
+    z-index: 2;
+  }
+  
+  .menu-section .menu-container {
+    position: relative;
+    z-index: 3;
+  }
+  
+  .menu-section .dish-card {
+    position: relative;
+    z-index: 4;
+  }
+}

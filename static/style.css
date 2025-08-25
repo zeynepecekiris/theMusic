@@ -63,7 +63,7 @@ body {
   left: 0;
   width: 100%;
   height: 100vh;
-  background: var(--gradient-dark);
+  background: #000000;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -78,18 +78,136 @@ body {
 
 .loading-logo {
   margin-bottom: 2rem;
+  position: relative;
+  width: 360px;
+  height: 360px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
+
+/* remove previous quad background for loading logo */
 
 .logo-animation {
   font-family: 'Playfair Display', serif;
-  font-size: 4rem;
-  font-weight: 700;
-  background: var(--gradient-gold);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: pulse 1.2s ease-in-out infinite;
+  font-size: 8rem;
+  font-weight: 800;
+  letter-spacing: 8px;
+  position: relative;
+  z-index: 1;
+  color: #fff;
+  text-shadow:
+    0 0 12px rgba(255,255,255,0.7),
+    0 0 30px rgba(255,255,255,0.4);
+  transition: var(--transition);
 }
+
+.loading-logo:hover .logo-animation {
+  filter: brightness(1.1);
+}
+
+/* Neon hover that cycles colors under the letters */
+.loading-logo::before {
+  content: '';
+  position: absolute;
+  width: 110%;
+  height: 110%;
+  border-radius: 28px;
+  background: conic-gradient(
+    from 0deg,
+    rgba(0, 140, 255, 0.9),
+    rgba(255, 214, 0, 0.9),
+    rgba(255, 64, 129, 0.9),
+    rgba(255, 255, 255, 0.9),
+    rgba(0, 140, 255, 0.9)
+  );
+  filter: blur(24px) saturate(1.2);
+  opacity: 0.2;
+  transition: opacity 0.4s ease, transform 0.6s ease;
+  z-index: 0;
+}
+
+.loading-logo:hover::before {
+  opacity: 0.6;
+  transform: rotate(40deg) scale(1.02);
+}
+
+/* Subtle pulse on quads when hovered */
+.loading-logo:hover .logo-quads .quad {
+  animation: quadPulse 1.8s ease-in-out infinite;
+}
+.loading-logo:hover .logo-quads .q2 { animation-delay: 0.15s; }
+.loading-logo:hover .logo-quads .q3 { animation-delay: 0.30s; }
+.loading-logo:hover .logo-quads .q4 { animation-delay: 0.45s; }
+
+@keyframes quadPulse {
+  0%, 100% { filter: brightness(1); }
+  50% { filter: brightness(1.35); }
+}
+
+/* Loading animated shapes over black background */
+.loading-animated-background {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.loading-animated-background .animated-shapes { position: absolute; inset: 0; }
+.loading-shape {
+  position: absolute;
+  background: transparent;
+  border: 5px solid;
+  box-shadow: 0 0 28px currentColor, inset 0 0 18px rgba(255,255,255,0.06);
+  filter: saturate(1.2);
+  opacity: 0.9;
+}
+
+/* Colors */
+.loading-shape.blue { color: rgba(0, 140, 255, 0.95); }
+.loading-shape.yellow { color: rgba(255, 214, 0, 0.95); }
+.loading-shape.pink { color: rgba(255, 64, 129, 0.95); }
+.loading-shape.white { color: rgba(255, 255, 255, 0.95); }
+.loading-shape.green { color: rgba(80, 200, 120, 0.95); }
+.loading-shape.orange { color: rgba(255, 140, 0, 0.95); }
+
+/* Shapes */
+.loading-shape.circle { border-radius: 50%; }
+.loading-shape.square { border-radius: 12px; }
+.loading-shape.star { clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%); }
+
+/* Knife shape (long rectangle + rotated) */
+.loading-shape.knife { border-radius: 4px; transform: rotate(45deg); }
+
+/* Food shapes approximations via clip-path */
+.loading-shape.broccoli { clip-path: ellipse(45% 35% at 50% 40%); }
+.loading-shape.carrot { clip-path: polygon(50% 0%, 60% 20%, 55% 100%, 45% 100%, 40% 20%); }
+.loading-shape.bread { clip-path: ellipse(48% 40% at 50% 40%); border-radius: 16px; }
+
+/* Instances positions/sizes and animations */
+.loading-shape.s1 { width: 70px; height: 70px; top: 12%; left: 10%; animation: floatLoad 10s ease-in-out infinite; }
+.loading-shape.s2 { width: 90px; height: 90px; top: 50%; left: 20%; animation: floatLoad 11s ease-in-out infinite -2s; }
+.loading-shape.s3 { width: 65px; height: 65px; top: 25%; right: 12%; animation: floatLoad 12s ease-in-out infinite -4s; }
+.loading-shape.s4 { width: 120px; height: 12px; top: 70%; right: 20%; animation: floatLoad 9s ease-in-out infinite -1s; }
+.loading-shape.s5 { width: 85px; height: 70px; bottom: 18%; left: 35%; animation: floatLoad 13s ease-in-out infinite -3s; }
+.loading-shape.s6 { width: 18px; height: 120px; bottom: 28%; right: 35%; animation: floatLoad 10s ease-in-out infinite -5s; }
+.loading-shape.s7 { width: 110px; height: 80px; top: 30%; left: 60%; animation: floatLoad 12s ease-in-out infinite -6s; }
+.loading-shape.s8 { width: 55px; height: 55px; top: 15%; left: 45%; animation: floatLoad 9s ease-in-out infinite -2.5s; }
+.loading-shape.s9 { width: 75px; height: 75px; bottom: 22%; left: 12%; animation: floatLoad 11.5s ease-in-out infinite -4.5s; }
+.loading-shape.s10 { width: 70px; height: 70px; top: 65%; left: 75%; animation: floatLoad 10.5s ease-in-out infinite -3.2s; }
+.loading-shape.s11 { width: 140px; height: 14px; top: 40%; right: 8%; animation: floatLoad 12.5s ease-in-out infinite -1.7s; }
+.loading-shape.s12 { width: 80px; height: 65px; top: 22%; left: 32%; animation: floatLoad 13.5s ease-in-out infinite -5.1s; }
+.loading-shape.s13 { width: 18px; height: 140px; bottom: 12%; left: 72%; animation: floatLoad 9.5s ease-in-out infinite -6.1s; }
+.loading-shape.s14 { width: 120px; height: 85px; bottom: 8%; right: 12%; animation: floatLoad 14s ease-in-out infinite -3.9s; }
+
+@keyframes floatLoad {
+  0%, 100% { transform: translateY(0) translateX(0) rotate(0); opacity: 0.85; }
+  25% { transform: translateY(-24px) translateX(18px) rotate(45deg); opacity: 1; }
+  50% { transform: translateY(-12px) translateX(-14px) rotate(90deg); opacity: 0.9; }
+  75% { transform: translateY(-28px) translateX(10px) rotate(135deg); opacity: 1; }
+}
+
+/* previous logo-animation definition replaced above for loading logo */
 
 .loading-text {
   font-size: 1.2rem;
@@ -3074,4 +3192,187 @@ section {
   display: flex;
   flex-direction: column;
   gap: 2rem;
+}
+
+/* Address Link Styling */
+.address-link {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none;
+  color: var(--accent-color);
+  font-weight: 500;
+  transition: var(--transition);
+  padding: 1rem;
+  border-radius: var(--border-radius-small);
+  background: rgba(212, 175, 55, 0.05);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  backdrop-filter: blur(10px);
+  margin: 0.5rem 0;
+}
+
+.address-link:hover {
+  background: rgba(212, 175, 55, 0.15);
+  border-color: rgba(212, 175, 55, 0.4);
+  color: var(--text-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
+}
+
+.address-link i {
+  color: var(--accent-color);
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+/* Delivery Platforms Styling */
+.delivery-platforms {
+  margin-top: 2rem;
+}
+
+.delivery-platforms p {
+  margin-bottom: 1rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.platform-links {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.platform-link {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 1rem 1.5rem;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-radius: var(--border-radius-small);
+  transition: var(--transition);
+  border: 2px solid transparent;
+  backdrop-filter: blur(10px);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.platform-link i {
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+/* Yemeksepeti - Orange theme */
+.platform-link.yemeksepeti {
+  background: linear-gradient(135deg, rgba(255, 95, 39, 0.15), rgba(255, 95, 39, 0.08));
+  color: #ff5f27;
+  border-color: rgba(255, 95, 39, 0.3);
+}
+
+.platform-link.yemeksepeti:hover {
+  background: linear-gradient(135deg, rgba(255, 95, 39, 0.25), rgba(255, 95, 39, 0.15));
+  border-color: rgba(255, 95, 39, 0.6);
+  color: #ff5f27;
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 30px rgba(255, 95, 39, 0.3);
+}
+
+/* Getir - Purple theme */
+.platform-link.getir {
+  background: linear-gradient(135deg, rgba(93, 62, 188, 0.15), rgba(93, 62, 188, 0.08));
+  color: #5d3ebc;
+  border-color: rgba(93, 62, 188, 0.3);
+}
+
+.platform-link.getir:hover {
+  background: linear-gradient(135deg, rgba(93, 62, 188, 0.25), rgba(93, 62, 188, 0.15));
+  border-color: rgba(93, 62, 188, 0.6);
+  color: #5d3ebc;
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 30px rgba(93, 62, 188, 0.3);
+}
+
+/* Trendyol - Red theme */
+.platform-link.trendyol {
+  background: linear-gradient(135deg, rgba(245, 101, 101, 0.15), rgba(245, 101, 101, 0.08));
+  color: #f56565;
+  border-color: rgba(245, 101, 101, 0.3);
+}
+
+.platform-link.trendyol:hover {
+  background: linear-gradient(135deg, rgba(245, 101, 101, 0.25), rgba(245, 101, 101, 0.15));
+  border-color: rgba(245, 101, 101, 0.6);
+  color: #f56565;
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 30px rgba(245, 101, 101, 0.3);
+}
+
+/* Migros - Green theme */
+.platform-link.migros {
+  background: linear-gradient(135deg, rgba(56, 178, 172, 0.15), rgba(56, 178, 172, 0.08));
+  color: #38b2ac;
+  border-color: rgba(56, 178, 172, 0.3);
+}
+
+.platform-link.migros:hover {
+  background: linear-gradient(135deg, rgba(56, 178, 172, 0.25), rgba(56, 178, 172, 0.15));
+  border-color: rgba(56, 178, 172, 0.6);
+  color: #38b2ac;
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 30px rgba(56, 178, 172, 0.3);
+}
+
+.visit-note {
+  text-align: center;
+  margin-top: 1.5rem;
+  color: var(--text-secondary);
+  font-style: italic;
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
+/* Responsive Design for Platform Links */
+@media (max-width: 768px) {
+  .platform-links {
+    grid-template-columns: 1fr;
+  }
+  
+  .platform-link {
+  justify-content: center;
+    padding: 1.2rem;
+  }
+} 
+
+/* mobile-gap-fix.css - Resim ve açıklama arasındaki boşluğu kaldır */
+
+@media (max-width: 768px) {
+  .dish-card {
+    padding: 0 !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+  
+  .dish-image-container {
+    margin-bottom: 0 !important;
+    border-radius: var(--border-radius) var(--border-radius) 0 0 !important;
+  }
+  
+  .dish-image {
+    border-radius: var(--border-radius) var(--border-radius) 0 0 !important;
+  }
+  
+  .dish-content {
+    margin-top: 0 !important;
+    border-radius: 0 0 var(--border-radius) var(--border-radius) !important;
+    border-top: none !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .dish-card {
+    padding: 0 !important;
+  }
 }

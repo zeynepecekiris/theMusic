@@ -236,19 +236,17 @@ if __name__ == "__main__":
     
     try:
         # Verify port availability
-        sock.bind(('0.0.0.0', 5011))
+        sock.bind(('0.0.0.0', 5012))
         sock.close()
         
         # Start Flask application
-        app.run(host='0.0.0.0', port=5011, debug=True, use_reloader=False)
+        app.run(host='0.0.0.0', port=5012, debug=True, use_reloader=False)
         
     except socket.error as e:
         print(f"Server could not start: {e}")
         print("Possible solutions:")
-        print("1. Another application is using port 5011 - try a different port")
+        print("1. Another application is using port 5012 - try a different port")
         print("2. Wait a few minutes and try again")
-        print("3. Check with: lsof -i :5011")
-    finally:
-        if 'sock' in locals():
-            sock.close()
-        app.run(host='0.0.0.0', port=5012, debug=False)
+        print("3. Check with: lsof -i :5012")
+        print("❌ Port 5012 is busy, please check running processes")
+        exit(1)
